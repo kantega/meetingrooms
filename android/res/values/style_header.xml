@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Header">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">70dp</item>
+
+        <item name="android:background">#33b5e5</item>
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:textSize">30sp</item>
+
+        <item name="android:paddingTop">15dp</item>
+        <item name="android:paddingLeft">120dp</item>
+
+        <item name="android:text">@string/header</item>
+
+    </style>
+
+</resources>

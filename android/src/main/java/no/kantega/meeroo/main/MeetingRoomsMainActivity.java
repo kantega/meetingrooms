@@ -1,10 +1,12 @@
-package no.kantega;
+package no.kantega.meeroo.main;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.TextView;
+import no.kantega.R;
 
-public class HelloAndroidActivity extends Activity {
+public class MeetingRoomsMainActivity extends Activity {
 
     private static String TAG = "meetingroom";
 
@@ -19,6 +21,10 @@ public class HelloAndroidActivity extends Activity {
         super.onCreate(savedInstanceState);
 		Log.i(TAG, "onCreate");
         setContentView(R.layout.main);
+
+        // Update header with meeting room name
+        TextView updateHeaderView = (TextView) findViewById(R.id.header);
+        updateHeaderView.setText("MRT Himalaya");
     }
 
 }

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="ListView">
+        <item name="android:layout_width">200dp</item>
+        <item name="android:layout_height">fill_parent</item>
+
+        <item name="android:background">@drawable/back</item>
+        <item name="android:textColor">#0099cc</item>
+        <item name="android:textSize">20sp</item>
+
+
+        <item name="android:layout_below">@+id/header</item>
+        <item name="android:layout_toRightOf">@+id/mainview</item>
+
+        <item name="android:gravity">center</item>
+        <item name="android:layout_weight">1.0</item>
+
+        <item name="android:text">List</item>
+
+    </style>
+
+
+</resources>
