@@ -13,7 +13,7 @@
 @class Meeting;
 @interface MeeRooDataController : NSObject
 
-- (Meeting *) getMeeting:(NSString *)room time:(NSDate *)time;
+- (Meeting *) getMeeting:(NSString *)room filterfunction:(NSString *)filterfunction;
 
 - (NSArray *) getMeetingRooms;
 

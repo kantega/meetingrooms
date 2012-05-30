@@ -7,10 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "MeetingRoom.h"
 
 @interface Configuration : NSObject
 
-@property (retain, nonatomic) NSString *room;
+@property (retain, nonatomic) MeetingRoom *room;
 @property BOOL isUsingMockData;
 
 @end

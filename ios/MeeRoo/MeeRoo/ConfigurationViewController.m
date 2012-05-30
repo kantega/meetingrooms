@@ -18,7 +18,7 @@
 @synthesize dataController = _dataController;
 @synthesize mockSwitch = _mockSwitch;
 @synthesize roomPickerView = _roomPickerView;
-@synthesize roomNames = _roomNames;
+@synthesize meetingrooms = _meetingrooms;
 @synthesize roomPickedIndex;
 
 - (IBAction) saveConfiguration:(id)sender {
@@ -26,11 +26,13 @@
     self.dataController.configuration.isUsingMockData = self.mockSwitch.on;
 
     if (roomPickedIndex) {
-        self.dataController.configuration.room = [self.roomNames objectAtIndex:roomPickedIndex];
+        self.dataController.configuration.room = [self.meetingrooms objectAtIndex:roomPickedIndex];
     }
         
     // Post a notification to configChanged
     [[NSNotificationCenter defaultCenter] postNotificationName:@"configChanged" object:nil];
+    
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)viewDidLoad
@@ -38,9 +40,15 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-    self.roomNames = [self.dataController getMeetingRooms];
+    self.meetingrooms = [self.dataController getMeetingRooms];
     
-    [self.roomPickerView selectRow:[self.roomNames indexOfObject:self.dataController.configuration.room] inComponent:0 animated:YES];
+    if (self.meetingrooms.count > 0) {
+        printf("Got meetingrooms\n");
+    } else {
+        printf("NO meetingrooms\n");
+    }
+    
+    [self.roomPickerView selectRow:[self.meetingrooms indexOfObject:self.dataController.configuration.room] inComponent:0 animated:YES];
     
     self.mockSwitch.on = self.dataController.configuration.isUsingMockData;
     
@@ -64,10 +72,17 @@
     return 1;
 }
 - (NSInteger)pickerView:(UIPickerView *)roomPickerView numberOfRowsInComponent:(NSInteger)component {
-    return [self.roomNames count];
+    return [self.meetingrooms count];
 }
 - (NSString *)pickerView:(UIPickerView *)roomPickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
-    return [self.roomNames objectAtIndex:row];
+    //NSLog(@"%d", row);
+    //NSLog(@"%d", self.meetingrooms.count);
+    
+    //MeetingRoom *m = [self.meetingrooms objectAtIndex:row];
+    //NSLog(@"%@", m.displayname);
+    
+    //NSLog(@"%@", [[self.meetingrooms objectAtIndex:row] displayname]);
+    return [[self.meetingrooms objectAtIndex:row] displayname];
 }
 
 - (void)pickerView:(UIPickerView *)thePickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {

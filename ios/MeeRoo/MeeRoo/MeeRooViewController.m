@@ -10,6 +10,7 @@
 #import "MeeRooDataController.h"
 #import "ConfigurationViewController.h"
 #import "Meeting.h"
+#import "MeetingRoom.h"
 #import "DateUtil.h"
 
 
@@ -24,13 +25,17 @@
 @synthesize colorLabel = _colorLabel;
 @synthesize dataController = _dataController;
 
-@synthesize meetingStartLabel, meetingEndLabel, meetingOwnerLabel, meetingSubjectLabel;
+@synthesize meetingStartLabel, meetingEndLabel, meetingOwnerLabel, meetingSubjectLabel, nextMeetingLabel;
 
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    
+    //Set Kantega background image
+    UIColor *background = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"1024x768_gronn.jpg"]];
+    self.view.backgroundColor = background;
     
     [self configureView];
     
@@ -64,32 +69,49 @@
 {
     printf("configureView\n");
     
-    NSString *room = self.dataController.configuration.room;
-    self.roomLabel.text = room;
+    MeetingRoom *room = self.dataController.configuration.room;
+    self.roomLabel.text = room.displayname;
     
     NSDate *now = [NSDate date];
     self.clockLabel.text = [DateUtil hourAndMinutes:now];
     
-    Meeting *meeting = [self.dataController getMeeting:room time:(NSDate *) now];
+    Meeting *meeting = [self.dataController getMeeting:room.mailbox filterfunction:@"now"];
+    Meeting *nextMeeting = [self.dataController getMeeting:room.mailbox filterfunction:@"next"];
     if (meeting == nil) {
-        [self displayRoomAvailable];
+        [self displayRoomAvailable:nextMeeting];
     } else {
         [self displayRoomOccupied:meeting];
     }
     
+    CGRect screen = [[UIScreen mainScreen] applicationFrame];
+    self.colorLabel.frame = CGRectMake((screen.size.width / 2) - 25 , 0, 50, screen.size.height);
+    
 }
 
-- (void) displayRoomAvailable {
-    printf("Available\n");
+- (void) displayRoomAvailable: (Meeting *) nextMeeting {
+    //printf("Available\n");
     self.colorLabel.backgroundColor = UIColor.greenColor;
     self.meetingStartLabel.text = @"";
     self.meetingEndLabel.text = @"";
     self.meetingOwnerLabel.text = @"";
-    self.meetingSubjectLabel.text = @"";    
+    if (nextMeeting == nil) {
+        self.meetingSubjectLabel.text = @"Møterommet et ledig resten av dagen";
+        self.nextMeetingLabel.text = @"";
+    } else {
+        self.meetingSubjectLabel.text = [NSString stringWithFormat:@"%@%@", 
+                                         @"Møterommet et ledig frem til kl. ", 
+                                         [DateUtil hourAndMinutes:nextMeeting.start]];
+        self.nextMeetingLabel.text = [NSString stringWithFormat:@"%@ %@ - %@ %@", 
+                                         @"Neste møte: ", 
+                                         [DateUtil hourAndMinutes:nextMeeting.start],
+                                      [DateUtil hourAndMinutes:nextMeeting.end],
+                                      nextMeeting.subject];
+ 
+    }
 }
 
 - (void)displayRoomOccupied: (Meeting *) meeting {
-    printf("BUSY\n");
+    //printf("BUSY\n");
     self.colorLabel.backgroundColor = UIColor.redColor;
     self.meetingStartLabel.text = [DateUtil hourAndMinutes:meeting.start];
     self.meetingEndLabel.text = [DateUtil hourAndMinutes:meeting.end];

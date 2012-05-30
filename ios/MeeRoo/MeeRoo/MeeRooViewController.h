@@ -20,6 +20,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *meetingEndLabel;
 @property (weak, nonatomic) IBOutlet UILabel *meetingOwnerLabel;
 @property (weak, nonatomic) IBOutlet UILabel *meetingSubjectLabel;
+@property (weak, nonatomic) IBOutlet UILabel *nextMeetingLabel;
 
 @end
 

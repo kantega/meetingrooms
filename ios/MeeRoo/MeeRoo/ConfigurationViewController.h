@@ -15,7 +15,7 @@
 @property (weak, nonatomic) MeeRooDataController *dataController;
 @property (weak, nonatomic) IBOutlet UISwitch *mockSwitch; 
 @property (weak, nonatomic) IBOutlet UIPickerView *roomPickerView;
-@property (strong, nonatomic) NSArray *roomNames;
+@property (strong, nonatomic) NSArray *meetingrooms;
 @property NSInteger roomPickedIndex;
 
 - (IBAction)saveConfiguration:(id)sender;
