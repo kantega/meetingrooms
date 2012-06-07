@@ -14,6 +14,8 @@
 @property (nonatomic, copy) NSString *mailbox;
 @property (nonatomic, copy) NSString *displayname;
 
+@property (nonatomic, copy) NSArray *meetings;
+
 -(id)init:(NSString *)mailbox displayname:(NSString *)displayname location:(NSString *)location;
 
 @end

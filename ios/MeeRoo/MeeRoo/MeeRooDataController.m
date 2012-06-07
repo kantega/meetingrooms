@@ -28,6 +28,31 @@
 }
 
 
+- (NSArray *) getMeetingRoomsWithMeetings:(NSString *)location {
+    NSMutableArray *meetingrooms = [[NSMutableArray alloc] init];
+    NSError *error = nil;
+    NSString *url = [NSString stringWithFormat:@"%@/%@", @"http://localhost:8080/meeroo/appointments", location];
+    NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:url]];
+    if (data == nil) {
+        printf("data is nil\n");
+        return nil;
+    }
+    NSDictionary *rooms = [NSJSONSerialization JSONObjectWithData:data 
+                                                                    options:NSJSONReadingMutableLeaves 
+                                                                      error:&error];
+    for (NSString *roomName in rooms.allKeys) {
+        //NSLog(@"%@", roomName);
+        MeetingRoom *meetingRoom = [[MeetingRoom alloc] init:roomName displayname:@"" location:location];
+        NSDictionary *meetings = [rooms objectForKey:roomName];
+        NSArray *meetingArray = [self readAppointments:meetings];
+        meetingRoom.meetings = meetingArray;
+        //NSLog(@"Added %i meetings ", meetingRoom.meetings.count);
+        [meetingrooms addObject:meetingRoom];
+    }
+    return meetingrooms;
+}
+
+
 - (Meeting *) getMeeting:(NSString *)room filterfunction:(NSString *)filterfunction {
     //printf("inside data controller getMeeting\n");
     if (self.configuration.isUsingMockData) {
@@ -41,9 +66,7 @@
     } else {
         
         NSError *error = nil;
-        NSMutableArray *meetingArray = [[NSMutableArray alloc] init];
         NSString *url = [NSString stringWithFormat:@"%@/%@/%@", @"http://localhost:8080/meeroo/appointments", room, filterfunction];
-        //NSLog(@"URL=%@", url);
         NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:url]];
         if (data == nil) {
             printf("data is nil\n");
@@ -52,21 +75,8 @@
         NSDictionary *appointmentlist = [NSJSONSerialization JSONObjectWithData:data 
                                                                  options:NSJSONReadingMutableLeaves 
                                                                    error:&error];
-        
-        for (NSDictionary *entry in appointmentlist) {
-            
-            NSString *startDate = [entry objectForKey:@"startDate"];
-            NSString *endDate = [entry objectForKey:@"endDate"];
-            NSString *subject = [entry objectForKey:@"subject"];
-            NSString *organizer = [entry objectForKey:@"organizer"];
-            
-            NSDate *start = [NSDate dateWithTimeIntervalSince1970:([startDate doubleValue] / 1000)]; 
-            NSDate *end = [NSDate dateWithTimeIntervalSince1970:([endDate doubleValue] / 1000)];
-            
-            Meeting *meeting = [[Meeting alloc] init:start end:end owner:organizer subject:subject];
-            [meetingArray addObject:meeting];
-        } 
-        
+        NSArray *meetingArray = [self readAppointments:appointmentlist];
+
         if (meetingArray.count > 0) {
             //printf("FOUND meeting\n");
             return [meetingArray objectAtIndex:0];
@@ -75,6 +85,26 @@
             return nil;
         }
     }
+}
+
+
+- (NSArray *) readAppointments:(NSDictionary *)appointmentlist {
+    
+    NSMutableArray *meetingArray = [[NSMutableArray alloc] init];
+    for (NSDictionary *entry in appointmentlist) {
+        
+        NSString *startDate = [entry objectForKey:@"startDate"];
+        NSString *endDate = [entry objectForKey:@"endDate"];
+        NSString *subject = [entry objectForKey:@"subject"];
+        NSString *organizer = [entry objectForKey:@"organizer"];
+        
+        NSDate *start = [NSDate dateWithTimeIntervalSince1970:([startDate doubleValue] / 1000)]; 
+        NSDate *end = [NSDate dateWithTimeIntervalSince1970:([endDate doubleValue] / 1000)];
+        
+        Meeting *meeting = [[Meeting alloc] init:start end:end owner:organizer subject:subject];
+        [meetingArray addObject:meeting];
+    }  
+    return meetingArray;
 }
 
 

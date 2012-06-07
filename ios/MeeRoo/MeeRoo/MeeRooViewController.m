@@ -9,6 +9,7 @@
 #import "MeeRooViewController.h"
 #import "MeeRooDataController.h"
 #import "ConfigurationViewController.h"
+#import "TotalViewController.h"
 #import "Meeting.h"
 #import "MeetingRoom.h"
 #import "DateUtil.h"
@@ -126,6 +127,17 @@
         ConfigurationViewController *configController = [segue destinationViewController];
         configController.dataController = self.dataController;
     }
+    if ([[segue identifier] isEqualToString:@"showOslo"]) {
+        TotalViewController *totalController = [segue destinationViewController];
+        totalController.dataController = self.dataController;
+        totalController.location = @"Oslo";
+    }
+    if ([[segue identifier] isEqualToString:@"showTrondheim"]) {
+        TotalViewController *totalController = [segue destinationViewController];
+        totalController.dataController = self.dataController;
+        totalController.location = @"Trondheim";
+    }
+
 }
 
 

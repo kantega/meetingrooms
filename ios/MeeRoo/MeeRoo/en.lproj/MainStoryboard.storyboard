@@ -10,10 +10,14 @@
         <scene sceneID="fJt-0i-Yu2">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IXl-8X-I4I" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <navigationController definesPresentationContext="YES" id="yuk-dQ-nWD" userLabel="navigationController" sceneMemberID="viewController">
+                <navigationController definesPresentationContext="YES" navigationBarHidden="YES" toolbarHidden="NO" id="yuk-dQ-nWD" userLabel="navigationController" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="zvK-Mi-9AQ">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
+                    <toolbar key="toolbar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" barStyle="blackTranslucent" id="fZ5-8l-hwn">
+                        <rect key="frame" x="0.0" y="980" width="768" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="2" kind="relationship" relationship="rootViewController" id="gyx-Rq-sA0"/>
                     </connections>
@@ -21,13 +25,13 @@
             </objects>
             <point key="canvasLocation" x="-1696" y="-765"/>
         </scene>
-        <!--Mee Roo View Controller-->
+        <!--Mee Roo View Controller - Kantoko-->
         <scene sceneID="4">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3" sceneMemberID="firstResponder"/>
-                <viewController id="2" customClass="MeeRooViewController" sceneMemberID="viewController">
+                <viewController title="Kantoko" id="2" customClass="MeeRooViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5">
-                        <rect key="frame" x="0.0" y="64" width="1024" height="704"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="møterom" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="eU1-KY-yoT">
@@ -45,18 +49,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="9Yx-Qz-AlF">
-                                <rect key="frame" x="377" y="0.0" width="42" height="704"/>
+                                <rect key="frame" x="377" y="0.0" width="42" height="710"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <toolbar hidden="YES" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="IeF-Ge-DCL">
-                                <rect key="frame" x="0.0" y="660" width="1024" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                <items/>
-                            </toolbar>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="meeting subject" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontSizeToFit="NO" id="3mQ-lf-Ibz">
                                 <rect key="frame" x="495" y="310" width="509" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -96,14 +95,26 @@
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
-                    <toolbarItems/>
-                    <navigationItem key="navigationItem" id="O7G-Js-Qpx">
-                        <barButtonItem key="rightBarButtonItem" title="Innstillinger" id="v0F-UE-YJT">
+                    <toolbarItems>
+                        <barButtonItem title="Oslo" id="Lkd-3D-Nyk">
                             <connections>
-                                <segue destination="W4o-aF-NXg" kind="push" identifier="ShowConfiguration" id="H6I-4E-35q"/>
+                                <segue destination="Nwo-JE-lif" kind="push" identifier="showOslo" id="uW9-Oq-Swq"/>
                             </connections>
                         </barButtonItem>
-                    </navigationItem>
+                        <barButtonItem title="Trondheim" id="4xs-sj-c4M">
+                            <connections>
+                                <segue destination="Nwo-JE-lif" kind="push" identifier="showTrondheim" id="e2a-gy-DPg"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem title="Innstillinger" id="5no-Ef-BZZ">
+                            <connections>
+                                <segue destination="W4o-aF-NXg" kind="push" identifier="ShowConfiguration" id="G5P-mq-4vI"/>
+                            </connections>
+                        </barButtonItem>
+                    </toolbarItems>
+                    <navigationItem key="navigationItem" title="Title" prompt="" id="YqP-XC-pVz"/>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics" barStyle="blackTranslucent"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <connections>
@@ -118,7 +129,32 @@
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="-799" y="-977"/>
+            <point key="canvasLocation" x="-439" y="-1011"/>
+        </scene>
+        <!--Total View Controller - Møteromsoversikt Oslo-->
+        <scene sceneID="z28-Xx-1r1">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VqN-3N-L43" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController storyboardIdentifier="oslo" title="Møteromsoversikt Oslo" modalTransitionStyle="flipHorizontal" id="Nwo-JE-lif" customClass="TotalViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="jLl-Bd-Yk5">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="724"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    </view>
+                    <toolbarItems>
+                        <barButtonItem title="Tilbake" id="QE8-Mj-Hj4">
+                            <connections>
+                                <action selector="close:" destination="Nwo-JE-lif" id="gx2-Qb-lrg"/>
+                            </connections>
+                        </barButtonItem>
+                    </toolbarItems>
+                    <navigationItem key="navigationItem" title="Møteromsoversikt Oslo" id="2Sd-Bt-obJ" userLabel="Tilbake"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="796" y="-1447"/>
         </scene>
         <!--Configuration View Controller - Innstillinger-->
         <scene sceneID="te6-Ni-rMk">
@@ -126,7 +162,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k3m-l6-hwl" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="configurationPage" title="Innstillinger" id="W4o-aF-NXg" customClass="ConfigurationViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QcP-fj-jim">
-                        <rect key="frame" x="0.0" y="64" width="1024" height="704"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Velg møterom" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="sJU-Yl-fHU">
@@ -188,32 +224,12 @@
             <point key="canvasLocation" x="772" y="-519"/>
         </scene>
     </scenes>
-    <classes>
-        <class className="ConfigurationViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ConfigurationViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="saveConfiguration:"/>
-                <relationship kind="outlet" name="mockSwitch" candidateClass="UISwitch"/>
-                <relationship kind="outlet" name="roomPickerView" candidateClass="UIPickerView"/>
-            </relationships>
-        </class>
-        <class className="MeeRooViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MeeRooViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="clockLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="colorLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="meetingEndLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="meetingOwnerLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="meetingStartLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="meetingSubjectLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="nextMeetingLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="roomLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackTranslucent"/>
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="uW9-Oq-Swq"/>
+    </inferredMetricsTieBreakers>
 </document>

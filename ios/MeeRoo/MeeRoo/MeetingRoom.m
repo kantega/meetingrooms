@@ -13,6 +13,7 @@
 @synthesize location = _location;
 @synthesize mailbox = _mailbox;
 @synthesize displayname = _displayname;
+@synthesize meetings = _meetings;
 
 -(id)init:(NSString *)mailbox displayname:(NSString *)displayname location:(NSString *)location {
     self = [super init];

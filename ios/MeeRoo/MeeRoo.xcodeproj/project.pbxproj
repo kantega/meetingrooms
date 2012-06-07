@@ -11,6 +11,8 @@
 		5D753067155BBC49007E599E /* ConfigurationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D753066155BBC49007E599E /* ConfigurationViewController.m */; };
 		5D753075155CF688007E599E /* Configuration.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D753074155CF688007E599E /* Configuration.m */; };
 		5D753078155D0AED007E599E /* DateUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D753077155D0AEC007E599E /* DateUtil.m */; };
+		5DA354231580A1CB00ED4E35 /* TotalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DA354221580A1CB00ED4E35 /* TotalViewController.m */; };
+		5DA354271580B4EA00ED4E35 /* AppointmentsRow.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DA354261580B4EA00ED4E35 /* AppointmentsRow.m */; };
 		5DB8D244156BA6AB00D7737E /* 1024x768_gronn.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5DB8D243156BA6AB00D7737E /* 1024x768_gronn.jpg */; };
 		5DC0A4CF1566771F007BA3F6 /* MeetingRoom.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DC0A4CE1566771F007BA3F6 /* MeetingRoom.m */; };
 		F9823CCA1559579E00DFCF2B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9823CC91559579E00DFCF2B /* UIKit.framework */; };
@@ -33,6 +35,10 @@
 		5D753074155CF688007E599E /* Configuration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Configuration.m; sourceTree = "<group>"; };
 		5D753076155D0AEC007E599E /* DateUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateUtil.h; sourceTree = "<group>"; };
 		5D753077155D0AEC007E599E /* DateUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateUtil.m; sourceTree = "<group>"; };
+		5DA354211580A1CB00ED4E35 /* TotalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TotalViewController.h; sourceTree = "<group>"; };
+		5DA354221580A1CB00ED4E35 /* TotalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TotalViewController.m; sourceTree = "<group>"; };
+		5DA354251580B4EA00ED4E35 /* AppointmentsRow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppointmentsRow.h; sourceTree = "<group>"; };
+		5DA354261580B4EA00ED4E35 /* AppointmentsRow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppointmentsRow.m; sourceTree = "<group>"; };
 		5DB8D243156BA6AB00D7737E /* 1024x768_gronn.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = 1024x768_gronn.jpg; path = ../../../../../Downloads/1024x768/1024x768_gronn.jpg; sourceTree = "<group>"; };
 		5DC0A4CD1566771F007BA3F6 /* MeetingRoom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeetingRoom.h; sourceTree = "<group>"; };
 		5DC0A4CE1566771F007BA3F6 /* MeetingRoom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeetingRoom.m; sourceTree = "<group>"; };
@@ -113,6 +119,10 @@
 				5DB8D243156BA6AB00D7737E /* 1024x768_gronn.jpg */,
 				5D753070155CF55C007E599E /* Model */,
 				F9823CD81559579F00DFCF2B /* MeeRooAppDelegate.h */,
+				5DA354251580B4EA00ED4E35 /* AppointmentsRow.h */,
+				5DA354261580B4EA00ED4E35 /* AppointmentsRow.m */,
+				5DA354211580A1CB00ED4E35 /* TotalViewController.h */,
+				5DA354221580A1CB00ED4E35 /* TotalViewController.m */,
 				F9823CD91559579F00DFCF2B /* MeeRooAppDelegate.m */,
 				F9823CDB1559579F00DFCF2B /* MainStoryboard.storyboard */,
 				F9823CDE1559579F00DFCF2B /* MeeRooViewController.h */,
@@ -213,6 +223,8 @@
 				5D753075155CF688007E599E /* Configuration.m in Sources */,
 				5D753078155D0AED007E599E /* DateUtil.m in Sources */,
 				5DC0A4CF1566771F007BA3F6 /* MeetingRoom.m in Sources */,
+				5DA354231580A1CB00ED4E35 /* TotalViewController.m in Sources */,
+				5DA354271580B4EA00ED4E35 /* AppointmentsRow.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
