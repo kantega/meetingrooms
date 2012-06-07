@@ -139,6 +139,15 @@
                     <view key="view" contentMode="scaleToFill" id="jLl-Bd-Yk5">
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="724"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="UmP-hw-wwt">
+                                <rect key="frame" x="457" y="45" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
@@ -152,6 +161,9 @@
                     <navigationItem key="navigationItem" title="Møteromsoversikt Oslo" id="2Sd-Bt-obJ" userLabel="Tilbake"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    <connections>
+                        <outlet property="locationLabel" destination="UmP-hw-wwt" id="iUq-hC-ESy"/>
+                    </connections>
                 </viewController>
             </objects>
             <point key="canvasLocation" x="796" y="-1447"/>
@@ -224,6 +236,36 @@
             <point key="canvasLocation" x="772" y="-519"/>
         </scene>
     </scenes>
+    <classes>
+        <class className="ConfigurationViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ConfigurationViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="saveConfiguration:"/>
+                <relationship kind="outlet" name="mockSwitch" candidateClass="UISwitch"/>
+                <relationship kind="outlet" name="roomPickerView" candidateClass="UIPickerView"/>
+            </relationships>
+        </class>
+        <class className="MeeRooViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MeeRooViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="clockLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="colorLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="meetingEndLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="meetingOwnerLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="meetingStartLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="meetingSubjectLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="nextMeetingLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="roomLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="TotalViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TotalViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="close:"/>
+                <relationship kind="outlet" name="locationLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackTranslucent"/>
         <simulatedOrientationMetrics key="orientation"/>

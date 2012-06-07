@@ -16,6 +16,7 @@
 
 @implementation TotalViewController
 
+@synthesize locationLabel = _locationLabel;
 @synthesize dataController = _dataController;
 @synthesize location = _location;
 
@@ -32,10 +33,10 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    
+    self.locationLabel.text = self.location;
     
     NSArray *meetingRooms = [self.dataController getMeetingRoomsWithMeetings:self.location];
-    int offsetY = 60;
+    int offsetY = 120;
     for (MeetingRoom *room in meetingRooms) {
     
         AppointmentsRow *row = [[AppointmentsRow alloc] initWithFrame:CGRectMake(60,offsetY,900.0,24.0)];

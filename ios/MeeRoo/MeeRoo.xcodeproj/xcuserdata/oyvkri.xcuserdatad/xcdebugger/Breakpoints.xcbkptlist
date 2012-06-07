@@ -8,11 +8,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "MeeRoo/MeeRooViewController.m"
-         timestampString = "358694589.809418"
+         timestampString = "360760386.672172"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "20"
-         endingLineNumber = "20"
+         startingLineNumber = "22"
+         endingLineNumber = "22"
          landmarkName = "@implementation MeeRooViewController"
          landmarkType = "3">
       </FileBreakpoint>
@@ -21,11 +21,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "MeeRoo/MeeRooViewController.m"
-         timestampString = "358694589.809418"
+         timestampString = "360760386.672172"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "67"
-         endingLineNumber = "67"
+         startingLineNumber = "73"
+         endingLineNumber = "73"
          landmarkName = "-configureView"
          landmarkType = "5">
       </FileBreakpoint>
@@ -54,6 +54,32 @@
          endingLineNumber = "14"
          landmarkName = "+roundHourUp:"
          landmarkType = "4">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "MeeRoo/MeeRooAppDelegate.m"
+         timestampString = "358778238.187376"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "22"
+         endingLineNumber = "22"
+         landmarkName = "-application:didFinishLaunchingWithOptions:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "MeeRoo/MeeRooViewController.m"
+         timestampString = "360760386.672172"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "87"
+         endingLineNumber = "87"
+         landmarkName = "-configureView"
+         landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>
 </Bucket>

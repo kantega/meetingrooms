@@ -12,6 +12,7 @@
 
 @interface TotalViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UILabel *locationLabel;
 @property (weak, nonatomic) MeeRooDataController *dataController;
 @property NSString *location;
 
