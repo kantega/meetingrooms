@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CustomScrollView.h"
+
 @class MeeRooDataController;
 
 @interface MeeRooViewController : UIViewController
@@ -21,6 +23,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *meetingOwnerLabel;
 @property (weak, nonatomic) IBOutlet UILabel *meetingSubjectLabel;
 @property (weak, nonatomic) IBOutlet UILabel *nextMeetingLabel;
+@property (weak, nonatomic) IBOutlet CustomScrollView *scrollView;
 
 @end
 
