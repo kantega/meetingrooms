@@ -17,6 +17,8 @@
 
 - (NSArray *) getMeetingRooms;
 
+- (NSArray *) getTodaysMeetingInRoom:(NSString *)room;
+
 - (NSArray *) getMeetingRoomsWithMeetings:(NSString *)location;
 
 @property (retain, nonatomic) Configuration *configuration;

@@ -31,7 +31,7 @@
 - (NSArray *) getMeetingRoomsWithMeetings:(NSString *)location {
     NSMutableArray *meetingrooms = [[NSMutableArray alloc] init];
     NSError *error = nil;
-    NSString *url = [NSString stringWithFormat:@"%@/%@", @"http://localhost:8080/meeroo/appointments", location];
+    NSString *url = [NSString stringWithFormat:@"%@/%@", @"http://prototype.kantega.lan/meeroo/appointments", location];
     NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:url]];
     if (data == nil) {
         printf("data is nil\n");
@@ -52,6 +52,23 @@
     return meetingrooms;
 }
 
+- (NSArray *) getTodaysMeetingInRoom:(NSString *)room {    
+    NSError *error = nil;
+    NSString *url = [NSString stringWithFormat:@"%@/%@/%@", @"http://prototype.kantega.lan/meeroo/appointments", room, @"today"];
+    NSLog(@"Getting from URL: %@", url);
+    NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:url]];
+    if (data == nil) {
+        printf("data is nil\n");
+        return nil;
+    }
+    NSDictionary *appointmentlist = [NSJSONSerialization JSONObjectWithData:data 
+                                                                    options:NSJSONReadingMutableLeaves 
+                                                                      error:&error];
+    NSArray *meetingArray = [self readAppointments:appointmentlist];
+    
+    return meetingArray;
+}
+
 
 - (Meeting *) getMeeting:(NSString *)room filterfunction:(NSString *)filterfunction {
     //printf("inside data controller getMeeting\n");
@@ -66,7 +83,7 @@
     } else {
         
         NSError *error = nil;
-        NSString *url = [NSString stringWithFormat:@"%@/%@/%@", @"http://localhost:8080/meeroo/appointments", room, filterfunction];
+        NSString *url = [NSString stringWithFormat:@"%@/%@/%@", @"http://prototype.kantega.lan/meeroo/appointments", room, filterfunction];
         NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:url]];
         if (data == nil) {
             printf("data is nil\n");
@@ -119,7 +136,7 @@
     NSMutableArray *roomArray = [[NSMutableArray alloc] init];
     [roomArray addObject:[[MeetingRoom alloc] init:@"" displayname:@"" location:@""]];
     
-    NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://localhost:8080/meeroo/meetingrooms"]];
+    NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://prototype.kantega.lan/meeroo/meetingrooms"]];
     
     NSDictionary *roomlist = [NSJSONSerialization JSONObjectWithData:data 
                                                              options:NSJSONReadingMutableLeaves 

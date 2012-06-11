@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4BF1CC171581F714003DD9EF /* CustomScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BF1CC161581F714003DD9EF /* CustomScrollView.m */; };
+		4BF1CC1A1581F8BF003DD9EF /* SlidingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BF1CC191581F8BF003DD9EF /* SlidingView.m */; };
+		4BF1CC1C1581F8D9003DD9EF /* MeetingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4BF1CC1B1581F8D9003DD9EF /* MeetingView.xib */; };
+		4BF1CC1F1581F8F0003DD9EF /* MeetingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BF1CC1E1581F8F0003DD9EF /* MeetingView.m */; };
 		5D753064155A8529007E599E /* MeeRooDataController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D753063155A8529007E599E /* MeeRooDataController.m */; };
 		5D753067155BBC49007E599E /* ConfigurationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D753066155BBC49007E599E /* ConfigurationViewController.m */; };
 		5D753075155CF688007E599E /* Configuration.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D753074155CF688007E599E /* Configuration.m */; };
@@ -27,6 +31,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4BF1CC151581F714003DD9EF /* CustomScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomScrollView.h; sourceTree = "<group>"; };
+		4BF1CC161581F714003DD9EF /* CustomScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomScrollView.m; sourceTree = "<group>"; };
+		4BF1CC181581F8BF003DD9EF /* SlidingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlidingView.h; sourceTree = "<group>"; };
+		4BF1CC191581F8BF003DD9EF /* SlidingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlidingView.m; sourceTree = "<group>"; };
+		4BF1CC1B1581F8D9003DD9EF /* MeetingView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MeetingView.xib; sourceTree = "<group>"; };
+		4BF1CC1D1581F8EF003DD9EF /* MeetingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeetingView.h; sourceTree = "<group>"; };
+		4BF1CC1E1581F8F0003DD9EF /* MeetingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeetingView.m; sourceTree = "<group>"; };
 		5D753062155A8529007E599E /* MeeRooDataController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeeRooDataController.h; sourceTree = "<group>"; };
 		5D753063155A8529007E599E /* MeeRooDataController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeeRooDataController.m; sourceTree = "<group>"; };
 		5D753065155BBC48007E599E /* ConfigurationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfigurationViewController.h; sourceTree = "<group>"; };
@@ -39,7 +50,7 @@
 		5DA354221580A1CB00ED4E35 /* TotalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TotalViewController.m; sourceTree = "<group>"; };
 		5DA354251580B4EA00ED4E35 /* AppointmentsRow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppointmentsRow.h; sourceTree = "<group>"; };
 		5DA354261580B4EA00ED4E35 /* AppointmentsRow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppointmentsRow.m; sourceTree = "<group>"; };
-		5DB8D243156BA6AB00D7737E /* 1024x768_gronn.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = 1024x768_gronn.jpg; path = ../../../../../Downloads/1024x768/1024x768_gronn.jpg; sourceTree = "<group>"; };
+		5DB8D243156BA6AB00D7737E /* 1024x768_gronn.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = 1024x768_gronn.jpg; path = MeeRoo/1024x768_gronn.jpg; sourceTree = SOURCE_ROOT; };
 		5DC0A4CD1566771F007BA3F6 /* MeetingRoom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeetingRoom.h; sourceTree = "<group>"; };
 		5DC0A4CE1566771F007BA3F6 /* MeetingRoom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeetingRoom.m; sourceTree = "<group>"; };
 		F9823CC51559579E00DFCF2B /* MeeRoo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeeRoo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -134,6 +145,13 @@
 				F9823CD01559579E00DFCF2B /* Supporting Files */,
 				5D753076155D0AEC007E599E /* DateUtil.h */,
 				5D753077155D0AEC007E599E /* DateUtil.m */,
+				4BF1CC151581F714003DD9EF /* CustomScrollView.h */,
+				4BF1CC161581F714003DD9EF /* CustomScrollView.m */,
+				4BF1CC181581F8BF003DD9EF /* SlidingView.h */,
+				4BF1CC191581F8BF003DD9EF /* SlidingView.m */,
+				4BF1CC1B1581F8D9003DD9EF /* MeetingView.xib */,
+				4BF1CC1D1581F8EF003DD9EF /* MeetingView.h */,
+				4BF1CC1E1581F8F0003DD9EF /* MeetingView.m */,
 			);
 			path = MeeRoo;
 			sourceTree = "<group>";
@@ -204,6 +222,7 @@
 				F9823CD41559579F00DFCF2B /* InfoPlist.strings in Resources */,
 				F9823CDD1559579F00DFCF2B /* MainStoryboard.storyboard in Resources */,
 				5DB8D244156BA6AB00D7737E /* 1024x768_gronn.jpg in Resources */,
+				4BF1CC1C1581F8D9003DD9EF /* MeetingView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -225,6 +244,9 @@
 				5DC0A4CF1566771F007BA3F6 /* MeetingRoom.m in Sources */,
 				5DA354231580A1CB00ED4E35 /* TotalViewController.m in Sources */,
 				5DA354271580B4EA00ED4E35 /* AppointmentsRow.m in Sources */,
+				4BF1CC171581F714003DD9EF /* CustomScrollView.m in Sources */,
+				4BF1CC1A1581F8BF003DD9EF /* SlidingView.m in Sources */,
+				4BF1CC1F1581F8F0003DD9EF /* MeetingView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
