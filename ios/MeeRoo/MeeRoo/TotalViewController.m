@@ -20,6 +20,8 @@
 @synthesize dataController = _dataController;
 @synthesize location = _location;
 
+int rowHeight = 32;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -32,19 +34,36 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+	
+    //Set Kantega background image
+    UIColor *background = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"1024x768_gronn.jpg"]];
+    self.view.backgroundColor = background;
+    
+    // Do any additional setup after loading the view.
     self.locationLabel.text = self.location;
     
     NSArray *meetingRooms = [self.dataController getMeetingRoomsWithMeetings:self.location];
-    int offsetY = 120;
+    
+    AppointmentsRow *timeline = [[AppointmentsRow alloc] initWithFrame:CGRectMake(60,120,900.0, (rowHeight * meetingRooms.count))];
+    [timeline clipsToBounds];
+/*    CGRect frame = [timeline frame];
+    frame.origin.x = 5;
+    [timeline setFrame:frame];
+ */
+    [timeline drawTimeline];
+ 
+    [self.view addSubview:timeline];
+    NSMutableDictionary *buttonMap = [[NSMutableDictionary alloc] init];
+    
+    int offsetY = 140;
     for (MeetingRoom *room in meetingRooms) {
     
-        AppointmentsRow *row = [[AppointmentsRow alloc] initWithFrame:CGRectMake(60,offsetY,900.0,24.0)];
-        row.roomName = room.mailbox;
-        row.backgroundColor = [UIColor grayColor];
+        AppointmentsRow *row = [[AppointmentsRow alloc] initWithFrame:CGRectMake(60,offsetY,900.0,rowHeight)];
+        row.room = room;
+        row.buttonMap = buttonMap;
         [self.view addSubview:row];
         [row refresh];
-        offsetY += 30;
+        offsetY += rowHeight;
     }
 }
 

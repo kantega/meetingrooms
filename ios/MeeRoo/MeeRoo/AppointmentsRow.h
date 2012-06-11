@@ -7,11 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MeetingRoom.h"
+#import "Meeting.h"
 
 @interface AppointmentsRow : UIView
 
-@property (retain, nonatomic) NSString *roomName;
+@property (retain, nonatomic) MeetingRoom *room;
+
+@property NSMutableDictionary *buttonMap;
 
 - (void)refresh;
+
+- (void) drawTimeline;
+
+- (void) drawMeeting:(Meeting *)meeting;
 
 @end

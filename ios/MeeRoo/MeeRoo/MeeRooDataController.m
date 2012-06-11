@@ -42,7 +42,7 @@
                                                                       error:&error];
     for (NSString *roomName in rooms.allKeys) {
         //NSLog(@"%@", roomName);
-        MeetingRoom *meetingRoom = [[MeetingRoom alloc] init:roomName displayname:@"" location:location];
+        MeetingRoom *meetingRoom = [[MeetingRoom alloc] init:@"" displayname:roomName location:location];
         NSDictionary *meetings = [rooms objectForKey:roomName];
         NSArray *meetingArray = [self readAppointments:meetings];
         meetingRoom.meetings = meetingArray;
