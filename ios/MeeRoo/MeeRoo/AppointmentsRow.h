@@ -16,6 +16,8 @@
 
 @property NSMutableDictionary *buttonMap;
 
+@property Meeting *focusedMeeting;
+
 - (void)refresh;
 
 - (void) drawTimeline;

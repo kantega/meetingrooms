@@ -15,6 +15,7 @@
 
 @synthesize room = _room;
 @synthesize buttonMap = _buttonMap;
+@synthesize focusedMeeting = _focusedMeeting;
 
 UIColor *kantegaOrange;
 int scale, max, now, hours, startX, height, padding;
@@ -32,8 +33,6 @@ int scale, max, now, hours, startX, height, padding;
         max = (3600 * hours);
         now =  [[NSDate date] timeIntervalSince1970];
         kantegaOrange = [UIColor colorWithRed:200/255.0 green:115/255.0 blue:40/255.0 alpha:1.0];
-        //appointmentlist = [[NSMutableDictionary alloc] init];
-
     }
     return self;
 }
@@ -97,26 +96,11 @@ int scale, max, now, hours, startX, height, padding;
     if (endTime > max) {
         endTime = max;
     }
-    //NSLog(@"start %i end %i", startTime, endTime);
     
     int x = startX + (3600 / scale) + (startTime / scale) + padding;
     int width = ((endTime - startTime) / scale) - (2 * padding) ;
     
-//    UILabel *appointmentLabel = [[UILabel alloc] initWithFrame:CGRectMake(x, padding , width, height - (2 * padding))];
-//    appointmentLabel.text = meeting.subject;
-//    appointmentLabel.backgroundColor = kantegaOrange;
-//    appointmentLabel.textColor = [UIColor whiteColor];
-//    [self addSubview:appointmentLabel];
     
-    //UIButton *appointmentButton = [[UIButton alloc] initWithFrame:CGRectMake(x, padding , width, height - (2 * padding))];
-
-    
-  ////  appointmentButton.backgroundColor = kantegaOrange;
-  ////  appointmentButton.textColor = [UIColor whiteColor];
-        
-    
-    
-    ////UIButton *appointmentButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     UIButton *appointmentButton = [UIButton buttonWithType:UIButtonTypeCustom];
     
     [appointmentButton addTarget:self 
@@ -126,6 +110,7 @@ int scale, max, now, hours, startX, height, padding;
     [appointmentButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal ];
     appointmentButton.frame = CGRectMake(x, padding , width, height - (2 * padding));
     appointmentButton.backgroundColor = kantegaOrange;
+    appointmentButton.titleLabel.lineBreakMode = UILineBreakModeTailTruncation;
 
     [self.buttonMap setObject:meeting forKey:[self button2string:appointmentButton]];
     
@@ -136,7 +121,13 @@ int scale, max, now, hours, startX, height, padding;
 - (void) meetingTouched:(id)sender {
     NSString *key = [self button2string:sender];
     Meeting *meeting = [self.buttonMap objectForKey:key];
-    [self displayMeeting:meeting];
+    
+    _focusedMeeting.subject = meeting.subject;
+    _focusedMeeting.start = meeting.start;
+    _focusedMeeting.end = meeting.end;
+    _focusedMeeting.owner = meeting.owner;
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"meetingFocused" object:nil];
+
 }
 
 - (NSString *) button2string:(UIButton *)button {
@@ -147,10 +138,6 @@ int scale, max, now, hours, startX, height, padding;
     return buttonString;
 }
 
-- (void) displayMeeting:(Meeting *) meeting {
-    //
-    NSLog(@"Møte subject=%@ owner=%@", meeting.subject, meeting.owner);
-}
 
 /*
 // Only override drawRect: if you perform custom drawing.
