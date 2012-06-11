@@ -129,38 +129,22 @@
     NSMutableArray *meetingsWithVacantSpots = [[NSMutableArray alloc] init];
     
     if ([meetings count] == 0) {
-        NSDate *today = [NSDate date];
-        NSCalendar *gregorian = [[NSCalendar alloc]
-                                 initWithCalendarIdentifier:NSGregorianCalendar];
-        
-        NSDateComponents *dateComponents =
-        [gregorian components:(NSDayCalendarUnit | NSWeekdayCalendarUnit) fromDate:today];
-        [dateComponents setHour:8];
-        [dateComponents setMinute:0];
-        
-        NSDate *meetingStart = [gregorian dateFromComponents:dateComponents];
-        
-        [gregorian components:(NSDayCalendarUnit | NSWeekdayCalendarUnit) fromDate:today];
-        [dateComponents setHour:17];
-        [dateComponents setMinute:0];
-        
-        NSDate *meetingEnd = [gregorian dateFromComponents:dateComponents];
+        //Hvis ingen møter, legg til ledig møtetidspunkt fra 8 til 17
+        NSDate *meetingStart = [DateUtil startOfToday];
+        NSDate *meetingEnd = [DateUtil endOfToday];
 
         Meeting *vacantMeeting = [[Meeting alloc] init:meetingStart end:meetingEnd owner:@"Ledig møtetidspunkt" subject:@"Ledig"];
         [meetingsWithVacantSpots addObject:vacantMeeting];
     } else if ([meetings count] > 0) {
+        //Hvis første møte starter etter 08:15, legg til et ledig møte tidlig på dagen
         Meeting *firstMeeting = [meetings objectAtIndex:0];
         
-        NSCalendar *gregorian = [[NSCalendar alloc]
-                                 initWithCalendarIdentifier:NSGregorianCalendar];
-        NSDateComponents *dateComponents = [gregorian components:(NSDayCalendarUnit | NSWeekdayCalendarUnit) fromDate:[firstMeeting start]];
+        NSDate *startOfToday = [DateUtil startOfToday];
+        NSTimeInterval interval = [[firstMeeting start] timeIntervalSinceDate:startOfToday];
         
-        if ([dateComponents hour] > 8) {
-            [dateComponents setHour:8];
+        if (interval > (15 * 60)) {
+            Meeting *vacantMeeting = [[Meeting alloc] init:startOfToday end:[firstMeeting start] owner:@"Ledig møtetidspunkt" subject:@"Ledig"];
             
-            NSDate *meetingStart = [gregorian dateFromComponents:dateComponents];
-            
-            Meeting *vacantMeeting = [[Meeting alloc] init:meetingStart end:[firstMeeting start] owner:@"Ledig møtetidspunkt" subject:@"Ledig"];
             [meetingsWithVacantSpots addObject:vacantMeeting];
         }
     }
@@ -174,21 +158,19 @@
             NSDate *thisMeetingEnd = [meeting end];
             NSDate *nextMeetingStart = [nextMeeting start];
             
-            Meeting *vacantMeeting = [[Meeting alloc] init:thisMeetingEnd end:nextMeetingStart owner:@"Ledig møtetidspunkt" subject:@"Ledig"];
-            [meetingsWithVacantSpots addObject:vacantMeeting];
+            
+            NSTimeInterval interval = [nextMeetingStart timeIntervalSinceDate:thisMeetingEnd];
+            
+            if (interval > (15 * 60)) {
+                //Mørerommet må være ledig i mist 15 minutter/600 sekunder
+                Meeting *vacantMeeting = [[Meeting alloc] init:thisMeetingEnd end:nextMeetingStart owner:@"Ledig møtetidspunkt" subject:@"Ledig"];
+                [meetingsWithVacantSpots addObject:vacantMeeting];
+            }
             
         } else {
             //Dagens siste møterom
-            NSDate *thisMeetingEnd = [meeting end];
-            NSCalendar *gregorian = [[NSCalendar alloc]
-                                     initWithCalendarIdentifier:NSGregorianCalendar];
-            
-            NSDateComponents *weekdayComponents =
-            [gregorian components:(NSDayCalendarUnit | NSWeekdayCalendarUnit) fromDate:thisMeetingEnd];
-            [weekdayComponents setHour:17];
-            [weekdayComponents setMinute:0];
-            
-            NSDate *nextMeetingEnd = [gregorian dateFromComponents:weekdayComponents];
+            NSDate *thisMeetingEnd = [meeting end];            
+            NSDate *nextMeetingEnd = [DateUtil endOfToday];
             
             Meeting *vacantMeeting = [[Meeting alloc] init:thisMeetingEnd end:nextMeetingEnd owner:@"Ledig møtetidspunkt" subject:@"Ledig"];
             [meetingsWithVacantSpots addObject:vacantMeeting];

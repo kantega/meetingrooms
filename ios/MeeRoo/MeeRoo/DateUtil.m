@@ -42,4 +42,34 @@ unsigned unitFlags = NSYearCalendarUnit| NSMonthCalendarUnit | NSDayCalendarUnit
     return [formatter stringFromDate:(NSDate *) date];    
 }
 
++ (NSDate *) startOfToday {
+    NSDate *today = [NSDate date];
+    NSCalendar *gregorian = [[NSCalendar alloc]
+                             initWithCalendarIdentifier:NSGregorianCalendar];
+    
+    NSDateComponents *dateComponents =
+    [gregorian components:(NSDayCalendarUnit | NSWeekdayCalendarUnit) fromDate:today];
+    [dateComponents setHour:8];
+    [dateComponents setMinute:0];
+    
+    NSDate *startOfToday = [gregorian dateFromComponents:dateComponents];
+    
+    return startOfToday;
+}
+
++ (NSDate *) endOfToday {
+    NSDate *today = [NSDate date];
+    NSCalendar *gregorian = [[NSCalendar alloc]
+                             initWithCalendarIdentifier:NSGregorianCalendar];
+    
+    NSDateComponents *dateComponents =
+    [gregorian components:(NSDayCalendarUnit | NSWeekdayCalendarUnit) fromDate:today];
+    [dateComponents setHour:17];
+    [dateComponents setMinute:0];
+    
+    NSDate *endOfToday = [gregorian dateFromComponents:dateComponents];
+    
+    return endOfToday;
+}
+
 @end
