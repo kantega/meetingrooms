@@ -7,16 +7,32 @@
 //
 
 #import "AppointmentsRow.h"
+#import "Meeting.h"
+#import "DateUtil.h"
+
 
 @implementation AppointmentsRow
 
-@synthesize roomName = _roomName;
+@synthesize room = _room;
+@synthesize buttonMap = _buttonMap;
+@synthesize focusedMeeting = _focusedMeeting;
+
+UIColor *kantegaOrange;
+int scale, max, now, hours, startX, height, padding;
 
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
+        scale = 36;
+        startX = 206;
+        height = frame.size.height;
+        hours = 5;
+        padding = 1;
+        max = (3600 * hours);
+        now =  [[NSDate date] timeIntervalSince1970];
+        kantegaOrange = [UIColor colorWithRed:200/255.0 green:115/255.0 blue:40/255.0 alpha:1.0];
     }
     return self;
 }
@@ -24,10 +40,104 @@
 
 - (void)refresh {
     
-    UILabel *theLabel = [[UILabel alloc] initWithFrame:CGRectMake(2.0,2.0,160.0,20.0)];
-    theLabel.text = self.roomName;
-    [self addSubview:theLabel];
+    UILabel *roomName = [[UILabel alloc] initWithFrame:CGRectMake(2.0,2.0,160.0,height)];
+    roomName.text = self.room.displayname;
+    roomName.backgroundColor = [UIColor clearColor];
+    roomName.textColor = [UIColor lightTextColor];
+    roomName.font = [UIFont fontWithName:@"Verdana" size:22];
+    [self addSubview:roomName];
+    
+    for (Meeting *meeting in self.room.meetings) {
+        [self drawMeeting:meeting];
+    }
 }
+
+- (void) drawTimeline {
+    NSDate *hour = [DateUtil roundHourDown:[NSDate date]];
+    for (int i = 0; i < hours; i++) {
+        int x = startX + ((([hour timeIntervalSince1970] - now) + 3600) / scale);
+        [self drawVerticalLineAt:x];
+        [self drawHourLabelAt:x hourText:[DateUtil hourAndMinutes:hour]];
+        hour = [DateUtil roundHourUp:(hour)];
+    }
+}
+
+- (void) drawHourLabelAt:(int)xValue hourText:(NSString *)hourText  {
+    UILabel *hour = [[UILabel alloc] initWithFrame:CGRectMake(xValue - 20 ,0,60, 20)];
+    hour.text = hourText;
+    hour.backgroundColor = [UIColor clearColor];
+    hour.textColor = [UIColor lightTextColor];
+    [self addSubview:hour];
+}
+
+- (void) drawVerticalLineAt:(int)xValue {
+    UILabel *line = [[UILabel alloc] initWithFrame:CGRectMake(xValue,20,1,height)];
+    line.backgroundColor = [UIColor lightTextColor];
+    [self addSubview:line];
+}
+
+
+
+- (void) drawMeeting:(Meeting *)meeting {
+    int startTime = ([meeting.start timeIntervalSince1970] - now);
+    int endTime = ([meeting.end timeIntervalSince1970] - now);
+    
+    if (endTime < -3600) {
+        return;
+    }
+    
+    if (startTime > max) {
+        return;
+    }
+    
+    if (startTime < -3600) {
+        startTime = -3600;
+    }
+    if (endTime > max) {
+        endTime = max;
+    }
+    
+    int x = startX + (3600 / scale) + (startTime / scale) + padding;
+    int width = ((endTime - startTime) / scale) - (2 * padding) ;
+    
+    
+    UIButton *appointmentButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    
+    [appointmentButton addTarget:self 
+                          action:@selector(meetingTouched:)
+                forControlEvents:UIControlEventTouchUpInside];
+    [appointmentButton setTitle:meeting.subject forState:UIControlStateNormal];
+    [appointmentButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal ];
+    appointmentButton.frame = CGRectMake(x, padding , width, height - (2 * padding));
+    appointmentButton.backgroundColor = kantegaOrange;
+    appointmentButton.titleLabel.lineBreakMode = UILineBreakModeTailTruncation;
+
+    [self.buttonMap setObject:meeting forKey:[self button2string:appointmentButton]];
+    
+    [self addSubview:appointmentButton];
+}
+
+
+- (void) meetingTouched:(id)sender {
+    NSString *key = [self button2string:sender];
+    Meeting *meeting = [self.buttonMap objectForKey:key];
+    
+    _focusedMeeting.subject = meeting.subject;
+    _focusedMeeting.start = meeting.start;
+    _focusedMeeting.end = meeting.end;
+    _focusedMeeting.owner = meeting.owner;
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"meetingFocused" object:nil];
+
+}
+
+- (NSString *) button2string:(UIButton *)button {
+   NSString *buttonString = [NSString stringWithFormat:@"%f:%f:%@", 
+                         button.frame.origin.x,  
+                         button.frame.origin.y, 
+                         [button titleForState:UIControlStateNormal]]; 
+    return buttonString;
+}
+
 
 /*
 // Only override drawRect: if you perform custom drawing.
