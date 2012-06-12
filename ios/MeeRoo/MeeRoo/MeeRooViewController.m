@@ -99,6 +99,7 @@
     NSArray *todaysMeetings = [self fillInMeetingsWithVacantSpots:[self.dataController getTodaysMeetingInRoom:[room mailbox]]];
     
     int index = 0;
+    int currentMeetingIndex = 0;
     for (Meeting *meeting in todaysMeetings) {
         NSLog(@"Adding room to scrollview at index: %i", index);
         CGFloat boxWidth = _scrollView.smallBoxWidth;
@@ -111,7 +112,10 @@
         
         SlidingView *meetingView = [[SlidingView alloc] initWithFrame:frame headline:[meeting subject] start:[DateUtil hourAndMinutes:[meeting start]] stop:[DateUtil hourAndMinutes:[meeting end]] owner:[meeting owner]];
         [_scrollView addSubview:meetingView];
-        
+        if (meeting.isNow) {
+            NSLog(@"Current meeting(%i): %@", index, meeting.subject);
+            currentMeetingIndex = index;
+        }
         index++;
     }
     
@@ -120,7 +124,8 @@
     [_scrollView setContentSize:CGSizeMake(scrollWidth, 581)];
     
     if (index > 0) {
-        [_scrollView scrollToBoxAt:0];
+        NSLog(@"scroll to %i", currentMeetingIndex);
+        [_scrollView scrollToBoxAt:currentMeetingIndex + 1];
     }
     
 }

@@ -17,4 +17,6 @@
 
 -(id)init:(NSDate *)start end:(NSDate *)end owner:(NSString *)owner subject:(NSString *)subject;
 
+-(BOOL)isNow;
+
 @end

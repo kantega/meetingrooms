@@ -27,5 +27,9 @@
     return nil;        
 }
 
+-(BOOL) isNow {
+    NSDate *now = [NSDate date];
+    return [now compare:_start] == NSOrderedDescending && [now compare:_end] == NSOrderedAscending;
+}
 
 @end
