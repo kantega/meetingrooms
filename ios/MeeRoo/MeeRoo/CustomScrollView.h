@@ -17,7 +17,7 @@
 
 
 - (id) initAtIndex:(int)index;
-- (int) leftMostPointAt:(int)index;
+- (int) leftMostPointAt:(int)index forContentOffset:(float) contentOffset;
 - (int)indexOfElementLeavingScene:(float)contentOffset;
 - (int) scrollToBoxAt:(int)index;
 

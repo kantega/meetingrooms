@@ -99,22 +99,34 @@
     NSArray *todaysMeetings = [self fillInMeetingsWithVacantSpots:[self.dataController getTodaysMeetingInRoom:[room mailbox]]];
     
     int index = 0;
-    int currentMeetingIndex = 0;
+    int currentMeetingIndex = -1;
+    for (Meeting *meeting in todaysMeetings) {
+        if (meeting.isNow) {
+            currentMeetingIndex = index;
+            break;
+        }
+        
+        index++;
+    }
+    
+    if (currentMeetingIndex == -1) {
+        currentMeetingIndex = [todaysMeetings count]-1;
+    }
+    
+    int currentBoxOffset = 0;
+    index = 0;
     for (Meeting *meeting in todaysMeetings) {
         NSLog(@"Adding room to scrollview at index: %i", index);
         CGFloat boxWidth = _scrollView.smallBoxWidth;
         CGFloat boxHeight = _scrollView.smallBoxHeight;
-        if (index == 0) {
+        if (index == currentMeetingIndex) {
             boxWidth = _scrollView.largeBoxWidth;
             boxHeight = _scrollView.largeBoxHeight;
         }
-        if (meeting.isNow) {
-            NSLog(@"Current meeting(%i): %@", index, meeting.subject);
-            currentMeetingIndex = index;
-//            boxWidth = _scrollView.largeBoxWidth;
- //           boxHeight = _scrollView.largeBoxHeight;
-        }
-        CGRect frame = CGRectMake([_scrollView leftMostPointAt:index], 0, boxWidth, boxHeight);
+        
+        currentBoxOffset += boxWidth + _scrollView.boxSpacing;
+        
+        CGRect frame = CGRectMake([_scrollView leftMostPointAt:index forContentOffset:currentBoxOffset], 0, boxWidth, boxHeight);
         
         SlidingView *meetingView = [[SlidingView alloc] initWithFrame:frame headline:[meeting subject] start:[DateUtil hourAndMinutes:[meeting start]] stop:[DateUtil hourAndMinutes:[meeting end]] owner:[meeting owner]];
         [_scrollView addSubview:meetingView];
@@ -131,6 +143,10 @@
         [_scrollView scrollToBoxAt:currentMeetingIndex + 1];
     }
     
+    CGPoint offset = _scrollView.contentOffset;
+    offset.x = offset.x+1;
+
+    [_scrollView setContentOffset:offset];
 }
 
 - (NSArray *) fillInMeetingsWithVacantSpots:(NSArray *) meetings {
@@ -248,7 +264,7 @@
     printf("\n");
     for (UIView *view in [_scrollView subviews]) {
         CGRect frame = view.frame;
-        NSLog(@"[%d] %f - %f : %d ",index, frame.origin.x, frame.origin.x +  frame.size.width, [_scrollView leftMostPointAt:index]);
+//        NSLog(@"[%d] %f - %f : %d ",index, frame.origin.x, frame.origin.x +  frame.size.width, [_scrollView leftMostPointAt:index]);
         index++;
     } 
     printf("\n");
@@ -289,7 +305,7 @@
 
             enteringFrame.size.width = _scrollView.smallBoxWidth + (_scrollView.smallBoxWidth * scalePerentage);
             enteringFrame.size.height = _scrollView.smallBoxHeight + (_scrollView.smallBoxHeight * scalePerentage);
-            enteringFrame.origin.x = [_scrollView leftMostPointAt:entereingElementIndex] - (_scrollView.smallBoxWidth * scalePerentage);
+            enteringFrame.origin.x = [_scrollView leftMostPointAt:entereingElementIndex forContentOffset:scrollView.contentOffset.x] - (_scrollView.smallBoxWidth * scalePerentage);
         
             [[[scrollView subviews] objectAtIndex:entereingElementIndex] setFrame:enteringFrame];
         
@@ -305,7 +321,7 @@
                     CGRect frame = view.frame;
                     frame.size.width = _scrollView.smallBoxWidth;
                     frame.size.height = _scrollView.smallBoxHeight;
-                    frame.origin.x = [_scrollView leftMostPointAt:index];
+                    frame.origin.x = [_scrollView leftMostPointAt:index forContentOffset:scrollView.contentOffset.x];
                     [view setFrame:frame];
                 }
             

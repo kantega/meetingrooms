@@ -50,8 +50,14 @@
     return scrollPosition;
 }
 
-- (int) leftMostPointAt:(int)index {
+- (int) leftMostPointAt:(int)index forContentOffset:(float) contentOffset {
     if (index <= 0) { return boxSpacing; }
+
+    int elementLeavingScene = [self indexOfElementLeavingScene:contentOffset];
+    
+    if (index <= elementLeavingScene) {
+        return boxSpacing + (smallBoxWidth + boxSpacing) * (index);
+    } 
     
     return boxSpacing + (largeBoxWidth + boxSpacing) + (smallBoxWidth + boxSpacing) * (index -1);
 }
