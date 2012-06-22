@@ -39,7 +39,7 @@
                 [currentObject updateEier:_owner];
                 
                 if ([_headline isEqualToString:@"Ledig"]) {
-                    [[currentObject meetingOccupiedIndicator] setBackgroundColor:[UIColor colorWithRed:0.643 green:0.929 blue:0.647 alpha:1]];
+                    [[currentObject meetingOccupiedIndicator] setBackgroundColor:[UIColor colorWithRed:0.541 green:0.768 blue:0.831 alpha:1]];
                 }
                 
                 [self addSubview:currentObject];

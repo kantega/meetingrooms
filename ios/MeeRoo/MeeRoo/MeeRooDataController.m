@@ -54,17 +54,23 @@
 
 - (NSArray *) getTodaysMeetingInRoom:(NSString *)room {    
     NSError *error = nil;
-    NSString *url = [NSString stringWithFormat:@"%@/%@/%@", @"http://prototype.kantega.lan/meeroo/appointments", room, @"today"];
-    NSLog(@"Getting from URL: %@", url);
-    NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:url]];
-    if (data == nil) {
-        printf("data is nil\n");
-        return nil;
+    
+    NSArray *meetingArray = [[NSArray alloc] init];
+    
+    if (room) {
+        NSString *url = [NSString stringWithFormat:@"%@/%@/%@", @"http://prototype.kantega.lan/meeroo/appointments", room, @"today"];
+        NSLog(@"Getting from URL: %@", url);
+        
+        NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:url]];
+        if (data == nil) {
+            printf("getTodaysMeetingInRoom data is nil\n");
+        } else {
+            NSDictionary *appointmentlist = [NSJSONSerialization JSONObjectWithData:data 
+                                                                            options:NSJSONReadingMutableLeaves 
+                                                                              error:&error];
+            meetingArray = [self readAppointments:appointmentlist];
+        }
     }
-    NSDictionary *appointmentlist = [NSJSONSerialization JSONObjectWithData:data 
-                                                                    options:NSJSONReadingMutableLeaves 
-                                                                      error:&error];
-    NSArray *meetingArray = [self readAppointments:appointmentlist];
     
     return meetingArray;
 }
@@ -151,6 +157,8 @@
         MeetingRoom *room = [[MeetingRoom alloc] init:mailbox displayname:displayname location:location];
         [roomArray addObject:room];
     }
+    
+    NSLog(@"gotMeetingRooms");
     return roomArray;
 }
 
@@ -167,10 +175,10 @@
 
 - (void) readUserDefaults {
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
-    self.configuration.room = [[MeetingRoom alloc] init:[prefs valueForKey:@"room.mailbox"] 
-                                            displayname:[prefs valueForKey:@"room.displayname"] 
-                                               location:[prefs valueForKey:@"room.location"]];  
     
+    self.configuration.room = [[MeetingRoom alloc] init:[prefs valueForKey:@"room.mailbox"] 
+                                                displayname:[prefs valueForKey:@"room.displayname"] 
+                                                   location:[prefs valueForKey:@"room.location"]];    
 }
 
 @end
