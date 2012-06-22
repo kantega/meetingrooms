@@ -244,6 +244,8 @@
 
 #pragma mark scrollview delegate
 
+//Metoden er ansvarlig for å animere størrelsen på møteromsboksene. Vurdere å evt. flytte denne
+//til CustomScrollView istedet... 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {    
     if ([[scrollView subviews] count] > 2) {
         float contentOffset = scrollView.contentOffset.x;

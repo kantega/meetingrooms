@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *sluttTidspunktLabel;
 @property (weak, nonatomic) IBOutlet UILabel *eierLabel;
 @property (weak, nonatomic) IBOutlet UIView *meetingOccupiedIndicator;
+@property (weak, nonatomic) IBOutlet UIButton *editButton;
 
 - (void) updateHeadline:(NSString *)headline;
 - (void) updateStart:(NSString *)startTidspunkt;

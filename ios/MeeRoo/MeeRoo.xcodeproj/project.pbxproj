@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4B28D87C159465520027F1FB /* omkantega_bakgrunn.png in Resources */ = {isa = PBXBuildFile; fileRef = 4B28D87B159465520027F1FB /* omkantega_bakgrunn.png */; };
+		4B28D880159466380027F1FB /* background-table.png in Resources */ = {isa = PBXBuildFile; fileRef = 4B28D87E159466380027F1FB /* background-table.png */; };
+		4B28D881159466380027F1FB /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 4B28D87F159466380027F1FB /* background.png */; };
+		4B28D8831594859A0027F1FB /* edit_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 4B28D8821594859A0027F1FB /* edit_icon.png */; };
 		4BF1CC171581F714003DD9EF /* CustomScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BF1CC161581F714003DD9EF /* CustomScrollView.m */; };
 		4BF1CC1A1581F8BF003DD9EF /* SlidingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BF1CC191581F8BF003DD9EF /* SlidingView.m */; };
 		4BF1CC1C1581F8D9003DD9EF /* MeetingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4BF1CC1B1581F8D9003DD9EF /* MeetingView.xib */; };
@@ -31,6 +35,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4B28D87B159465520027F1FB /* omkantega_bakgrunn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = omkantega_bakgrunn.png; sourceTree = "<group>"; };
+		4B28D87E159466380027F1FB /* background-table.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background-table.png"; sourceTree = "<group>"; };
+		4B28D87F159466380027F1FB /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
+		4B28D8821594859A0027F1FB /* edit_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = edit_icon.png; sourceTree = "<group>"; };
 		4BF1CC151581F714003DD9EF /* CustomScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomScrollView.h; sourceTree = "<group>"; };
 		4BF1CC161581F714003DD9EF /* CustomScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomScrollView.m; sourceTree = "<group>"; };
 		4BF1CC181581F8BF003DD9EF /* SlidingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlidingView.h; sourceTree = "<group>"; };
@@ -128,6 +136,10 @@
 			isa = PBXGroup;
 			children = (
 				5DB8D243156BA6AB00D7737E /* 1024x768_gronn.jpg */,
+				4B28D87E159466380027F1FB /* background-table.png */,
+				4B28D87F159466380027F1FB /* background.png */,
+				4B28D87B159465520027F1FB /* omkantega_bakgrunn.png */,
+				4B28D8821594859A0027F1FB /* edit_icon.png */,
 				5D753070155CF55C007E599E /* Model */,
 				F9823CD81559579F00DFCF2B /* MeeRooAppDelegate.h */,
 				5DA354251580B4EA00ED4E35 /* AppointmentsRow.h */,
@@ -223,6 +235,10 @@
 				F9823CDD1559579F00DFCF2B /* MainStoryboard.storyboard in Resources */,
 				5DB8D244156BA6AB00D7737E /* 1024x768_gronn.jpg in Resources */,
 				4BF1CC1C1581F8D9003DD9EF /* MeetingView.xib in Resources */,
+				4B28D87C159465520027F1FB /* omkantega_bakgrunn.png in Resources */,
+				4B28D880159466380027F1FB /* background-table.png in Resources */,
+				4B28D881159466380027F1FB /* background.png in Resources */,
+				4B28D8831594859A0027F1FB /* edit_icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

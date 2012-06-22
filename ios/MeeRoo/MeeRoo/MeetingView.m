@@ -15,6 +15,7 @@
 @synthesize sluttTidspunktLabel = _sluttTidspunktLabel;
 @synthesize eierLabel = _eierLabel;
 @synthesize meetingOccupiedIndicator = _meetingOccupiedIndicator;
+@synthesize editButton = _editButton;
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -26,8 +27,7 @@
     return self;
 }
 
-- (id)initWithCoder:(NSCoder *)coder
-{
+- (id)initWithCoder:(NSCoder *)coder {
     NSLog(@"initWithCoder");
     self = [super initWithCoder:coder];
     if (self) {
@@ -37,6 +37,8 @@
         self.layer.masksToBounds = YES;
         self.opaque = NO;
         
+        UIColor *background = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"background-table.png"]];
+        self.backgroundColor = background;
     }
     return self;
 }
@@ -46,6 +48,12 @@
     _headlineLabel.adjustsFontSizeToFitWidth = YES;
     _headlineLabel.numberOfLines = 1;
     [_headlineLabel setText:headline];
+    
+    if ([headline isEqualToString:@"Ledig"]) {
+        [_editButton setHidden:NO];
+    } else {
+        [_editButton setHidden:YES];
+    }
 }
 
 - (void) updateStart:(NSString *)startTidspunkt {
