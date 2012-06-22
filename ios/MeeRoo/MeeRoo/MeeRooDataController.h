@@ -21,6 +21,10 @@
 
 - (NSArray *) getMeetingRoomsWithMeetings:(NSString *)location;
 
+- (void) updateUserDefaults;
+
+- (void) readUserDefaults;
+
 @property (retain, nonatomic) Configuration *configuration;
 
 

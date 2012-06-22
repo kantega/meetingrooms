@@ -21,7 +21,7 @@
     self = [super init];
     if (self) {
         self.configuration =  [[Configuration alloc] init];
-        self.configuration.room = [[MeetingRoom alloc] init:@"r102" displayname:@"Room 102" location:@"HQ"];
+        [self readUserDefaults]; 
         return self;
     }
     return nil;       
@@ -154,5 +154,23 @@
     return roomArray;
 }
 
+- (void) updateUserDefaults {
+    
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    [prefs setObject:self.configuration.room.mailbox forKey:@"room.mailbox"];
+    [prefs setObject:self.configuration.room.displayname forKey:@"room.displayname"];
+    [prefs setObject:self.configuration.room.location forKey:@"room.location"];
+
+    [[NSUserDefaults standardUserDefaults] synchronize];
+
+}
+
+- (void) readUserDefaults {
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    self.configuration.room = [[MeetingRoom alloc] init:[prefs valueForKey:@"room.mailbox"] 
+                                            displayname:[prefs valueForKey:@"room.displayname"] 
+                                               location:[prefs valueForKey:@"room.location"]];  
+    
+}
 
 @end

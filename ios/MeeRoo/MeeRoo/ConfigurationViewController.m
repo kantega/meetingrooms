@@ -32,6 +32,9 @@
     // Post a notification to configChanged
     [[NSNotificationCenter defaultCenter] postNotificationName:@"configChanged" object:nil];
     
+    //Save configuration on the physical device
+    [self.dataController updateUserDefaults];
+   
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -42,18 +45,9 @@
     
     self.meetingrooms = [self.dataController getMeetingRooms];
     
-    if (self.meetingrooms.count > 0) {
-        printf("Got meetingrooms\n");
-    } else {
-        printf("NO meetingrooms\n");
-    }
-    
     [self.roomPickerView selectRow:[self.meetingrooms indexOfObject:self.dataController.configuration.room] inComponent:0 animated:YES];
     
     self.mockSwitch.on = self.dataController.configuration.isUsingMockData;
-    
-    //self.roomPickerView.frame = CGRectMake(400, 219, 20*13.3, 216);
-            
 }
 
 - (void)viewDidUnload
@@ -75,13 +69,6 @@
     return [self.meetingrooms count];
 }
 - (NSString *)pickerView:(UIPickerView *)roomPickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
-    //NSLog(@"%d", row);
-    //NSLog(@"%d", self.meetingrooms.count);
-    
-    //MeetingRoom *m = [self.meetingrooms objectAtIndex:row];
-    //NSLog(@"%@", m.displayname);
-    
-    //NSLog(@"%@", [[self.meetingrooms objectAtIndex:row] displayname]);
     return [[self.meetingrooms objectAtIndex:row] displayname];
 }
 
