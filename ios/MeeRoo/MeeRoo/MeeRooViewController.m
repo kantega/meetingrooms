@@ -80,16 +80,16 @@
     NSDate *now = [NSDate date];
     self.clockLabel.text = [DateUtil hourAndMinutes:now];
     
-    Meeting *meeting = [self.dataController getMeeting:room.mailbox filterfunction:@"now"];
-    Meeting *nextMeeting = [self.dataController getMeeting:room.mailbox filterfunction:@"next"];
-    if (meeting == nil) {
-        [self displayRoomAvailable:nextMeeting];
-    } else {
-        [self displayRoomOccupied:meeting];
-    }
-    
-    CGRect screen = [[UIScreen mainScreen] applicationFrame];
-    self.colorLabel.frame = CGRectMake((screen.size.width / 2) - 25 , 0, 50, screen.size.height);
+//    Meeting *meeting = [self.dataController getMeeting:room.mailbox filterfunction:@"now"];
+//    Meeting *nextMeeting = [self.dataController getMeeting:room.mailbox filterfunction:@"next"];
+//    if (meeting == nil) {
+//        [self displayRoomAvailable:nextMeeting];
+//    } else {
+//        [self displayRoomOccupied:meeting];
+//    }
+//    
+//    CGRect screen = [[UIScreen mainScreen] applicationFrame];
+//    self.colorLabel.frame = CGRectMake((screen.size.width / 2) - 25 , 0, 50, screen.size.height);
     
     for(UIView *subview in [_scrollView subviews]) {
         [subview removeFromSuperview];
@@ -108,14 +108,17 @@
             boxWidth = _scrollView.largeBoxWidth;
             boxHeight = _scrollView.largeBoxHeight;
         }
+        if (meeting.isNow) {
+            NSLog(@"Current meeting(%i): %@", index, meeting.subject);
+            currentMeetingIndex = index;
+//            boxWidth = _scrollView.largeBoxWidth;
+ //           boxHeight = _scrollView.largeBoxHeight;
+        }
         CGRect frame = CGRectMake([_scrollView leftMostPointAt:index], 0, boxWidth, boxHeight);
         
         SlidingView *meetingView = [[SlidingView alloc] initWithFrame:frame headline:[meeting subject] start:[DateUtil hourAndMinutes:[meeting start]] stop:[DateUtil hourAndMinutes:[meeting end]] owner:[meeting owner]];
         [_scrollView addSubview:meetingView];
-        if (meeting.isNow) {
-            NSLog(@"Current meeting(%i): %@", index, meeting.subject);
-            currentMeetingIndex = index;
-        }
+
         index++;
     }
     
@@ -239,6 +242,18 @@
 }
 
 
+
+- (void) dumpPositions {
+    int index = 0;
+    printf("\n");
+    for (UIView *view in [_scrollView subviews]) {
+        CGRect frame = view.frame;
+        NSLog(@"[%d] %f - %f : %d ",index, frame.origin.x, frame.origin.x +  frame.size.width, [_scrollView leftMostPointAt:index]);
+        index++;
+    } 
+    printf("\n");
+}
+
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     if (interfaceOrientation==UIInterfaceOrientationLandscapeLeft || interfaceOrientation==UIInterfaceOrientationLandscapeRight)
@@ -284,7 +299,7 @@
             //Reset the other visible frames sizes
             int index = 0;
             for (UIView *view in [scrollView subviews]) {
-                if([view isKindOfClass:[SlidingView class]] && index > entereingElementIndex) {
+                if([view isKindOfClass:[SlidingView class]] && (index > entereingElementIndex || index < leavingElementIndex)) {
                     CGRect frame = view.frame;
                     frame.size.width = _scrollView.smallBoxWidth;
                     frame.size.height = _scrollView.smallBoxHeight;
