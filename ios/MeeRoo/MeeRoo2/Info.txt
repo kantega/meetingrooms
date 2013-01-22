@@ -1,0 +1,20 @@
+" (id)sender is the object which sent the message to that selector. It's like in the delegate functions where you have the control passed in to the function, etc.
+
+You'd use this if you had 2 objects which were calling that selector and you wanted to distinguish between them. Of course, you could just use two different functions, but it's often cleaner and less duplication of code to use one function." [Quoted]
+
+Eksempel:
+- (IBAction) buttonPressed: (id) sender
+{
+    switch ( ((UIButton*)sender).tag ){
+
+       case 1:
+               //koder her...
+               break;
+       case 2:
+               //andre koder her...
+               break;
+
+       default:
+               //default koder her...
+    }
+}

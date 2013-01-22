@@ -1,0 +1,719 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4C1AD4631678958800C817C1 /* BookingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C1AD4621678958800C817C1 /* BookingView.m */; };
+		4C1AD4651678B0BD00C817C1 /* BookingDesign.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C1AD4641678B0BD00C817C1 /* BookingDesign.xib */; };
+		4C1E362E169AE9AA00CB5256 /* Info.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4C1E362D169AE9AA00CB5256 /* Info.txt */; };
+		4C7934B4167F5542001C7F92 /* meny.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4C7934AD167F5542001C7F92 /* meny.jpg */; };
+		4C7934B5167F5542001C7F92 /* oslo.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C7934AE167F5542001C7F92 /* oslo.png */; };
+		4C7934B6167F5542001C7F92 /* oslo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C7934AF167F5542001C7F92 /* oslo@2x.png */; };
+		4C7934B7167F5542001C7F92 /* trondheim.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C7934B0167F5542001C7F92 /* trondheim.png */; };
+		4C7934B8167F5542001C7F92 /* trondheim@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C7934B1167F5542001C7F92 /* trondheim@2x.png */; };
+		4C7934B9167F5542001C7F92 /* instillinger.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C7934B2167F5542001C7F92 /* instillinger.png */; };
+		4C7934BA167F5542001C7F92 /* instillinger@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C7934B3167F5542001C7F92 /* instillinger@2x.png */; };
+		4C90428B1680772700B65FDE /* BookingVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C90428A1680772700B65FDE /* BookingVC.m */; };
+		4C91939D168351DB00A5BD17 /* BookingEnkel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C91939C168351DB00A5BD17 /* BookingEnkel.xib */; };
+		4C9220C015EB630100B5E74A /* AppointmentsRow2.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C9220BF15EB630100B5E74A /* AppointmentsRow2.m */; };
+		4C9220C415EB642900B5E74A /* TotalViewController2.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C9220C315EB642900B5E74A /* TotalViewController2.m */; };
+		4C9220C715EB65C900B5E74A /* SlidingView2.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C9220C615EB65C900B5E74A /* SlidingView2.m */; };
+		4C9220CA15EB660D00B5E74A /* MeetingView2.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C9220C915EB660D00B5E74A /* MeetingView2.m */; };
+		4C9220CD15EB6C2C00B5E74A /* CustomScrollView2.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C9220CC15EB6C2B00B5E74A /* CustomScrollView2.m */; };
+		4C9220D015EB6D6000B5E74A /* 1024x768_gronn.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4C9220CF15EB6D6000B5E74A /* 1024x768_gronn.jpg */; };
+		4C9220D215EB6D6900B5E74A /* background-table.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C9220D115EB6D6900B5E74A /* background-table.png */; };
+		4C9220D415EB6D7000B5E74A /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C9220D315EB6D7000B5E74A /* background.png */; };
+		4C9220D615EB6D7700B5E74A /* omkantega_bakgrunn.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C9220D515EB6D7700B5E74A /* omkantega_bakgrunn.png */; };
+		4C9220D815EB6D7D00B5E74A /* edit_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C9220D715EB6D7D00B5E74A /* edit_icon.png */; };
+		4C93BAED15FF4E50009677C3 /* Timeplanlapp.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C93BAEC15FF4E50009677C3 /* Timeplanlapp.m */; };
+		4C93BAF015FF4E5D009677C3 /* TimeplanlappView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C93BAEF15FF4E5D009677C3 /* TimeplanlappView.m */; };
+		4C93BAF115FF50CD009677C3 /* MeetingView3.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C93BAE815FF4C71009677C3 /* MeetingView3.xib */; };
+		4C99B76716A8008F00C1ED96 /* MidlertidigVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C99B76616A8008F00C1ED96 /* MidlertidigVC.m */; };
+		4CC57B6C16119E0A0039BBC0 /* icon2.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CC57B6916119E0A0039BBC0 /* icon2.png */; };
+		4CC57B6D16119E0A0039BBC0 /* icon3.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CC57B6A16119E0A0039BBC0 /* icon3.png */; };
+		4CC57B751611BA860039BBC0 /* icon1.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CC57B741611BA860039BBC0 /* icon1.png */; };
+		4CC57B7D1611BD0A0039BBC0 /* icon1a.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CC57B7C1611BD0A0039BBC0 /* icon1a.png */; };
+		4CC57B7F1611BE2B0039BBC0 /* icon1b.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CC57B7E1611BE2B0039BBC0 /* icon1b.png */; };
+		4CE9486D15F9F21A009E1821 /* MeetingView2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C9165DC15ECEE8D00674E82 /* MeetingView2.xib */; };
+		4CEF445815E77A18007C458F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CEF445715E77A18007C458F /* UIKit.framework */; };
+		4CEF445A15E77A18007C458F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CEF445915E77A18007C458F /* Foundation.framework */; };
+		4CEF445C15E77A18007C458F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CEF445B15E77A18007C458F /* CoreGraphics.framework */; };
+		4CEF446215E77A18007C458F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4CEF446015E77A18007C458F /* InfoPlist.strings */; };
+		4CEF446415E77A18007C458F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CEF446315E77A18007C458F /* main.m */; };
+		4CEF446815E77A18007C458F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CEF446715E77A18007C458F /* AppDelegate.m */; };
+		4CEF446E15E77A18007C458F /* ViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CEF446C15E77A18007C458F /* ViewController_iPhone.xib */; };
+		4CEF447115E77A18007C458F /* ViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CEF446F15E77A18007C458F /* ViewController_iPad.xib */; };
+		4CEF447915E77A18007C458F /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CEF447815E77A18007C458F /* SenTestingKit.framework */; };
+		4CEF447A15E77A18007C458F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CEF445715E77A18007C458F /* UIKit.framework */; };
+		4CEF447B15E77A18007C458F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CEF445915E77A18007C458F /* Foundation.framework */; };
+		4CEF448315E77A18007C458F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4CEF448115E77A18007C458F /* InfoPlist.strings */; };
+		4CEF448615E77A18007C458F /* MeeRoo2Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CEF448515E77A18007C458F /* MeeRoo2Tests.m */; };
+		4CEF449815E79409007C458F /* MeeRoo2DataController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CEF449715E79409007C458F /* MeeRoo2DataController.m */; };
+		4CEF449B15E79438007C458F /* Configuration2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CEF449A15E79438007C458F /* Configuration2ViewController.m */; };
+		4CEF449E15E7AF48007C458F /* Meeting2.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CEF449D15E7AF48007C458F /* Meeting2.m */; };
+		4CEF44A115E7AF5F007C458F /* Configuration2.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CEF44A015E7AF5F007C458F /* Configuration2.m */; };
+		4CEF44A415E7AF7C007C458F /* MeetingRoom2.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CEF44A315E7AF7B007C458F /* MeetingRoom2.m */; };
+		4CEF44A715E7AFC6007C458F /* DateUtil2.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CEF44A615E7AFC6007C458F /* DateUtil2.m */; };
+		5D81395516AE9CF7003FFE6F /* MeeRooViewController3.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D81395316AE9CF7003FFE6F /* MeeRooViewController3.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		4CEF447C15E77A18007C458F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4CEF444A15E77A18007C458F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4CEF445215E77A18007C458F;
+			remoteInfo = MeeRoo2;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		4C1AD4611678958800C817C1 /* BookingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookingView.h; sourceTree = "<group>"; };
+		4C1AD4621678958800C817C1 /* BookingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookingView.m; sourceTree = "<group>"; };
+		4C1AD4641678B0BD00C817C1 /* BookingDesign.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BookingDesign.xib; sourceTree = "<group>"; };
+		4C1E362D169AE9AA00CB5256 /* Info.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Info.txt; sourceTree = "<group>"; };
+		4C7934AD167F5542001C7F92 /* meny.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = meny.jpg; sourceTree = "<group>"; };
+		4C7934AE167F5542001C7F92 /* oslo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = oslo.png; sourceTree = "<group>"; };
+		4C7934AF167F5542001C7F92 /* oslo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "oslo@2x.png"; sourceTree = "<group>"; };
+		4C7934B0167F5542001C7F92 /* trondheim.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trondheim.png; sourceTree = "<group>"; };
+		4C7934B1167F5542001C7F92 /* trondheim@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "trondheim@2x.png"; sourceTree = "<group>"; };
+		4C7934B2167F5542001C7F92 /* instillinger.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = instillinger.png; sourceTree = "<group>"; };
+		4C7934B3167F5542001C7F92 /* instillinger@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "instillinger@2x.png"; sourceTree = "<group>"; };
+		4C9042891680772700B65FDE /* BookingVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookingVC.h; sourceTree = "<group>"; };
+		4C90428A1680772700B65FDE /* BookingVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookingVC.m; sourceTree = "<group>"; };
+		4C9165DC15ECEE8D00674E82 /* MeetingView2.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MeetingView2.xib; sourceTree = "<group>"; };
+		4C9165DD15ECEEA000674E82 /* MeetingView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MeetingView.m; sourceTree = "<group>"; };
+		4C91939C168351DB00A5BD17 /* BookingEnkel.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BookingEnkel.xib; sourceTree = "<group>"; };
+		4C9220BE15EB630100B5E74A /* AppointmentsRow2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppointmentsRow2.h; sourceTree = "<group>"; };
+		4C9220BF15EB630100B5E74A /* AppointmentsRow2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppointmentsRow2.m; sourceTree = "<group>"; };
+		4C9220C215EB642900B5E74A /* TotalViewController2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TotalViewController2.h; sourceTree = "<group>"; };
+		4C9220C315EB642900B5E74A /* TotalViewController2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TotalViewController2.m; sourceTree = "<group>"; };
+		4C9220C515EB65C900B5E74A /* SlidingView2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlidingView2.h; sourceTree = "<group>"; };
+		4C9220C615EB65C900B5E74A /* SlidingView2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlidingView2.m; sourceTree = "<group>"; };
+		4C9220C815EB660D00B5E74A /* MeetingView2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeetingView2.h; sourceTree = "<group>"; };
+		4C9220C915EB660D00B5E74A /* MeetingView2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeetingView2.m; sourceTree = "<group>"; };
+		4C9220CB15EB6C2B00B5E74A /* CustomScrollView2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomScrollView2.h; sourceTree = "<group>"; };
+		4C9220CC15EB6C2B00B5E74A /* CustomScrollView2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomScrollView2.m; sourceTree = "<group>"; };
+		4C9220CF15EB6D6000B5E74A /* 1024x768_gronn.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 1024x768_gronn.jpg; sourceTree = "<group>"; };
+		4C9220D115EB6D6900B5E74A /* background-table.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background-table.png"; sourceTree = "<group>"; };
+		4C9220D315EB6D7000B5E74A /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
+		4C9220D515EB6D7700B5E74A /* omkantega_bakgrunn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = omkantega_bakgrunn.png; sourceTree = "<group>"; };
+		4C9220D715EB6D7D00B5E74A /* edit_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = edit_icon.png; sourceTree = "<group>"; };
+		4C93BAE815FF4C71009677C3 /* MeetingView3.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MeetingView3.xib; sourceTree = "<group>"; };
+		4C93BAEB15FF4E50009677C3 /* Timeplanlapp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Timeplanlapp.h; sourceTree = "<group>"; };
+		4C93BAEC15FF4E50009677C3 /* Timeplanlapp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Timeplanlapp.m; sourceTree = "<group>"; };
+		4C93BAEE15FF4E5D009677C3 /* TimeplanlappView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeplanlappView.h; sourceTree = "<group>"; };
+		4C93BAEF15FF4E5D009677C3 /* TimeplanlappView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeplanlappView.m; sourceTree = "<group>"; };
+		4C99B76516A8008E00C1ED96 /* MidlertidigVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MidlertidigVC.h; sourceTree = "<group>"; };
+		4C99B76616A8008F00C1ED96 /* MidlertidigVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MidlertidigVC.m; sourceTree = "<group>"; };
+		4CC57B6916119E0A0039BBC0 /* icon2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon2.png; sourceTree = "<group>"; };
+		4CC57B6A16119E0A0039BBC0 /* icon3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon3.png; sourceTree = "<group>"; };
+		4CC57B741611BA860039BBC0 /* icon1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon1.png; sourceTree = "<group>"; };
+		4CC57B7C1611BD0A0039BBC0 /* icon1a.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon1a.png; sourceTree = "<group>"; };
+		4CC57B7E1611BE2B0039BBC0 /* icon1b.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon1b.png; sourceTree = "<group>"; };
+		4CEF445315E77A18007C458F /* MeeRoo2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeeRoo2.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4CEF445715E77A18007C458F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		4CEF445915E77A18007C458F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		4CEF445B15E77A18007C458F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		4CEF445F15E77A18007C458F /* MeeRoo2-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MeeRoo2-Info.plist"; sourceTree = "<group>"; };
+		4CEF446115E77A18007C458F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		4CEF446315E77A18007C458F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		4CEF446515E77A18007C458F /* MeeRoo2-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MeeRoo2-Prefix.pch"; sourceTree = "<group>"; };
+		4CEF446615E77A18007C458F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		4CEF446715E77A18007C458F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		4CEF446D15E77A18007C458F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController_iPhone.xib; sourceTree = "<group>"; };
+		4CEF447015E77A18007C458F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController_iPad.xib; sourceTree = "<group>"; };
+		4CEF447715E77A18007C458F /* MeeRoo2Tests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MeeRoo2Tests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4CEF447815E77A18007C458F /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		4CEF448015E77A18007C458F /* MeeRoo2Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MeeRoo2Tests-Info.plist"; sourceTree = "<group>"; };
+		4CEF448215E77A18007C458F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		4CEF448415E77A18007C458F /* MeeRoo2Tests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MeeRoo2Tests.h; sourceTree = "<group>"; };
+		4CEF448515E77A18007C458F /* MeeRoo2Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MeeRoo2Tests.m; sourceTree = "<group>"; };
+		4CEF449615E79409007C458F /* MeeRoo2DataController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeeRoo2DataController.h; sourceTree = "<group>"; };
+		4CEF449715E79409007C458F /* MeeRoo2DataController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeeRoo2DataController.m; sourceTree = "<group>"; };
+		4CEF449915E79438007C458F /* Configuration2ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Configuration2ViewController.h; sourceTree = "<group>"; };
+		4CEF449A15E79438007C458F /* Configuration2ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Configuration2ViewController.m; sourceTree = "<group>"; };
+		4CEF449C15E7AF48007C458F /* Meeting2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Meeting2.h; sourceTree = "<group>"; };
+		4CEF449D15E7AF48007C458F /* Meeting2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Meeting2.m; sourceTree = "<group>"; };
+		4CEF449F15E7AF5F007C458F /* Configuration2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Configuration2.h; sourceTree = "<group>"; };
+		4CEF44A015E7AF5F007C458F /* Configuration2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Configuration2.m; sourceTree = "<group>"; };
+		4CEF44A215E7AF7B007C458F /* MeetingRoom2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeetingRoom2.h; sourceTree = "<group>"; };
+		4CEF44A315E7AF7B007C458F /* MeetingRoom2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeetingRoom2.m; sourceTree = "<group>"; };
+		4CEF44A515E7AFC6007C458F /* DateUtil2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateUtil2.h; sourceTree = "<group>"; };
+		4CEF44A615E7AFC6007C458F /* DateUtil2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateUtil2.m; sourceTree = "<group>"; };
+		5D81395316AE9CF7003FFE6F /* MeeRooViewController3.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeeRooViewController3.m; sourceTree = "<group>"; };
+		5D81395416AE9CF7003FFE6F /* MeeRooViewController3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeeRooViewController3.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		4CEF445015E77A18007C458F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4CEF445815E77A18007C458F /* UIKit.framework in Frameworks */,
+				4CEF445A15E77A18007C458F /* Foundation.framework in Frameworks */,
+				4CEF445C15E77A18007C458F /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4CEF447315E77A18007C458F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4CEF447915E77A18007C458F /* SenTestingKit.framework in Frameworks */,
+				4CEF447A15E77A18007C458F /* UIKit.framework in Frameworks */,
+				4CEF447B15E77A18007C458F /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4C1AD45F1678956500C817C1 /* Booking */ = {
+			isa = PBXGroup;
+			children = (
+				4C1AD4611678958800C817C1 /* BookingView.h */,
+				4C1AD4621678958800C817C1 /* BookingView.m */,
+				4C1AD4641678B0BD00C817C1 /* BookingDesign.xib */,
+				4C91939C168351DB00A5BD17 /* BookingEnkel.xib */,
+			);
+			name = Booking;
+			sourceTree = "<group>";
+		};
+		4C7934AB167F5513001C7F92 /* MattisIkoner */ = {
+			isa = PBXGroup;
+			children = (
+				4C7934AD167F5542001C7F92 /* meny.jpg */,
+				4C7934AE167F5542001C7F92 /* oslo.png */,
+				4C7934AF167F5542001C7F92 /* oslo@2x.png */,
+				4C7934B0167F5542001C7F92 /* trondheim.png */,
+				4C7934B1167F5542001C7F92 /* trondheim@2x.png */,
+				4C7934B2167F5542001C7F92 /* instillinger.png */,
+				4C7934B3167F5542001C7F92 /* instillinger@2x.png */,
+			);
+			name = MattisIkoner;
+			sourceTree = "<group>";
+		};
+		4C9165B215ECA77C00674E82 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4CEF449C15E7AF48007C458F /* Meeting2.h */,
+				4CEF449D15E7AF48007C458F /* Meeting2.m */,
+				4CEF449F15E7AF5F007C458F /* Configuration2.h */,
+				4CEF44A015E7AF5F007C458F /* Configuration2.m */,
+				4CEF44A215E7AF7B007C458F /* MeetingRoom2.h */,
+				4CEF44A315E7AF7B007C458F /* MeetingRoom2.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		4C9165B315ECA7A000674E82 /* AndreMappe */ = {
+			isa = PBXGroup;
+			children = (
+				4C9220C515EB65C900B5E74A /* SlidingView2.h */,
+				4C9220C615EB65C900B5E74A /* SlidingView2.m */,
+				4C9220C815EB660D00B5E74A /* MeetingView2.h */,
+				4C9220C915EB660D00B5E74A /* MeetingView2.m */,
+				4C9220CB15EB6C2B00B5E74A /* CustomScrollView2.h */,
+				4C9220CC15EB6C2B00B5E74A /* CustomScrollView2.m */,
+				4C99B76516A8008E00C1ED96 /* MidlertidigVC.h */,
+				4C99B76616A8008F00C1ED96 /* MidlertidigVC.m */,
+			);
+			name = AndreMappe;
+			sourceTree = "<group>";
+		};
+		4C9165B715ECB61800674E82 /* TredjeMappe */ = {
+			isa = PBXGroup;
+			children = (
+				4CEF44A515E7AFC6007C458F /* DateUtil2.h */,
+				4CEF44A615E7AFC6007C458F /* DateUtil2.m */,
+				4C9220BE15EB630100B5E74A /* AppointmentsRow2.h */,
+				4C9220BF15EB630100B5E74A /* AppointmentsRow2.m */,
+			);
+			name = TredjeMappe;
+			sourceTree = "<group>";
+		};
+		4C9220CE15EB6D4F00B5E74A /* IconsDiv */ = {
+			isa = PBXGroup;
+			children = (
+				4C7934AB167F5513001C7F92 /* MattisIkoner */,
+				4CC57B6616119DED0039BBC0 /* Tabbaricons */,
+				4C9220D715EB6D7D00B5E74A /* edit_icon.png */,
+				4C9220D515EB6D7700B5E74A /* omkantega_bakgrunn.png */,
+				4C9220D315EB6D7000B5E74A /* background.png */,
+				4C9220D115EB6D6900B5E74A /* background-table.png */,
+				4C9220CF15EB6D6000B5E74A /* 1024x768_gronn.jpg */,
+			);
+			name = IconsDiv;
+			sourceTree = "<group>";
+		};
+		4C93BAEA15FF4E20009677C3 /* Motelapp */ = {
+			isa = PBXGroup;
+			children = (
+				4C93BAEB15FF4E50009677C3 /* Timeplanlapp.h */,
+				4C93BAEC15FF4E50009677C3 /* Timeplanlapp.m */,
+				4C93BAEE15FF4E5D009677C3 /* TimeplanlappView.h */,
+				4C93BAEF15FF4E5D009677C3 /* TimeplanlappView.m */,
+			);
+			name = Motelapp;
+			sourceTree = "<group>";
+		};
+		4CC57B6616119DED0039BBC0 /* Tabbaricons */ = {
+			isa = PBXGroup;
+			children = (
+				4CC57B7E1611BE2B0039BBC0 /* icon1b.png */,
+				4CC57B7C1611BD0A0039BBC0 /* icon1a.png */,
+				4CC57B741611BA860039BBC0 /* icon1.png */,
+				4CC57B6916119E0A0039BBC0 /* icon2.png */,
+				4CC57B6A16119E0A0039BBC0 /* icon3.png */,
+			);
+			name = Tabbaricons;
+			sourceTree = "<group>";
+		};
+		4CEF444815E77A18007C458F = {
+			isa = PBXGroup;
+			children = (
+				4CEF445D15E77A18007C458F /* MeeRoo2 */,
+				4CEF447E15E77A18007C458F /* MeeRoo2Tests */,
+				4CEF445615E77A18007C458F /* Frameworks */,
+				4CEF445415E77A18007C458F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		4CEF445415E77A18007C458F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4CEF445315E77A18007C458F /* MeeRoo2.app */,
+				4CEF447715E77A18007C458F /* MeeRoo2Tests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4CEF445615E77A18007C458F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4CEF445715E77A18007C458F /* UIKit.framework */,
+				4CEF445915E77A18007C458F /* Foundation.framework */,
+				4CEF445B15E77A18007C458F /* CoreGraphics.framework */,
+				4CEF447815E77A18007C458F /* SenTestingKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4CEF445D15E77A18007C458F /* MeeRoo2 */ = {
+			isa = PBXGroup;
+			children = (
+				5D81395316AE9CF7003FFE6F /* MeeRooViewController3.m */,
+				5D81395416AE9CF7003FFE6F /* MeeRooViewController3.h */,
+				4C1AD45F1678956500C817C1 /* Booking */,
+				4C9165B715ECB61800674E82 /* TredjeMappe */,
+				4C93BAEA15FF4E20009677C3 /* Motelapp */,
+				4C9165B315ECA7A000674E82 /* AndreMappe */,
+				4C9165B215ECA77C00674E82 /* Model */,
+				4CEF446615E77A18007C458F /* AppDelegate.h */,
+				4CEF446715E77A18007C458F /* AppDelegate.m */,
+				4CEF446C15E77A18007C458F /* ViewController_iPhone.xib */,
+				4CEF446F15E77A18007C458F /* ViewController_iPad.xib */,
+				4C9165DD15ECEEA000674E82 /* MeetingView.m */,
+				4C9165DC15ECEE8D00674E82 /* MeetingView2.xib */,
+				4C93BAE815FF4C71009677C3 /* MeetingView3.xib */,
+				4C9220CE15EB6D4F00B5E74A /* IconsDiv */,
+				4CEF445E15E77A18007C458F /* Supporting Files */,
+				4CEF449615E79409007C458F /* MeeRoo2DataController.h */,
+				4CEF449715E79409007C458F /* MeeRoo2DataController.m */,
+				4CEF449915E79438007C458F /* Configuration2ViewController.h */,
+				4CEF449A15E79438007C458F /* Configuration2ViewController.m */,
+				4C9220C215EB642900B5E74A /* TotalViewController2.h */,
+				4C9220C315EB642900B5E74A /* TotalViewController2.m */,
+				4C1E362D169AE9AA00CB5256 /* Info.txt */,
+			);
+			path = MeeRoo2;
+			sourceTree = "<group>";
+		};
+		4CEF445E15E77A18007C458F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				4CEF445F15E77A18007C458F /* MeeRoo2-Info.plist */,
+				4CEF446015E77A18007C458F /* InfoPlist.strings */,
+				4CEF446315E77A18007C458F /* main.m */,
+				4CEF446515E77A18007C458F /* MeeRoo2-Prefix.pch */,
+				4C9042891680772700B65FDE /* BookingVC.h */,
+				4C90428A1680772700B65FDE /* BookingVC.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		4CEF447E15E77A18007C458F /* MeeRoo2Tests */ = {
+			isa = PBXGroup;
+			children = (
+				4CEF448415E77A18007C458F /* MeeRoo2Tests.h */,
+				4CEF448515E77A18007C458F /* MeeRoo2Tests.m */,
+				4CEF447F15E77A18007C458F /* Supporting Files */,
+			);
+			path = MeeRoo2Tests;
+			sourceTree = "<group>";
+		};
+		4CEF447F15E77A18007C458F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				4CEF448015E77A18007C458F /* MeeRoo2Tests-Info.plist */,
+				4CEF448115E77A18007C458F /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		4CEF445215E77A18007C458F /* MeeRoo2 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4CEF448915E77A18007C458F /* Build configuration list for PBXNativeTarget "MeeRoo2" */;
+			buildPhases = (
+				4CEF444F15E77A18007C458F /* Sources */,
+				4CEF445015E77A18007C458F /* Frameworks */,
+				4CEF445115E77A18007C458F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MeeRoo2;
+			productName = MeeRoo2;
+			productReference = 4CEF445315E77A18007C458F /* MeeRoo2.app */;
+			productType = "com.apple.product-type.application";
+		};
+		4CEF447615E77A18007C458F /* MeeRoo2Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4CEF448C15E77A18007C458F /* Build configuration list for PBXNativeTarget "MeeRoo2Tests" */;
+			buildPhases = (
+				4CEF447215E77A18007C458F /* Sources */,
+				4CEF447315E77A18007C458F /* Frameworks */,
+				4CEF447415E77A18007C458F /* Resources */,
+				4CEF447515E77A18007C458F /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4CEF447D15E77A18007C458F /* PBXTargetDependency */,
+			);
+			name = MeeRoo2Tests;
+			productName = MeeRoo2Tests;
+			productReference = 4CEF447715E77A18007C458F /* MeeRoo2Tests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		4CEF444A15E77A18007C458F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0440;
+				ORGANIZATIONNAME = "Maria Maria";
+			};
+			buildConfigurationList = 4CEF444D15E77A18007C458F /* Build configuration list for PBXProject "MeeRoo2" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 4CEF444815E77A18007C458F;
+			productRefGroup = 4CEF445415E77A18007C458F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				4CEF445215E77A18007C458F /* MeeRoo2 */,
+				4CEF447615E77A18007C458F /* MeeRoo2Tests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		4CEF445115E77A18007C458F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4CEF446215E77A18007C458F /* InfoPlist.strings in Resources */,
+				4CEF446E15E77A18007C458F /* ViewController_iPhone.xib in Resources */,
+				4CEF447115E77A18007C458F /* ViewController_iPad.xib in Resources */,
+				4C9220D015EB6D6000B5E74A /* 1024x768_gronn.jpg in Resources */,
+				4C9220D215EB6D6900B5E74A /* background-table.png in Resources */,
+				4C9220D415EB6D7000B5E74A /* background.png in Resources */,
+				4C9220D615EB6D7700B5E74A /* omkantega_bakgrunn.png in Resources */,
+				4C9220D815EB6D7D00B5E74A /* edit_icon.png in Resources */,
+				4CE9486D15F9F21A009E1821 /* MeetingView2.xib in Resources */,
+				4C93BAF115FF50CD009677C3 /* MeetingView3.xib in Resources */,
+				4CC57B6C16119E0A0039BBC0 /* icon2.png in Resources */,
+				4CC57B6D16119E0A0039BBC0 /* icon3.png in Resources */,
+				4CC57B751611BA860039BBC0 /* icon1.png in Resources */,
+				4CC57B7D1611BD0A0039BBC0 /* icon1a.png in Resources */,
+				4CC57B7F1611BE2B0039BBC0 /* icon1b.png in Resources */,
+				4C1AD4651678B0BD00C817C1 /* BookingDesign.xib in Resources */,
+				4C7934B4167F5542001C7F92 /* meny.jpg in Resources */,
+				4C7934B5167F5542001C7F92 /* oslo.png in Resources */,
+				4C7934B6167F5542001C7F92 /* oslo@2x.png in Resources */,
+				4C7934B7167F5542001C7F92 /* trondheim.png in Resources */,
+				4C7934B8167F5542001C7F92 /* trondheim@2x.png in Resources */,
+				4C7934B9167F5542001C7F92 /* instillinger.png in Resources */,
+				4C7934BA167F5542001C7F92 /* instillinger@2x.png in Resources */,
+				4C91939D168351DB00A5BD17 /* BookingEnkel.xib in Resources */,
+				4C1E362E169AE9AA00CB5256 /* Info.txt in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4CEF447415E77A18007C458F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4CEF448315E77A18007C458F /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4CEF447515E77A18007C458F /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4CEF444F15E77A18007C458F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4CEF446415E77A18007C458F /* main.m in Sources */,
+				4CEF446815E77A18007C458F /* AppDelegate.m in Sources */,
+				4CEF449815E79409007C458F /* MeeRoo2DataController.m in Sources */,
+				4CEF449B15E79438007C458F /* Configuration2ViewController.m in Sources */,
+				4CEF449E15E7AF48007C458F /* Meeting2.m in Sources */,
+				4CEF44A115E7AF5F007C458F /* Configuration2.m in Sources */,
+				4CEF44A415E7AF7C007C458F /* MeetingRoom2.m in Sources */,
+				4CEF44A715E7AFC6007C458F /* DateUtil2.m in Sources */,
+				4C9220C015EB630100B5E74A /* AppointmentsRow2.m in Sources */,
+				4C9220C415EB642900B5E74A /* TotalViewController2.m in Sources */,
+				4C9220C715EB65C900B5E74A /* SlidingView2.m in Sources */,
+				4C9220CA15EB660D00B5E74A /* MeetingView2.m in Sources */,
+				4C9220CD15EB6C2C00B5E74A /* CustomScrollView2.m in Sources */,
+				4C93BAED15FF4E50009677C3 /* Timeplanlapp.m in Sources */,
+				4C93BAF015FF4E5D009677C3 /* TimeplanlappView.m in Sources */,
+				4C1AD4631678958800C817C1 /* BookingView.m in Sources */,
+				4C90428B1680772700B65FDE /* BookingVC.m in Sources */,
+				4C99B76716A8008F00C1ED96 /* MidlertidigVC.m in Sources */,
+				5D81395516AE9CF7003FFE6F /* MeeRooViewController3.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4CEF447215E77A18007C458F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4CEF448615E77A18007C458F /* MeeRoo2Tests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		4CEF447D15E77A18007C458F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4CEF445215E77A18007C458F /* MeeRoo2 */;
+			targetProxy = 4CEF447C15E77A18007C458F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		4CEF446015E77A18007C458F /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4CEF446115E77A18007C458F /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		4CEF446C15E77A18007C458F /* ViewController_iPhone.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4CEF446D15E77A18007C458F /* en */,
+			);
+			name = ViewController_iPhone.xib;
+			sourceTree = "<group>";
+		};
+		4CEF446F15E77A18007C458F /* ViewController_iPad.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4CEF447015E77A18007C458F /* en */,
+			);
+			name = ViewController_iPad.xib;
+			sourceTree = "<group>";
+		};
+		4CEF448115E77A18007C458F /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4CEF448215E77A18007C458F /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		4CEF448715E77A18007C458F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Maria Novikova (8Z57GK7Q3P)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "CB30C04B-BE93-42C6-85E5-5561C4C76F55";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		4CEF448815E77A18007C458F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Maria Novikova (8Z57GK7Q3P)";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "CB30C04B-BE93-42C6-85E5-5561C4C76F55";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		4CEF448A15E77A18007C458F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MeeRoo2/MeeRoo2-Prefix.pch";
+				INFOPLIST_FILE = "MeeRoo2/MeeRoo2-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 2;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		4CEF448B15E77A18007C458F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MeeRoo2/MeeRoo2-Prefix.pch";
+				INFOPLIST_FILE = "MeeRoo2/MeeRoo2-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 2;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		4CEF448D15E77A18007C458F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/MeeRoo2.app/MeeRoo2";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MeeRoo2/MeeRoo2-Prefix.pch";
+				INFOPLIST_FILE = "MeeRoo2Tests/MeeRoo2Tests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		4CEF448E15E77A18007C458F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/MeeRoo2.app/MeeRoo2";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MeeRoo2/MeeRoo2-Prefix.pch";
+				INFOPLIST_FILE = "MeeRoo2Tests/MeeRoo2Tests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4CEF444D15E77A18007C458F /* Build configuration list for PBXProject "MeeRoo2" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4CEF448715E77A18007C458F /* Debug */,
+				4CEF448815E77A18007C458F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4CEF448915E77A18007C458F /* Build configuration list for PBXNativeTarget "MeeRoo2" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4CEF448A15E77A18007C458F /* Debug */,
+				4CEF448B15E77A18007C458F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4CEF448C15E77A18007C458F /* Build configuration list for PBXNativeTarget "MeeRoo2Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4CEF448D15E77A18007C458F /* Debug */,
+				4CEF448E15E77A18007C458F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 4CEF444A15E77A18007C458F /* Project object */;
+}
