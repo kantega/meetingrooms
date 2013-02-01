@@ -388,113 +388,33 @@
     
     
     int currentBoxOffset = 0;
+    int previousBoxWidth = 0;
     
     index = 0;
     
     for (Meeting2 *meeting in todaysMeetings) {
         //NSLog(@"Adding room to scrollview at index: %i", index);
-        CGFloat boxWidth = self.scrollView.smallBoxWidth;
-        CGFloat boxHeight = self.scrollView.smallBoxHeight;
-        if (index == currentMeetingIndex) {
-            //NSLog(@"inside if statement index == currentMeetingIndex");
-            boxWidth = self.scrollView.largeBoxWidth;
-            boxHeight = self.scrollView.largeBoxHeight;
-        } 
+        CGFloat boxWidth = index == currentMeetingIndex ? self.scrollView.largeBoxWidth : self.scrollView.smallBoxWidth;
+        CGFloat boxHeight = index == currentMeetingIndex ? self.scrollView.largeBoxHeight : self.scrollView.smallBoxHeight;
         
-        
-
-        currentBoxOffset += boxWidth - (self.scrollView.boxSpacing + 80);
- 
-        CGRect frame;
-        
-        //16 jan 13
-        if (currentMeetingIndex == [todaysMeetings count] - 1 && ingenoppdatering == TRUE){
-            NSLog(@"Last index");
-            frame = CGRectMake([self.scrollView leftMostPointAt:index forContentOffset: (currentBoxOffset + boxWidth)], 0, boxWidth, boxHeight);
-            //frame.origin.x += boxWidth;
-            ingenoppdatering = FALSE;
-            
-        //}else if (index == (currentMeetingIndex - 1) && index != 0){
-        } else if (index == (currentMeetingIndex - 1) && currentMeetingIndex == 0){ // (index != 0 || currentMeetingIndex == 0)){
-            
-            //NSLog(@"- 1");
-            //16 jan 12
-            frame = CGRectMake([self.scrollView leftMostPointAt:index forContentOffset: (currentBoxOffset + boxWidth)], 0, boxWidth, boxHeight);
-            //frame.origin.x -= boxWidth;
-            
-            //NSLog(@"frame.origin.x %f", frame.origin.x);
-        }else if (currentMeetingIndex == [todaysMeetings count] - 1 && ingenoppdatering){
-            NSLog(@"Last index");
-            frame = CGRectMake([self.scrollView leftMostPointAt:index forContentOffset: (currentBoxOffset + boxWidth)], 0, boxWidth, boxHeight);
-            frame.origin.x -= boxWidth;
-            ingenoppdatering = FALSE;
-            
-            
-        } else if(index == currentMeetingIndex){
-            frame = CGRectMake([self.scrollView leftMostPointAt:index forContentOffset:currentBoxOffset], 0, boxWidth, boxHeight);
-            //16 jan 13: Avgjørende for å unngå overlapping!
-            frame.origin.x = [self.scrollView leftMostPointAt:index forContentOffset:self.scrollView.contentOffset.x];
-            
-            ingenoppdatering = FALSE;
-        }
-        
-        //16 jan 13:
-        //To else if-tester, fordi nåværende møtelapp må ikke bli overlappet av bakerst eller forrest møtelapp
-        //Håper dette fikset alt?
-        else if (index < currentMeetingIndex){ // && index != (currentMeetingIndex - 1)){
-            
-            //NSLog(@"index <");
-            frame = CGRectMake([self.scrollView leftMostPointAt:index forContentOffset:currentBoxOffset + boxWidth + self.scrollView.boxSpacing], 0, boxWidth, boxHeight);
-            
-            //16.jan 13: det må være "minus boxWidth", ikke "+ boxWidth", dette var den siste linjen som fikser det for alltid!
-            //16 jan 13: Avgjørende for å unngå overlapping!
-            frame.origin.x = [self.scrollView leftMostPointAt:index forContentOffset:self.scrollView.contentOffset.x + boxWidth + self.scrollView.boxSpacing];
-            //frame.origin.x += boxWidth;
-            
-            ingenoppdatering = FALSE;
-
-
-
-        
-        } else if (index > currentMeetingIndex){
-            
-            //NSLog(@"index >");
-            
-            //16 jan 12
-            frame = CGRectMake([self.scrollView leftMostPointAt:index forContentOffset:currentBoxOffset - (boxWidth + (self.scrollView.boxSpacing * 2))], 0, boxWidth, boxHeight);
-            
-            //16.jan 13: det må være "minus boxWidth", ikke "+ boxWidth", dette var den siste linjen som fikser det for alltid!
-            //16 jan 13: Avgjørende for å unngå overlapping!
-            frame.origin.x = [self.scrollView leftMostPointAt:index forContentOffset:self.scrollView.contentOffset.x - (boxWidth + (self.scrollView.boxSpacing * 2))];
-            
-            ingenoppdatering = FALSE;
-
-            
-        }
-        
+        currentBoxOffset += (previousBoxWidth + self.scrollView.boxSpacing);
+        CGRect frame = CGRectMake(currentBoxOffset, 0, boxWidth, boxHeight);
         
         ingenoppdatering = FALSE;
-        
-
-        //NSLog(@"index = %i", index);
-    
         
         //23.okt 12
         //dette for å vise "Tom" om det er tom subject i serveren.
         if ([meeting.subject isEqualToString:@""]){
-            
-            //NSLog(@"meeting subject is nil");
             meeting.subject = @"Opptatt";
-            
         }
-        
-        //NSLog(@"frame.origin.x is %f", frame.origin.x);
-        
-        SlidingView2 *meetingView = [[SlidingView2 alloc] initWithFrame:frame headline:[meeting subject] start:[DateUtil2 hourAndMinutes:[meeting start]] stop:[DateUtil2 hourAndMinutes:[meeting end]] owner:[meeting owner]];
+        SlidingView2 *meetingView = [[SlidingView2 alloc] initWithFrame:frame headline:[meeting subject]
+                                                                  start:[DateUtil2 hourAndMinutes:[meeting start]] stop:[DateUtil2
+                                                                                                                         hourAndMinutes:[meeting end]] owner:[meeting owner]];
         
         [self.scrollView addSubview:meetingView];
-        [meetingView release];        
+        [meetingView release];
         index++;
+        previousBoxWidth = boxWidth;
     }
     
     [self.scrollView setShowsHorizontalScrollIndicator:YES];
