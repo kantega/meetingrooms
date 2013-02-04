@@ -587,6 +587,8 @@
     
     //NSLog(@"view did scroll");
     
+    // TODO hva skjer hvis count <= 2 ??
+    
     if ([[scrollView2 subviews] count] > 2) {
         float contentOffset = scrollView2.contentOffset.x;
         int leavingElementIndex = [self.scrollView indexOfElementLeavingScene:scrollView2.contentOffset.x];
@@ -607,17 +609,16 @@
                 scalePerentage = 1;
             }
             
-            //11 jan 13: Årsaken til denne overlapping?
-            //16 jan 13: Nei
-            enteringFrame.size.width = self.scrollView.smallBoxWidth + (self.scrollView.smallBoxWidth * scalePerentage); // - self.scrollView.boxSpacing;
+            enteringFrame.size.width = self.scrollView.smallBoxWidth + (self.scrollView.smallBoxWidth * scalePerentage);
             enteringFrame.size.height = self.scrollView.smallBoxHeight + (self.scrollView.smallBoxHeight * scalePerentage);
-            enteringFrame.origin.x = [self.scrollView leftMostPointAt:entereingElementIndex forContentOffset:scrollView2.contentOffset.x] - (self.scrollView.smallBoxWidth * scalePerentage);
+            enteringFrame.origin.x = [self.scrollView leftMostPointAt:entereingElementIndex forContentOffset:contentOffset] - (self.scrollView.smallBoxWidth * scalePerentage);
             
             [[[scrollView2 subviews] objectAtIndex:entereingElementIndex] setFrame:enteringFrame];
             
             
-            leavingFrame.size.width = self.scrollView.largeBoxWidth - (self.scrollView.smallBoxWidth * scalePerentage); // - self.scrollView.boxSpacing;
+            leavingFrame.size.width = self.scrollView.largeBoxWidth - (self.scrollView.smallBoxWidth * scalePerentage); 
             leavingFrame.size.height = self.scrollView.largeBoxHeight - (self.scrollView.smallBoxHeight * scalePerentage);
+            leavingFrame.origin.x = [self.scrollView leftMostPointAt:leavingElementIndex forContentOffset:contentOffset];
             
             [[[scrollView2 subviews] objectAtIndex:leavingElementIndex] setFrame:leavingFrame];
             
@@ -628,7 +629,7 @@
                     CGRect frame = view.frame;
                     frame.size.width = self.scrollView.smallBoxWidth;
                     frame.size.height = self.scrollView.smallBoxHeight;
-                    frame.origin.x = [self.scrollView leftMostPointAt:index forContentOffset:scrollView2.contentOffset.x];
+                    frame.origin.x = [self.scrollView leftMostPointAt:index forContentOffset:contentOffset];
                     [view setFrame:frame];
                 }
                 
