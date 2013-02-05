@@ -1,0 +1,637 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4C27BBD316BFDEEE000D0DD5 /* BookingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C27BBCC16BFDEEE000D0DD5 /* BookingView.m */; };
+		4C27BBD416BFDEEE000D0DD5 /* CustomScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C27BBCE16BFDEEE000D0DD5 /* CustomScrollView.m */; };
+		4C27BBD516BFDEEE000D0DD5 /* MeetingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C27BBD016BFDEEE000D0DD5 /* MeetingView.m */; };
+		4C27BBD616BFDEEE000D0DD5 /* SlidingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C27BBD216BFDEEE000D0DD5 /* SlidingView.m */; };
+		4C27BBDA16BFDFF4000D0DD5 /* TimeplanlappTimerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C27BBD916BFDFF4000D0DD5 /* TimeplanlappTimerView.m */; };
+		4C27BBDD16BFE06F000D0DD5 /* TimeplanlappView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C27BBDC16BFE06F000D0DD5 /* TimeplanlappView.m */; };
+		4C401E3216C0002D008B2082 /* 1024x768_gronn.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4C401E3116C0002D008B2082 /* 1024x768_gronn.jpg */; };
+		4C8784C916C00D1D0096ECF5 /* MeetingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C9DB62916BFF59900ED6836 /* MeetingView.xib */; };
+		4C9DB61616BFF38D00ED6836 /* background-table.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C9DB60716BFF38D00ED6836 /* background-table.png */; };
+		4C9DB61716BFF38D00ED6836 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C9DB60816BFF38D00ED6836 /* background.png */; };
+		4C9DB61816BFF38D00ED6836 /* edit_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C9DB60916BFF38D00ED6836 /* edit_icon.png */; };
+		4C9DB61916BFF38D00ED6836 /* icon1.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C9DB60A16BFF38D00ED6836 /* icon1.png */; };
+		4C9DB61A16BFF38D00ED6836 /* icon1a.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C9DB60B16BFF38D00ED6836 /* icon1a.png */; };
+		4C9DB61B16BFF38D00ED6836 /* icon1b.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C9DB60C16BFF38D00ED6836 /* icon1b.png */; };
+		4C9DB61C16BFF38D00ED6836 /* icon2.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C9DB60D16BFF38D00ED6836 /* icon2.png */; };
+		4C9DB61D16BFF38D00ED6836 /* icon3.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C9DB60E16BFF38D00ED6836 /* icon3.png */; };
+		4C9DB61E16BFF38D00ED6836 /* instillinger.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C9DB60F16BFF38D00ED6836 /* instillinger.png */; };
+		4C9DB61F16BFF38D00ED6836 /* instillinger@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C9DB61016BFF38D00ED6836 /* instillinger@2x.png */; };
+		4C9DB62016BFF38D00ED6836 /* omkantega_bakgrunn.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C9DB61116BFF38D00ED6836 /* omkantega_bakgrunn.png */; };
+		4C9DB62116BFF38D00ED6836 /* oslo.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C9DB61216BFF38D00ED6836 /* oslo.png */; };
+		4C9DB62216BFF38D00ED6836 /* oslo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C9DB61316BFF38D00ED6836 /* oslo@2x.png */; };
+		4C9DB62316BFF38D00ED6836 /* trondheim.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C9DB61416BFF38D00ED6836 /* trondheim.png */; };
+		4C9DB62416BFF38D00ED6836 /* trondheim@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C9DB61516BFF38D00ED6836 /* trondheim@2x.png */; };
+		4C9DB62B16BFF59900ED6836 /* BookingDesign.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C9DB62616BFF59900ED6836 /* BookingDesign.xib */; };
+		4C9DB62C16BFF59900ED6836 /* BookingEnkel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C9DB62716BFF59900ED6836 /* BookingEnkel.xib */; };
+		4C9DB62F16BFF59900ED6836 /* MeetingView3.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C9DB62A16BFF59900ED6836 /* MeetingView3.xib */; };
+		4CEC555D16BFD05600CCE999 /* KantokoDataController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CEC555C16BFD05600CCE999 /* KantokoDataController.m */; };
+		4CEC556416BFD16D00CCE999 /* Configuration.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CEC555F16BFD16D00CCE999 /* Configuration.m */; };
+		4CEC556516BFD16D00CCE999 /* Meeting.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CEC556116BFD16D00CCE999 /* Meeting.m */; };
+		4CEC556616BFD16D00CCE999 /* MeetingRoom.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CEC556316BFD16D00CCE999 /* MeetingRoom.m */; };
+		4CEC556F16BFD50000CCE999 /* DateUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CEC556E16BFD50000CCE999 /* DateUtil.m */; };
+		4CEC557B16BFD7C900CCE999 /* ConfigurationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CEC557A16BFD7C900CCE999 /* ConfigurationViewController.m */; };
+		4CEC557E16BFD86700CCE999 /* TotalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CEC557D16BFD86600CCE999 /* TotalViewController.m */; };
+		4CEC558216BFDCCF00CCE999 /* AppointmentsRowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CEC558116BFDCCF00CCE999 /* AppointmentsRowView.m */; };
+		4CED0AC316BFC41900049A31 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CED0AC216BFC41900049A31 /* UIKit.framework */; };
+		4CED0AC516BFC41900049A31 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CED0AC416BFC41900049A31 /* Foundation.framework */; };
+		4CED0AC716BFC41900049A31 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CED0AC616BFC41900049A31 /* CoreGraphics.framework */; };
+		4CED0ACD16BFC41900049A31 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4CED0ACB16BFC41900049A31 /* InfoPlist.strings */; };
+		4CED0ACF16BFC41900049A31 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CED0ACE16BFC41900049A31 /* main.m */; };
+		4CED0AD316BFC41900049A31 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CED0AD216BFC41900049A31 /* AppDelegate.m */; };
+		4CED0ADB16BFC41A00049A31 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CED0ADA16BFC41A00049A31 /* SenTestingKit.framework */; };
+		4CED0ADC16BFC41A00049A31 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CED0AC216BFC41900049A31 /* UIKit.framework */; };
+		4CED0ADD16BFC41A00049A31 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CED0AC416BFC41900049A31 /* Foundation.framework */; };
+		4CED0AE516BFC41A00049A31 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4CED0AE316BFC41A00049A31 /* InfoPlist.strings */; };
+		4CED0AE816BFC41A00049A31 /* kantokoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CED0AE716BFC41A00049A31 /* kantokoTests.m */; };
+		4CFAF1D016BFCAD8008B556E /* KantokoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CFAF1CF16BFCAD8008B556E /* KantokoViewController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		4CED0ADE16BFC41A00049A31 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4CED0AB516BFC41900049A31 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4CED0ABD16BFC41900049A31;
+			remoteInfo = kantoko;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		4C27BBCB16BFDEEE000D0DD5 /* BookingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookingView.h; sourceTree = "<group>"; };
+		4C27BBCC16BFDEEE000D0DD5 /* BookingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookingView.m; sourceTree = "<group>"; };
+		4C27BBCD16BFDEEE000D0DD5 /* CustomScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomScrollView.h; sourceTree = "<group>"; };
+		4C27BBCE16BFDEEE000D0DD5 /* CustomScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomScrollView.m; sourceTree = "<group>"; };
+		4C27BBCF16BFDEEE000D0DD5 /* MeetingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeetingView.h; sourceTree = "<group>"; };
+		4C27BBD016BFDEEE000D0DD5 /* MeetingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeetingView.m; sourceTree = "<group>"; };
+		4C27BBD116BFDEEE000D0DD5 /* SlidingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlidingView.h; sourceTree = "<group>"; };
+		4C27BBD216BFDEEE000D0DD5 /* SlidingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlidingView.m; sourceTree = "<group>"; };
+		4C27BBD816BFDFF4000D0DD5 /* TimeplanlappTimerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeplanlappTimerView.h; sourceTree = "<group>"; };
+		4C27BBD916BFDFF4000D0DD5 /* TimeplanlappTimerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeplanlappTimerView.m; sourceTree = "<group>"; };
+		4C27BBDB16BFE06F000D0DD5 /* TimeplanlappView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeplanlappView.h; sourceTree = "<group>"; };
+		4C27BBDC16BFE06F000D0DD5 /* TimeplanlappView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeplanlappView.m; sourceTree = "<group>"; };
+		4C401E3116C0002D008B2082 /* 1024x768_gronn.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = 1024x768_gronn.jpg; path = resources/1024x768_gronn.jpg; sourceTree = "<group>"; };
+		4C9DB60716BFF38D00ED6836 /* background-table.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "background-table.png"; path = "resources/background-table.png"; sourceTree = "<group>"; };
+		4C9DB60816BFF38D00ED6836 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = background.png; path = resources/background.png; sourceTree = "<group>"; };
+		4C9DB60916BFF38D00ED6836 /* edit_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = edit_icon.png; path = resources/edit_icon.png; sourceTree = "<group>"; };
+		4C9DB60A16BFF38D00ED6836 /* icon1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon1.png; path = resources/icon1.png; sourceTree = "<group>"; };
+		4C9DB60B16BFF38D00ED6836 /* icon1a.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon1a.png; path = resources/icon1a.png; sourceTree = "<group>"; };
+		4C9DB60C16BFF38D00ED6836 /* icon1b.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon1b.png; path = resources/icon1b.png; sourceTree = "<group>"; };
+		4C9DB60D16BFF38D00ED6836 /* icon2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon2.png; path = resources/icon2.png; sourceTree = "<group>"; };
+		4C9DB60E16BFF38D00ED6836 /* icon3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon3.png; path = resources/icon3.png; sourceTree = "<group>"; };
+		4C9DB60F16BFF38D00ED6836 /* instillinger.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = instillinger.png; path = resources/instillinger.png; sourceTree = "<group>"; };
+		4C9DB61016BFF38D00ED6836 /* instillinger@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "instillinger@2x.png"; path = "resources/instillinger@2x.png"; sourceTree = "<group>"; };
+		4C9DB61116BFF38D00ED6836 /* omkantega_bakgrunn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = omkantega_bakgrunn.png; path = resources/omkantega_bakgrunn.png; sourceTree = "<group>"; };
+		4C9DB61216BFF38D00ED6836 /* oslo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = oslo.png; path = resources/oslo.png; sourceTree = "<group>"; };
+		4C9DB61316BFF38D00ED6836 /* oslo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "oslo@2x.png"; path = "resources/oslo@2x.png"; sourceTree = "<group>"; };
+		4C9DB61416BFF38D00ED6836 /* trondheim.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = trondheim.png; path = resources/trondheim.png; sourceTree = "<group>"; };
+		4C9DB61516BFF38D00ED6836 /* trondheim@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "trondheim@2x.png"; path = "resources/trondheim@2x.png"; sourceTree = "<group>"; };
+		4C9DB62616BFF59900ED6836 /* BookingDesign.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BookingDesign.xib; sourceTree = "<group>"; };
+		4C9DB62716BFF59900ED6836 /* BookingEnkel.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BookingEnkel.xib; sourceTree = "<group>"; };
+		4C9DB62916BFF59900ED6836 /* MeetingView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MeetingView.xib; sourceTree = "<group>"; };
+		4C9DB62A16BFF59900ED6836 /* MeetingView3.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MeetingView3.xib; sourceTree = "<group>"; };
+		4CEC555B16BFD05600CCE999 /* KantokoDataController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KantokoDataController.h; sourceTree = "<group>"; };
+		4CEC555C16BFD05600CCE999 /* KantokoDataController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KantokoDataController.m; sourceTree = "<group>"; };
+		4CEC555E16BFD16D00CCE999 /* Configuration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Configuration.h; sourceTree = "<group>"; };
+		4CEC555F16BFD16D00CCE999 /* Configuration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Configuration.m; sourceTree = "<group>"; };
+		4CEC556016BFD16D00CCE999 /* Meeting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Meeting.h; sourceTree = "<group>"; };
+		4CEC556116BFD16D00CCE999 /* Meeting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Meeting.m; sourceTree = "<group>"; };
+		4CEC556216BFD16D00CCE999 /* MeetingRoom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeetingRoom.h; sourceTree = "<group>"; };
+		4CEC556316BFD16D00CCE999 /* MeetingRoom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeetingRoom.m; sourceTree = "<group>"; };
+		4CEC556D16BFD50000CCE999 /* DateUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateUtil.h; sourceTree = "<group>"; };
+		4CEC556E16BFD50000CCE999 /* DateUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateUtil.m; sourceTree = "<group>"; };
+		4CEC557916BFD7C900CCE999 /* ConfigurationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfigurationViewController.h; sourceTree = "<group>"; };
+		4CEC557A16BFD7C900CCE999 /* ConfigurationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfigurationViewController.m; sourceTree = "<group>"; };
+		4CEC557C16BFD86600CCE999 /* TotalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TotalViewController.h; sourceTree = "<group>"; };
+		4CEC557D16BFD86600CCE999 /* TotalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TotalViewController.m; sourceTree = "<group>"; };
+		4CEC558016BFDCCF00CCE999 /* AppointmentsRowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppointmentsRowView.h; sourceTree = "<group>"; };
+		4CEC558116BFDCCF00CCE999 /* AppointmentsRowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppointmentsRowView.m; sourceTree = "<group>"; };
+		4CED0ABE16BFC41900049A31 /* kantoko.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = kantoko.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4CED0AC216BFC41900049A31 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		4CED0AC416BFC41900049A31 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		4CED0AC616BFC41900049A31 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		4CED0ACA16BFC41900049A31 /* kantoko-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "kantoko-Info.plist"; sourceTree = "<group>"; };
+		4CED0ACC16BFC41900049A31 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		4CED0ACE16BFC41900049A31 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		4CED0AD016BFC41900049A31 /* kantoko-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "kantoko-Prefix.pch"; sourceTree = "<group>"; };
+		4CED0AD116BFC41900049A31 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		4CED0AD216BFC41900049A31 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		4CED0AD916BFC41A00049A31 /* kantokoTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = kantokoTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4CED0ADA16BFC41A00049A31 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		4CED0AE216BFC41A00049A31 /* kantokoTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "kantokoTests-Info.plist"; sourceTree = "<group>"; };
+		4CED0AE416BFC41A00049A31 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		4CED0AE616BFC41A00049A31 /* kantokoTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = kantokoTests.h; sourceTree = "<group>"; };
+		4CED0AE716BFC41A00049A31 /* kantokoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = kantokoTests.m; sourceTree = "<group>"; };
+		4CFAF1CE16BFCAD8008B556E /* KantokoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KantokoViewController.h; sourceTree = "<group>"; };
+		4CFAF1CF16BFCAD8008B556E /* KantokoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KantokoViewController.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		4CED0ABB16BFC41900049A31 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4CED0AC316BFC41900049A31 /* UIKit.framework in Frameworks */,
+				4CED0AC516BFC41900049A31 /* Foundation.framework in Frameworks */,
+				4CED0AC716BFC41900049A31 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4CED0AD516BFC41A00049A31 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4CED0ADB16BFC41A00049A31 /* SenTestingKit.framework in Frameworks */,
+				4CED0ADC16BFC41A00049A31 /* UIKit.framework in Frameworks */,
+				4CED0ADD16BFC41A00049A31 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4C9DB60516BFF34900ED6836 /* resources */ = {
+			isa = PBXGroup;
+			children = (
+				4C401E3116C0002D008B2082 /* 1024x768_gronn.jpg */,
+				4C9DB60716BFF38D00ED6836 /* background-table.png */,
+				4C9DB60816BFF38D00ED6836 /* background.png */,
+				4C9DB60916BFF38D00ED6836 /* edit_icon.png */,
+				4C9DB60A16BFF38D00ED6836 /* icon1.png */,
+				4C9DB60B16BFF38D00ED6836 /* icon1a.png */,
+				4C9DB60C16BFF38D00ED6836 /* icon1b.png */,
+				4C9DB60D16BFF38D00ED6836 /* icon2.png */,
+				4C9DB60E16BFF38D00ED6836 /* icon3.png */,
+				4C9DB60F16BFF38D00ED6836 /* instillinger.png */,
+				4C9DB61016BFF38D00ED6836 /* instillinger@2x.png */,
+				4C9DB61116BFF38D00ED6836 /* omkantega_bakgrunn.png */,
+				4C9DB61216BFF38D00ED6836 /* oslo.png */,
+				4C9DB61316BFF38D00ED6836 /* oslo@2x.png */,
+				4C9DB61416BFF38D00ED6836 /* trondheim.png */,
+				4C9DB61516BFF38D00ED6836 /* trondheim@2x.png */,
+			);
+			name = resources;
+			sourceTree = "<group>";
+		};
+		4C9DB62516BFF57100ED6836 /* layout */ = {
+			isa = PBXGroup;
+			children = (
+				4C9DB62916BFF59900ED6836 /* MeetingView.xib */,
+				4C9DB62616BFF59900ED6836 /* BookingDesign.xib */,
+				4C9DB62716BFF59900ED6836 /* BookingEnkel.xib */,
+				4C9DB62A16BFF59900ED6836 /* MeetingView3.xib */,
+			);
+			path = layout;
+			sourceTree = "<group>";
+		};
+		4CEC557F16BFDCC200CCE999 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				4C27BBDC16BFE06F000D0DD5 /* TimeplanlappView.m */,
+				4C27BBDB16BFE06F000D0DD5 /* TimeplanlappView.h */,
+				4C27BBD816BFDFF4000D0DD5 /* TimeplanlappTimerView.h */,
+				4C27BBD916BFDFF4000D0DD5 /* TimeplanlappTimerView.m */,
+				4C27BBCB16BFDEEE000D0DD5 /* BookingView.h */,
+				4C27BBCC16BFDEEE000D0DD5 /* BookingView.m */,
+				4C27BBCD16BFDEEE000D0DD5 /* CustomScrollView.h */,
+				4C27BBCE16BFDEEE000D0DD5 /* CustomScrollView.m */,
+				4C27BBCF16BFDEEE000D0DD5 /* MeetingView.h */,
+				4C27BBD016BFDEEE000D0DD5 /* MeetingView.m */,
+				4C27BBD116BFDEEE000D0DD5 /* SlidingView.h */,
+				4C27BBD216BFDEEE000D0DD5 /* SlidingView.m */,
+				4CEC558016BFDCCF00CCE999 /* AppointmentsRowView.h */,
+				4CEC558116BFDCCF00CCE999 /* AppointmentsRowView.m */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		4CED0AB316BFC41900049A31 = {
+			isa = PBXGroup;
+			children = (
+				4CED0AC816BFC41900049A31 /* kantoko */,
+				4CED0AE016BFC41A00049A31 /* kantokoTests */,
+				4CED0AC116BFC41900049A31 /* Frameworks */,
+				4CED0ABF16BFC41900049A31 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		4CED0ABF16BFC41900049A31 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4CED0ABE16BFC41900049A31 /* kantoko.app */,
+				4CED0AD916BFC41A00049A31 /* kantokoTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4CED0AC116BFC41900049A31 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4CED0AC216BFC41900049A31 /* UIKit.framework */,
+				4CED0AC416BFC41900049A31 /* Foundation.framework */,
+				4CED0AC616BFC41900049A31 /* CoreGraphics.framework */,
+				4CED0ADA16BFC41A00049A31 /* SenTestingKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4CED0AC816BFC41900049A31 /* kantoko */ = {
+			isa = PBXGroup;
+			children = (
+				4C9DB62516BFF57100ED6836 /* layout */,
+				4C9DB60516BFF34900ED6836 /* resources */,
+				4CEC557F16BFDCC200CCE999 /* view */,
+				4CEC557C16BFD86600CCE999 /* TotalViewController.h */,
+				4CEC557D16BFD86600CCE999 /* TotalViewController.m */,
+				4CEC557916BFD7C900CCE999 /* ConfigurationViewController.h */,
+				4CEC557A16BFD7C900CCE999 /* ConfigurationViewController.m */,
+				4CEC556D16BFD50000CCE999 /* DateUtil.h */,
+				4CEC556E16BFD50000CCE999 /* DateUtil.m */,
+				4CEC555B16BFD05600CCE999 /* KantokoDataController.h */,
+				4CEC555C16BFD05600CCE999 /* KantokoDataController.m */,
+				4CFAF1D216BFCE9C008B556E /* model */,
+				4CFAF1CE16BFCAD8008B556E /* KantokoViewController.h */,
+				4CFAF1CF16BFCAD8008B556E /* KantokoViewController.m */,
+				4CED0AD116BFC41900049A31 /* AppDelegate.h */,
+				4CED0AD216BFC41900049A31 /* AppDelegate.m */,
+				4CED0AC916BFC41900049A31 /* Supporting Files */,
+			);
+			path = kantoko;
+			sourceTree = "<group>";
+		};
+		4CED0AC916BFC41900049A31 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				4CED0ACA16BFC41900049A31 /* kantoko-Info.plist */,
+				4CED0ACB16BFC41900049A31 /* InfoPlist.strings */,
+				4CED0ACE16BFC41900049A31 /* main.m */,
+				4CED0AD016BFC41900049A31 /* kantoko-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		4CED0AE016BFC41A00049A31 /* kantokoTests */ = {
+			isa = PBXGroup;
+			children = (
+				4CED0AE616BFC41A00049A31 /* kantokoTests.h */,
+				4CED0AE716BFC41A00049A31 /* kantokoTests.m */,
+				4CED0AE116BFC41A00049A31 /* Supporting Files */,
+			);
+			path = kantokoTests;
+			sourceTree = "<group>";
+		};
+		4CED0AE116BFC41A00049A31 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				4CED0AE216BFC41A00049A31 /* kantokoTests-Info.plist */,
+				4CED0AE316BFC41A00049A31 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		4CFAF1D216BFCE9C008B556E /* model */ = {
+			isa = PBXGroup;
+			children = (
+				4CEC555E16BFD16D00CCE999 /* Configuration.h */,
+				4CEC555F16BFD16D00CCE999 /* Configuration.m */,
+				4CEC556016BFD16D00CCE999 /* Meeting.h */,
+				4CEC556116BFD16D00CCE999 /* Meeting.m */,
+				4CEC556216BFD16D00CCE999 /* MeetingRoom.h */,
+				4CEC556316BFD16D00CCE999 /* MeetingRoom.m */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		4CED0ABD16BFC41900049A31 /* kantoko */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4CED0AEB16BFC41A00049A31 /* Build configuration list for PBXNativeTarget "kantoko" */;
+			buildPhases = (
+				4CED0ABA16BFC41900049A31 /* Sources */,
+				4CED0ABB16BFC41900049A31 /* Frameworks */,
+				4CED0ABC16BFC41900049A31 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = kantoko;
+			productName = kantoko;
+			productReference = 4CED0ABE16BFC41900049A31 /* kantoko.app */;
+			productType = "com.apple.product-type.application";
+		};
+		4CED0AD816BFC41A00049A31 /* kantokoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4CED0AEE16BFC41A00049A31 /* Build configuration list for PBXNativeTarget "kantokoTests" */;
+			buildPhases = (
+				4CED0AD416BFC41A00049A31 /* Sources */,
+				4CED0AD516BFC41A00049A31 /* Frameworks */,
+				4CED0AD616BFC41A00049A31 /* Resources */,
+				4CED0AD716BFC41A00049A31 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4CED0ADF16BFC41A00049A31 /* PBXTargetDependency */,
+			);
+			name = kantokoTests;
+			productName = kantokoTests;
+			productReference = 4CED0AD916BFC41A00049A31 /* kantokoTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		4CED0AB516BFC41900049A31 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0440;
+				ORGANIZATIONNAME = Kantega;
+			};
+			buildConfigurationList = 4CED0AB816BFC41900049A31 /* Build configuration list for PBXProject "kantoko" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 4CED0AB316BFC41900049A31;
+			productRefGroup = 4CED0ABF16BFC41900049A31 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				4CED0ABD16BFC41900049A31 /* kantoko */,
+				4CED0AD816BFC41A00049A31 /* kantokoTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		4CED0ABC16BFC41900049A31 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4CED0ACD16BFC41900049A31 /* InfoPlist.strings in Resources */,
+				4C9DB61616BFF38D00ED6836 /* background-table.png in Resources */,
+				4C9DB61716BFF38D00ED6836 /* background.png in Resources */,
+				4C9DB61816BFF38D00ED6836 /* edit_icon.png in Resources */,
+				4C9DB61916BFF38D00ED6836 /* icon1.png in Resources */,
+				4C9DB61A16BFF38D00ED6836 /* icon1a.png in Resources */,
+				4C9DB61B16BFF38D00ED6836 /* icon1b.png in Resources */,
+				4C9DB61C16BFF38D00ED6836 /* icon2.png in Resources */,
+				4C9DB61D16BFF38D00ED6836 /* icon3.png in Resources */,
+				4C9DB61E16BFF38D00ED6836 /* instillinger.png in Resources */,
+				4C9DB61F16BFF38D00ED6836 /* instillinger@2x.png in Resources */,
+				4C9DB62016BFF38D00ED6836 /* omkantega_bakgrunn.png in Resources */,
+				4C9DB62116BFF38D00ED6836 /* oslo.png in Resources */,
+				4C9DB62216BFF38D00ED6836 /* oslo@2x.png in Resources */,
+				4C9DB62316BFF38D00ED6836 /* trondheim.png in Resources */,
+				4C9DB62416BFF38D00ED6836 /* trondheim@2x.png in Resources */,
+				4C9DB62B16BFF59900ED6836 /* BookingDesign.xib in Resources */,
+				4C9DB62C16BFF59900ED6836 /* BookingEnkel.xib in Resources */,
+				4C9DB62F16BFF59900ED6836 /* MeetingView3.xib in Resources */,
+				4C401E3216C0002D008B2082 /* 1024x768_gronn.jpg in Resources */,
+				4C8784C916C00D1D0096ECF5 /* MeetingView.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4CED0AD616BFC41A00049A31 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4CED0AE516BFC41A00049A31 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4CED0AD716BFC41A00049A31 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4CED0ABA16BFC41900049A31 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4CED0ACF16BFC41900049A31 /* main.m in Sources */,
+				4CED0AD316BFC41900049A31 /* AppDelegate.m in Sources */,
+				4CFAF1D016BFCAD8008B556E /* KantokoViewController.m in Sources */,
+				4CEC555D16BFD05600CCE999 /* KantokoDataController.m in Sources */,
+				4CEC556416BFD16D00CCE999 /* Configuration.m in Sources */,
+				4CEC556516BFD16D00CCE999 /* Meeting.m in Sources */,
+				4CEC556616BFD16D00CCE999 /* MeetingRoom.m in Sources */,
+				4CEC556F16BFD50000CCE999 /* DateUtil.m in Sources */,
+				4CEC557B16BFD7C900CCE999 /* ConfigurationViewController.m in Sources */,
+				4CEC557E16BFD86700CCE999 /* TotalViewController.m in Sources */,
+				4CEC558216BFDCCF00CCE999 /* AppointmentsRowView.m in Sources */,
+				4C27BBD316BFDEEE000D0DD5 /* BookingView.m in Sources */,
+				4C27BBD416BFDEEE000D0DD5 /* CustomScrollView.m in Sources */,
+				4C27BBD516BFDEEE000D0DD5 /* MeetingView.m in Sources */,
+				4C27BBD616BFDEEE000D0DD5 /* SlidingView.m in Sources */,
+				4C27BBDA16BFDFF4000D0DD5 /* TimeplanlappTimerView.m in Sources */,
+				4C27BBDD16BFE06F000D0DD5 /* TimeplanlappView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4CED0AD416BFC41A00049A31 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4CED0AE816BFC41A00049A31 /* kantokoTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		4CED0ADF16BFC41A00049A31 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4CED0ABD16BFC41900049A31 /* kantoko */;
+			targetProxy = 4CED0ADE16BFC41A00049A31 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		4CED0ACB16BFC41900049A31 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4CED0ACC16BFC41900049A31 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		4CED0AE316BFC41A00049A31 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4CED0AE416BFC41A00049A31 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		4CED0AE916BFC41A00049A31 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Debug;
+		};
+		4CED0AEA16BFC41A00049A31 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		4CED0AEC16BFC41A00049A31 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "kantoko/kantoko-Prefix.pch";
+				INFOPLIST_FILE = "kantoko/kantoko-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		4CED0AED16BFC41A00049A31 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "kantoko/kantoko-Prefix.pch";
+				INFOPLIST_FILE = "kantoko/kantoko-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		4CED0AEF16BFC41A00049A31 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/kantoko.app/kantoko";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "kantoko/kantoko-Prefix.pch";
+				INFOPLIST_FILE = "kantokoTests/kantokoTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		4CED0AF016BFC41A00049A31 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/kantoko.app/kantoko";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "kantoko/kantoko-Prefix.pch";
+				INFOPLIST_FILE = "kantokoTests/kantokoTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4CED0AB816BFC41900049A31 /* Build configuration list for PBXProject "kantoko" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4CED0AE916BFC41A00049A31 /* Debug */,
+				4CED0AEA16BFC41A00049A31 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4CED0AEB16BFC41A00049A31 /* Build configuration list for PBXNativeTarget "kantoko" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4CED0AEC16BFC41A00049A31 /* Debug */,
+				4CED0AED16BFC41A00049A31 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4CED0AEE16BFC41A00049A31 /* Build configuration list for PBXNativeTarget "kantokoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4CED0AEF16BFC41A00049A31 /* Debug */,
+				4CED0AF016BFC41A00049A31 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 4CED0AB516BFC41900049A31 /* Project object */;
+}
