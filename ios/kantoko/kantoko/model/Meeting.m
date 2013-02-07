@@ -7,6 +7,7 @@
 //
 
 #import "Meeting.h"
+#import "DateUtil.h"
 
 @implementation Meeting
 
@@ -28,6 +29,11 @@
 -(BOOL) isNow {
     NSDate *now = [NSDate date];    
     return [now compare:self.start] == NSOrderedDescending && [now compare:self.end] == NSOrderedAscending;
+}
+
+-(BOOL) isPast {
+    NSDate *closestQuarterToNow = [DateUtil roundToClosestQuarter:[NSDate date]];
+    return [closestQuarterToNow compare:self.end] == NSOrderedDescending;
 }
 
 

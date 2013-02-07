@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Meeting.h"
 
 @interface SlidingView : UIView
 {
@@ -19,5 +20,6 @@
 @property (strong, retain) NSString * stopTimestamp;
 @property (strong, retain) NSString * owner;
 
-- (id)initWithFrame:(CGRect)frame headline:(NSString *)headline start:(NSString *)start stop:(NSString *)stop owner:(NSString *)owner;
+- (id)initWithFrame:(CGRect)frame andMeeting:(Meeting *)meeting;
+
 @end

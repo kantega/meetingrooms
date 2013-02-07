@@ -8,22 +8,17 @@
 
 #import "SlidingView.h"
 #import "MeetingView.h"
+#import "Meeting.h"
 
 @implementation SlidingView
 
-//31 aug 12
 @synthesize headline = _headline, startTimestamp = _startTimestamp, stopTimestamp = _stopTimestamp, owner = _owner;
 
 
-- (id)initWithFrame:(CGRect)frame headline:(NSString *)headline start:(NSString *)start stop:(NSString *)stop owner:(NSString *)owner
+- (id)initWithFrame:(CGRect)frame andMeeting:(Meeting *)meeting
 {
     self = [super initWithFrame:frame];
     if (self) {
-  
-        _headline = headline;
-        _startTimestamp = start;
-        _stopTimestamp = stop;
-        _owner = owner;
 
         NSArray* nibViews = [[NSBundle mainBundle] loadNibNamed:@"MeetingView" owner:self options:nil];
         
@@ -35,23 +30,9 @@
                 CGRect currentFrame = [currentObject frame];
                 currentFrame.size.width = containigFrame.size.width;
                 currentFrame.size.height = containigFrame.size.height;
-                //31.aug 12
                 
                 [currentObject setFrame:currentFrame];
-                [currentObject updateHeadline:_headline];
-                [currentObject updateStart:_startTimestamp];
-                [currentObject updateStop:_stopTimestamp];
-                [currentObject updateEier:_owner];
-                 
-                
-                //31 aug 12
-                if ([_headline isEqualToString:@"Ledig"]) {
-
-                    [[currentObject meetingOccupiedIndicator] setBackgroundColor:[UIColor colorWithRed:0.541 green:0.768 blue:0.831 alpha:1]];
-                    
-                }
-                 
-  
+                [currentObject setMeeting:meeting];
                 
                 [self addSubview:currentObject];
             }
@@ -60,14 +41,5 @@
     
     return self;
 }
-
-/*
- // Only override drawRect: if you perform custom drawing.
- // An empty implementation adversely affects performance during animation.
- - (void)drawRect:(CGRect)rect
- {
- // Drawing code
- }
- */
 
 @end

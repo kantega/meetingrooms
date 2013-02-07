@@ -12,6 +12,7 @@
 
 + (NSDate *) roundHourDown:(NSDate *) date;
 + (NSDate *) roundHourUp:(NSDate *) date;
++ (NSDate *) roundToClosestQuarter:(NSDate *) date;
 + (NSString *) hourAndMinutes:(NSDate *) date;
 + (NSDate *)startOfToday;
 + (NSDate *)endOfToday;

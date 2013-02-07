@@ -32,6 +32,23 @@ unsigned unitFlags = NSYearCalendarUnit| NSMonthCalendarUnit | NSDayCalendarUnit
     return [[NSCalendar currentCalendar] dateFromComponents:comps];
 }
 
++ (NSDate *)roundToClosestQuarter:(NSDate *)date {
+    NSDateComponents *comps = [[NSCalendar currentCalendar] components:unitFlags fromDate:date];
+    
+    NSUInteger remainder = ([comps minute] % 15);
+    NSUInteger currentQuarterStartingMinute = [comps minute] - remainder;
+    [comps setMinute:currentQuarterStartingMinute];
+    [comps setSecond:0];
+    
+    NSDate *roundedDate = [[NSCalendar currentCalendar] dateFromComponents:comps]; //[[NSDate alloc] initWithTimeIntervalSince1970:comps.;
+    if (remainder > 7) {
+        NSUInteger fifteenMinutes = 15 * 60;
+        roundedDate = [roundedDate dateByAddingTimeInterval:fifteenMinutes];
+    }
+    return roundedDate;
+}
+
+
 + (NSString *) hourAndMinutes: (NSDate *) date {
     static NSDateFormatter *formatter = nil;
     if (formatter == nil) {
@@ -42,12 +59,10 @@ unsigned unitFlags = NSYearCalendarUnit| NSMonthCalendarUnit | NSDayCalendarUnit
 }
 
 + (NSDate *) startOfToday {
-    NSDate *today = [NSDate date];
-    NSCalendar *gregorian = [[NSCalendar alloc]
-                             initWithCalendarIdentifier:NSGregorianCalendar];
+    NSCalendar *gregorian = [NSCalendar currentCalendar];
     
-    NSDateComponents *dateComponents =
-    [gregorian components:(NSDayCalendarUnit | NSWeekdayCalendarUnit) fromDate:today];
+    NSDate *today = [NSDate date];
+    NSDateComponents *dateComponents = [gregorian components:unitFlags fromDate:today];
     [dateComponents setHour:8];
     [dateComponents setMinute:0];
     
@@ -57,12 +72,10 @@ unsigned unitFlags = NSYearCalendarUnit| NSMonthCalendarUnit | NSDayCalendarUnit
 }
 
 + (NSDate *) endOfToday {
-    NSDate *today = [NSDate date];
-    NSCalendar *gregorian = [[NSCalendar alloc]
-                             initWithCalendarIdentifier:NSGregorianCalendar];
+    NSCalendar *gregorian = [NSCalendar currentCalendar];
     
-    NSDateComponents *dateComponents =
-    [gregorian components:(NSDayCalendarUnit | NSWeekdayCalendarUnit) fromDate:today];
+    NSDate *today = [NSDate date];
+    NSDateComponents *dateComponents = [gregorian components:unitFlags fromDate:today];
     [dateComponents setHour:17];
     [dateComponents setMinute:0];
     

@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "BookingView.h"
 #import "DateUtil.h"
+#import "Meeting.h"
 #import <QuartzCore/QuartzCore.h>
 
 @interface MeetingView : UIView  <UIPickerViewDelegate, UIPickerViewDataSource>{
@@ -30,8 +31,7 @@
     
 }
 
-
-
+@property (strong) Meeting *meeting;
 
 //7 sep 12
 @property (unsafe_unretained, nonatomic) IBOutlet UILabel *headlineLabel;
@@ -41,12 +41,6 @@
 @property (unsafe_unretained, nonatomic) IBOutlet UIView *meetingOccupiedIndicator;
 @property (unsafe_unretained, nonatomic) IBOutlet UIButton *editButton;
 
-//22.okt 12
-
-@property (unsafe_unretained, nonatomic) NSString *startString;
-@property (unsafe_unretained, nonatomic) NSString *stopString;
-@property (unsafe_unretained, nonatomic) NSString *headlineString;
-@property (unsafe_unretained, nonatomic) NSString *ownerString;
 
 //17 - 19 des 12
 @property (retain,nonatomic) BookingView *bv;
@@ -83,10 +77,12 @@
 //15 jan 13
 @property (retain,nonatomic) NSString *statusString;
 
-
 - (void) updateHeadline:(NSString *)headline;
 - (void) updateStart:(NSString *)startTidspunkt;
 - (void) updateStop:(NSString *)stoppTidspunkt;
 - (void) updateEier:(NSString *)eier;
+- (void) setLedig;
+- (void) setOpptatt;
+
 
 @end

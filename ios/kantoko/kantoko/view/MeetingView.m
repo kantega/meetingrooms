@@ -17,6 +17,8 @@
 
 //31 aug 12
 
+@synthesize meeting = _meeting;
+
 @synthesize headlineLabel = _headlineLabel;
 @synthesize startTidspunktLabel = _startTidspunktLabel;
 @synthesize sluttTidspunktLabel = _sluttTidspunktLabel;
@@ -49,27 +51,10 @@
 
 - (id)initWithFrame:(CGRect)frame
 {
-    //NSLog(@"initWithFrame inside MeetingView2");
-    self = [super initWithFrame:frame];
-    if (self) {
-        // Initialization code
-        //self.tag = kDontDisableUserInteraction;
-
-        //10 jan 13: 
-        //This log never gets triggered..., why?
-        //11 jan 13:
-        //Fordi dette initialiseres manuelt via andre koder, f.eks. [... initWithFrame:CGRect()]; osv,
-        //mens initWithCoder initialiserer et objekt via nib-fil.
-        //NSLog(@"initialization of MeetingView2-object");
-
-        
-        
-    }
-    return self;
+    return [super initWithFrame:frame];
 }
 
 - (id)initWithCoder:(NSCoder *)coder {
-    //NSLog(@"initWithCoder inside MeetingView2");
     self = [super initWithCoder:coder];
     if (self) {
         self.layer.borderColor = [UIColor lightGrayColor].CGColor;
@@ -82,6 +67,20 @@
         self.backgroundColor = background; 
     }
     return self;
+}
+
+- (void)setMeeting:(Meeting *)meeting {
+    _meeting = meeting;
+    [self updateHeadline:[_meeting subject]];
+    [self updateStart:[DateUtil hourAndMinutes:[_meeting start]]];
+    [self updateStop:[DateUtil hourAndMinutes:[_meeting end]]];
+    [self updateEier:[_meeting owner]];
+    // TODO bruke flagg i stedet
+    if ([[_meeting subject] isEqualToString:@"Ledig"]) {
+        [self setLedig];
+    } else {
+        [self setOpptatt];
+    }
 }
 
 
@@ -114,14 +113,20 @@
     _headlineLabel.numberOfLines = 3;
     _headlineLabel.lineBreakMode = UILineBreakModeCharacterWrap;
     [_headlineLabel setText:headline];
-    
-    
-    if ([headline isEqualToString:@"Ledig"]){
+}
+
+- (void) setLedig {
+    if (_meeting && [_meeting isPast]) {
+        [_editButton setHidden:YES];   // ledig, men for sent for å reservere
+    } else {
         [_editButton setHidden:NO];
         [_editButton addTarget:self action:@selector(bookingButtonEntered:) forControlEvents:UIControlEventTouchDown];
-    } else {
-        [_editButton setHidden:YES];
-    }  
+    }   
+    [_meetingOccupiedIndicator setBackgroundColor:[UIColor colorWithRed:0.541 green:0.768 blue:0.831 alpha:1]];
+}
+
+- (void) setOpptatt {
+    [_editButton setHidden:YES];
 }
 
 
@@ -628,6 +633,8 @@
 
     self.moteID = nil;
     self.moteIDer = nil;
+    
+    self.meeting = nil;
 }
 
 

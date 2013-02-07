@@ -24,5 +24,6 @@
 -(id)init:(NSDate *)newStart end:(NSDate *)newEnd owner:(NSString *)newOwner subject:(NSString *)newSubject;
 
 -(BOOL)isNow;
+-(BOOL)isPast;
 
 @end

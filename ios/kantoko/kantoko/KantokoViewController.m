@@ -275,10 +275,8 @@
         if ([meeting.subject isEqualToString:@""]){
             meeting.subject = @"Opptatt";
         }
-        SlidingView *meetingView = [[SlidingView alloc] initWithFrame:frame headline:[meeting subject]
-                                                                  start:[DateUtil hourAndMinutes:[meeting start]]
-                                                                  stop:[DateUtil hourAndMinutes:[meeting end]]
-                                                                  owner:[meeting owner]];
+        
+        SlidingView *meetingView = [[SlidingView alloc] initWithFrame:frame andMeeting:meeting];
         
         [self.scrollView addSubview:meetingView];
         index++;
