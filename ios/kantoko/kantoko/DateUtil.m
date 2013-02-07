@@ -39,8 +39,9 @@ unsigned unitFlags = NSYearCalendarUnit| NSMonthCalendarUnit | NSDayCalendarUnit
     NSUInteger currentQuarterStartingMinute = [comps minute] - remainder;
     [comps setMinute:currentQuarterStartingMinute];
     [comps setSecond:0];
+    [comps setSecond:0];
     
-    NSDate *roundedDate = [[NSCalendar currentCalendar] dateFromComponents:comps]; //[[NSDate alloc] initWithTimeIntervalSince1970:comps.;
+    NSDate *roundedDate = [[NSCalendar currentCalendar] dateFromComponents:comps];
     if (remainder > 7) {
         NSUInteger fifteenMinutes = 15 * 60;
         roundedDate = [roundedDate dateByAddingTimeInterval:fifteenMinutes];
@@ -65,6 +66,7 @@ unsigned unitFlags = NSYearCalendarUnit| NSMonthCalendarUnit | NSDayCalendarUnit
     NSDateComponents *dateComponents = [gregorian components:unitFlags fromDate:today];
     [dateComponents setHour:8];
     [dateComponents setMinute:0];
+    [dateComponents setSecond:0];
     
     NSDate *startOfToday = [gregorian dateFromComponents:dateComponents];
     
@@ -78,6 +80,7 @@ unsigned unitFlags = NSYearCalendarUnit| NSMonthCalendarUnit | NSDayCalendarUnit
     NSDateComponents *dateComponents = [gregorian components:unitFlags fromDate:today];
     [dateComponents setHour:17];
     [dateComponents setMinute:0];
+    [dateComponents setSecond:0];
     
     NSDate *endOfToday = [gregorian dateFromComponents:dateComponents];
     

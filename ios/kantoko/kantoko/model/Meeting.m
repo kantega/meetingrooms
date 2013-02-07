@@ -33,7 +33,8 @@
 
 -(BOOL) isPast {
     NSDate *closestQuarterToNow = [DateUtil roundToClosestQuarter:[NSDate date]];
-    return [closestQuarterToNow compare:self.end] == NSOrderedDescending;
+    NSInteger secondsSinceEndOfMeeting = [closestQuarterToNow timeIntervalSinceDate:self.end];
+    return secondsSinceEndOfMeeting >= 0;
 }
 
 
@@ -42,9 +43,6 @@
     self.start = nil;
     self.owner = nil;
     self.subject = nil;
-    
-    //[super dealloc];
-
 }
  
 

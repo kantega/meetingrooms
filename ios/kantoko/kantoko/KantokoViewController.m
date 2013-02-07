@@ -224,6 +224,7 @@
     BOOL ingenoppdatering = FALSE;
     //16 jan 13: Pass på at metoden isNow gir korrekt returverdi, ellers blir currentMeetingIndex -1 og gir feil størrelse til nåværende møtelapp
     int currentMeetingIndex = - 1;
+    
     for (Meeting *meeting in todaysMeetings) {
         NSLog(@"index inside todayMeetings %i", index);
         if (meeting.isNow) {
@@ -247,6 +248,7 @@
         ingenoppdatering = TRUE;
     }
     
+
     NSLog(@"currentMeetingIndex %i", currentMeetingIndex);
        
     self.scrollView.smallBoxWidth = 250;
@@ -260,6 +262,11 @@
     int previousBoxWidth = 0;
     
     index = 0;
+    
+    
+    NSLog(@"======================");
+    NSLog(@"  REFRESH MEETINGS");
+    NSLog(@"======================");
     
     for (Meeting *meeting in todaysMeetings) {
 
@@ -275,6 +282,9 @@
         if ([meeting.subject isEqualToString:@""]){
             meeting.subject = @"Opptatt";
         }
+        
+        NSLog(@"møte %i start: %@", index, [meeting.start descriptionWithLocale:[NSLocale currentLocale]]);
+        NSLog(@"møte %i end  : %@", index, [meeting.end descriptionWithLocale:[NSLocale currentLocale]]);
         
         SlidingView *meetingView = [[SlidingView alloc] initWithFrame:frame andMeeting:meeting];
         
