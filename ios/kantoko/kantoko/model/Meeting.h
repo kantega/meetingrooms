@@ -25,5 +25,6 @@
 
 -(BOOL)isNow;
 -(BOOL)isPast;
+-(NSInteger)durationInMinutes;
 
 @end

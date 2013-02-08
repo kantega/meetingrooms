@@ -18,8 +18,7 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];    
 
-    self.viewController = [[KantokoViewController alloc] init];
-    self.viewController.dataController = [[KantokoDataController alloc] init];
+    self.viewController = [KantokoViewController getInstance];
     self.viewController.navigationItem.title= @"Navigation Controller";
     
     self.navController = [[UINavigationController alloc] initWithRootViewController:self.viewController];

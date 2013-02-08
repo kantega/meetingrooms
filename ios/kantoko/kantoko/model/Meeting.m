@@ -37,6 +37,11 @@
     return secondsSinceEndOfMeeting >= 0;
 }
 
+-(NSInteger) durationInMinutes {
+    NSInteger secondsBetweenDates = [self.end timeIntervalSinceDate:self.start];
+    return (secondsBetweenDates / 60);
+}
+
 
 -(void)dealloc{
     self.end = nil;

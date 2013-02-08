@@ -15,6 +15,7 @@
 #import "DateUtil.h"
 #import "CustomScrollView.h"
 #import "SlidingView.h"
+#import "Configuration.h"
 
 
 @interface KantokoViewController ()
@@ -35,6 +36,21 @@
 @synthesize klokkeLabel, moteromLabel;
 
 @synthesize timerForMeeRooVC;
+
+static KantokoViewController *_viewControllerInstance = nil;
+
++(KantokoViewController*) getInstance{
+    if (_viewControllerInstance == nil) {
+        _viewControllerInstance = [[KantokoViewController alloc] init];
+        _viewControllerInstance.dataController = [[KantokoDataController alloc] init];
+    }
+    return _viewControllerInstance;
+}
+
++(Configuration*) getCurrentConfiguration{
+    if (_viewControllerInstance == nil) { return nil; }
+    return _viewControllerInstance.dataController.configuration;
+}
 
 
 -(void)loadView{
@@ -220,37 +236,26 @@
     NSArray *todaysMeetings = [self fillInMeetingsWithVacantSpots:[self.dataController getTodaysMeetingInRoom:[room mailbox]]];
  
     int index = 0;
-    
-    BOOL ingenoppdatering = FALSE;
-    //16 jan 13: Pass på at metoden isNow gir korrekt returverdi, ellers blir currentMeetingIndex -1 og gir feil størrelse til nåværende møtelapp
     int currentMeetingIndex = - 1;
     
     for (Meeting *meeting in todaysMeetings) {
-        NSLog(@"index inside todayMeetings %i", index);
         if (meeting.isNow) {
-            NSLog(@"is now");
             currentMeetingIndex = index;
             break;
         }
-        if ( index == [todaysMeetings count] - 1) break;
         index++;
-
-        
     }
     
     //16 jan 13: Dette for å unngå currentMeetingIndex forblir -1 hvis den variablen er ikke blitt oppdatert til andre verdi enn -1
-    
-    NSLog(@"index %i currentIndex %i todayMeetings %i", index, currentMeetingIndex, [todaysMeetings count]);
-    
+    // TODO i tillegg til dette kan vi vise første møtet hvis det er kl før 08:00
     if (index == ([todaysMeetings count] - 1)  && currentMeetingIndex == -1){
-        NSLog(@"True");
         currentMeetingIndex = [todaysMeetings count] - 1;
-        ingenoppdatering = TRUE;
     }
     
 
     NSLog(@"currentMeetingIndex %i", currentMeetingIndex);
-       
+    
+    // TODO har vi ikke konstanter for dette noe sted?
     self.scrollView.smallBoxWidth = 250;
     self.scrollView.smallBoxHeight = 280;
     self.scrollView.largeBoxWidth = 500;
@@ -275,8 +280,6 @@
         
         currentBoxOffset += (previousBoxWidth + self.scrollView.boxSpacing);
         CGRect frame = CGRectMake(currentBoxOffset, 0, boxWidth, boxHeight);
-        
-        ingenoppdatering = FALSE;
         
         // Default text, om det er tom subject i serveren.
         if ([meeting.subject isEqualToString:@""]){

@@ -44,6 +44,9 @@
 @property (strong,nonatomic) NSTimer *timerForMeeRooVC;
 @property (strong,nonatomic) UITabBar *tabbar;
 
++(KantokoViewController*) getInstance;
++(Configuration*) getCurrentConfiguration;
+
 -(void)onTimer:(NSTimer*)timer;
 -(NSTimer*)getTimer;
 -(void)stopTimer;

@@ -8,37 +8,26 @@
 
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
+#import "Meeting.h"
 
-@interface BookingView : UIView <UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate, UITextViewDelegate>{
+@interface BookingView : UIView <UITextFieldDelegate, UITextViewDelegate>{
     
     UIPickerView *scroller;
 
 }
 
+@property (strong,nonatomic) Meeting *meeting;
 
-@property (retain,nonatomic) UILabel *romnavn;
+@property (strong,nonatomic) UIBarButtonItem *barButtonOk;
+@property (strong,nonatomic) UIBarButtonItem *barButtonAvbryt;
 
-@property NSInteger pickedTimeIndex;
-@property NSInteger pickedMinuttIndex;
+@property (strong,nonatomic) UINavigationItem *item;
+@property (strong,nonatomic) UILabel *starttidspunktet;
 
-//20 des 12
-@property (retain,nonatomic) UIButton *b1;
-@property (retain,nonatomic) UIButton *b2;
-@property (retain,nonatomic) UIButton *b3;
-
-//9 jan 13
-@property (retain,nonatomic) UIBarButtonItem *bbi1;
-@property (retain,nonatomic) UIBarButtonItem *bbi2;
-
-//PICKERVIEW
-@property (retain,nonatomic) UIPickerView *scroller;
-
-//10 jan 13
-@property (retain,nonatomic) UINavigationItem *item;
-@property (retain,nonatomic) UILabel *starttidspunktet;
 
 -(id)initWithFrame:(CGRect)frame;
 -(id)init;
+-(void)sendBookingRequestForMinutes:(NSInteger)meetingDuration;
 
 
 @end

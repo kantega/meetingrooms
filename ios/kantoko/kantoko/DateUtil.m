@@ -49,6 +49,12 @@ unsigned unitFlags = NSYearCalendarUnit| NSMonthCalendarUnit | NSDayCalendarUnit
     return roundedDate;
 }
 
++ (NSInteger) minutesBetweenStart:(NSDate *)startTime andEnd:(NSDate *)endTime {
+    NSInteger secondsBetweenDates = [endTime timeIntervalSinceDate:startTime];
+    NSInteger secondsBetweenN = [endTime timeIntervalSinceDate:startTime];
+    return (secondsBetweenDates / 60);
+}
+
 
 + (NSString *) hourAndMinutes: (NSDate *) date {
     static NSDateFormatter *formatter = nil;

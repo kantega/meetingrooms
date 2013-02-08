@@ -8,161 +8,272 @@
 
 #import "BookingView.h"
 #import <UIKit/UIKit.h>
+#import "Meeting.h"
+#import "DateUtil.h"
+#import "Configuration.h"
+#import "KantokoViewController.h"
 
 @implementation BookingView
 
-@synthesize romnavn;
-@synthesize pickedTimeIndex, pickedMinuttIndex;
+@synthesize meeting = _meeting;
 
-//20 des 12
-@synthesize b1, b2, b3;
+@synthesize barButtonOk, barButtonAvbryt, item, starttidspunktet;
 
-//9 + 10 jan 13
-@synthesize bbi1, bbi2, item, starttidspunktet;
-@synthesize scroller;
+NSString* _statusString;
+
+Configuration* _configuration;
+NSString* _roomnavn;
+NSDate* _bookMoteFra;
+NSDate* _bookMoteTil;
+NSDate* _naermesteKvarterTilNaa;  // møtet kan ikke starte kl.1600 hvis det er allerede 16:28 -> da blir dette 16:30
+
+UIButton* btnBook15Minutes;
+UIButton* btnBook30Minutes;
+UIButton* btnBook45Minutes;
+UIButton* btnBook60Minutes;
 
 
--(id)init{
+-(id)init { 
     return [self initWithFrame:CGRectMake(0,0,500,560)];
 }
  
 
-- (id)initWithFrame:(CGRect)frame
-{
+- (id)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
-        // Initialization code
+        
+        _configuration = [KantokoViewController getCurrentConfiguration];
+        _roomnavn = _configuration.room.displayname;
+        _naermesteKvarterTilNaa = [DateUtil roundToClosestQuarter:[NSDate date]];
+
         [self.superview bringSubviewToFront:self];
-        romnavn = [[UILabel alloc]initWithFrame:CGRectMake(83,13,334,37)];
-        romnavn.text = @"Romnavn";
-        romnavn.backgroundColor = [UIColor blueColor];
-        [self addSubview:romnavn];
         
-        
-        b1 = [[UIButton alloc]initWithFrame:CGRectMake(45,140,400,60)];
-        b1.tag = 1;
-        [b1 setTitle:@"15" forState:UIControlStateNormal];
-        [b1 setTitleColor:[UIColor darkGrayColor] forState: UIControlStateNormal];
-        [b1 addTarget:self action:@selector(exitMetode) forControlEvents: UIControlEventTouchDown];
-        b1.backgroundColor = [UIColor yellowColor];
-        
-        b2 = [[UIButton alloc]initWithFrame:CGRectMake(45,225,400,60)];
-        b2.tag = 2;
-        [b2 setTitle:@"30" forState:UIControlStateNormal];
-        [b2 setTitleColor:[UIColor darkGrayColor] forState: UIControlStateNormal];
-        [b2 addTarget:self action:@selector(exitMetode) forControlEvents: UIControlEventTouchDown];
-        b2.backgroundColor = [UIColor yellowColor];
-
-        
-        b3 = [[UIButton alloc]initWithFrame:CGRectMake(45,310,400,60)];
-        b3.tag = 3;
-        [b3 setTitle:@"60" forState:UIControlStateNormal];
-        [b3 setTitleColor:[UIColor darkGrayColor] forState: UIControlStateNormal];
-        [b3 addTarget:self action:@selector(exitMetode) forControlEvents: UIControlEventTouchDown];
-        b3.backgroundColor = [UIColor yellowColor];
-        
-
         UINavigationBar *bar = [[UINavigationBar alloc]initWithFrame:CGRectMake(0,0,500,50)];
         [self addSubview:bar];
         
-        bbi1 = [[UIBarButtonItem alloc]
-                                          initWithBarButtonSystemItem: UIBarButtonSystemItemDone
-                                          target: self
-                                          action: @selector(backButtonPressed)];
+        barButtonOk = [[UIBarButtonItem alloc]
+                initWithBarButtonSystemItem: UIBarButtonSystemItemDone
+                target: self
+                action: @selector(backButtonPressed)];
         
-        bbi2 = [[UIBarButtonItem alloc]
+        barButtonAvbryt = [[UIBarButtonItem alloc]
                 initWithBarButtonSystemItem: UIBarButtonSystemItemCancel
                 target: self
                 action: @selector(backButtonPressed)];
         
-        item = [[UINavigationItem alloc] initWithTitle:@"Title"];
-        item.rightBarButtonItem = bbi1;
-        item.leftBarButtonItem = bbi2;
+        [barButtonOk setAction:@selector(standardknappavbryt:)]; // TODO FJERNE DENNE?
+        [barButtonOk setTarget:self];
+        [barButtonAvbryt setAction:@selector(standardknappavbryt:)];
+        [barButtonAvbryt setTarget:self];
+        
+        item = [[UINavigationItem alloc] initWithTitle:_roomnavn];
+        item.rightBarButtonItem = barButtonOk;
+        item.leftBarButtonItem = barButtonAvbryt;
         [bar pushNavigationItem:item animated:NO];
-        
 
-        //PICKERVIEW
-        self.scroller = [[UIPickerView alloc] initWithFrame:CGRectMake((500-445)/2,180,445,216)];
-        self.scroller.delegate = self;
-        self.scroller.dataSource = self;
-        [self addSubview:self.scroller];
+        [self layer].cornerRadius = 10.0;
+        [self layer].masksToBounds = YES;
+        [self layer].shadowColor = [UIColor blackColor].CGColor;
+        [self layer].shadowRadius = 5.0;
+        [self layer].shadowOffset = CGSizeMake(3.0, 3.0);
+        [self layer].opacity = 1.0;
+        [self layer].borderWidth = 3.0;
         
-        
-        starttidspunktet = [[UILabel alloc]initWithFrame:CGRectMake((500-200)/2, 100, 200, 40)];
+        self.backgroundColor = [UIColor whiteColor];
+
+        starttidspunktet = [[UILabel alloc]initWithFrame:CGRectMake((500-200)/2, 80, 200, 40)];
         starttidspunktet.text = @"Time";
         starttidspunktet.textAlignment = UITextAlignmentCenter;
         starttidspunktet.backgroundColor = [UIColor lightGrayColor];
         [self addSubview:starttidspunktet];
         
+        btnBook15Minutes = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+        btnBook15Minutes.frame = CGRectMake((500-200)/2, 160, 200, 60);
+        btnBook15Minutes.opaque = YES;
+        btnBook15Minutes.tintColor = [UIColor orangeColor]; // TODO
+        [btnBook15Minutes setTitle:@"15 minutter" forState:UIControlStateNormal];
+        //[btnBook15Minutes setTitle:@"15 MINUTTER" forState:UIControlStateHighlighted];
+        [btnBook15Minutes addTarget:self action:@selector(book15Minutes:) forControlEvents:UIControlEventTouchUpInside];
+        [self addSubview:btnBook15Minutes];
         
+        btnBook30Minutes = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+        btnBook30Minutes.frame = CGRectMake((500-200)/2, 250, 200, 60);
+        btnBook30Minutes.opaque = YES;
+        btnBook30Minutes.tintColor = [UIColor orangeColor]; // TODO
+        [btnBook30Minutes setTitle:@"30 minutter" forState:UIControlStateNormal];
+        [btnBook30Minutes addTarget:self action:@selector(book30Minutes:) forControlEvents:UIControlEventTouchUpInside];
+        [self addSubview:btnBook30Minutes];
+        
+        btnBook45Minutes = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+        btnBook45Minutes.frame = CGRectMake((500-200)/2, 340, 200, 60);
+        btnBook45Minutes.opaque = YES;
+        btnBook45Minutes.tintColor = [UIColor orangeColor]; // TODO
+        [btnBook45Minutes setTitle:@"45 minutter" forState:UIControlStateNormal];
+        [btnBook45Minutes addTarget:self action:@selector(book45Minutes:) forControlEvents:UIControlEventTouchUpInside];
+        [self addSubview:btnBook45Minutes];
+        
+        btnBook60Minutes = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+        btnBook60Minutes.frame = CGRectMake((500-200)/2, 430, 200, 60);
+        btnBook60Minutes.opaque = YES;
+        btnBook60Minutes.tintColor = [UIColor orangeColor]; // TODO
+        [btnBook60Minutes setTitle:@"60 minutter" forState:UIControlStateNormal];
+        [btnBook60Minutes addTarget:self action:@selector(book60Minutes:) forControlEvents:UIControlEventTouchUpInside];
+        [self addSubview:btnBook60Minutes];
+
     }
     return self;
 }
-
-
  
 
+-(void)setMeeting:(Meeting*) meeting {
+    _meeting = meeting;
 
-
-//12 des 12: Blir feil å fjerne seg selv hver gang man rører andre områder enn text, knapper osv.
-/*
--(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event{
-    NSLog(@"Removed");
-    [self removeFromSuperview];
-
-}
- */
+    NSInteger tilgjengeligeMinutter = 0;
+    if (_meeting.isNow) {
+        _bookMoteFra = _naermesteKvarterTilNaa;
+        starttidspunktet.text = [DateUtil hourAndMinutes:_naermesteKvarterTilNaa];
+        tilgjengeligeMinutter = [DateUtil minutesBetweenStart:_naermesteKvarterTilNaa andEnd:_meeting.end];
+    } else {
+        _bookMoteFra = _meeting.start;
+        starttidspunktet.text = [DateUtil hourAndMinutes:_meeting.start];
+        tilgjengeligeMinutter = _meeting.durationInMinutes;
+    }
  
-
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
+    btnBook15Minutes.hidden = (tilgjengeligeMinutter < 15);
+    btnBook30Minutes.hidden = (tilgjengeligeMinutter < 30);
+    btnBook45Minutes.hidden = (tilgjengeligeMinutter < 45);
+    btnBook60Minutes.hidden = (tilgjengeligeMinutter < 60);
 }
-*/
 
+- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
 
-
-- (void)dealloc
-{
-    // Release any retained subviews of the main view.
-    //PICKERVIEW
-    self.scroller = nil;
-    b1 = nil;
-    b2 = nil;
-    b3 = nil;
-    bbi1 = nil;
-    bbi2 = nil;
+    NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)response;
+    int responseStatusCode = [httpResponse statusCode];
     
-    //[super dealloc];
-}
- 
-
-//10 jan 13: Disse metoder er for self.scroller
-//PICKERVIEW
--(NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView{
-    return 1;
-}
-
--(NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component{
+    NSLog(@"response %i", responseStatusCode);
     
-    return 0;
     
-}
+    if (responseStatusCode == 201){
 
--(NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
+        _statusString = @"Godkjent";
+        
+    }else if (responseStatusCode == 400){
+        
+        _statusString = @"Feil input";
+        
+    }else if (responseStatusCode == 500){
+        
+        _statusString = @"Feil på serveren";
+        
+    }else if (responseStatusCode == 503){
+        
+        _statusString = @"Tjenesten er utilgjengelig";
+        
+    }
     
-    return nil;
+    NSLog(@"self.statusString %@", _statusString);    
 }
 
-- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection{
+    
+    NSLog(@"didFinishLoading %@", _statusString);
+    
+    UILabel *statusLabel = [[UILabel alloc]initWithFrame:CGRectMake((500-100)/2,400,100,50)];
+    statusLabel.textColor = [UIColor blueColor];
+    statusLabel.font = [UIFont systemFontOfSize:20.0f];
+    statusLabel.text = _statusString;
+    [self addSubview:statusLabel];
+    // TODO MÅ GJØRES VIA NOTIFY TIL PARENT
+    //[self performSelector:@selector(fjerneObjekter) withObject:nil afterDelay:3];
+    
+    
+    // TODO fjerne alert, ligger her bare foreløpig
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Response" message:_statusString delegate:self cancelButtonTitle: @"Ok" otherButtonTitles:nil];
+    [alert show];
+}
 
+-(void)sendBookingRequestForMinutes:(NSInteger)meetingDuration {
+    NSUInteger intervalMinutes = meetingDuration * 60;
+    _bookMoteTil = [_bookMoteFra dateByAddingTimeInterval:intervalMinutes];
+    NSString *bookerFra = [NSString stringWithFormat:@"%lld",(long long)([_bookMoteFra timeIntervalSince1970] * 1000)];
+    NSString *bookerTil = [NSString stringWithFormat:@"%lld",(long long)([_bookMoteTil timeIntervalSince1970] * 1000)];
+    [self sendJSON:_roomnavn heledag:false start:bookerFra slutt:bookerTil eier:@"" tittel:@"Opptatt"];
+}
+
+- (void)book15Minutes:(id)sender{
+    BookingView *senderObject = (BookingView*) sender;
+    [self sendBookingRequestForMinutes: 15];
+}
+
+- (void)book30Minutes:(id)sender{
+    BookingView *senderObject = (BookingView*) sender;
+    [self sendBookingRequestForMinutes: 30];
+}
+
+- (void)book45Minutes:(id)sender{
+    [self sendBookingRequestForMinutes: 45];
+}
+
+- (void)book60Minutes:(id)sender{
+    [self sendBookingRequestForMinutes: 60];
 }
 
 
+// TODO HARDCODED URLs??? 
+-(void)sendJSON:(NSString*)location heledag:(BOOL)heledagResultat start:(NSString*)starttid slutt:(NSString*)sluttid eier:(NSString*)eier tittel:(NSString*)tittel{
+    
+    
+    NSLog(@"lokalisjon %@", location);
+    
+    NSString *servernavn = [self finneriktigserverromnavn:location];
+    
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://prototype.kantega.lan/meeroo/appointments/%@/", servernavn]];
+    
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc]initWithURL:url];
+    
+    
+    NSString *temp = [NSString stringWithFormat:@"{\"subject\":\"%@\",\"location\":\"%@\",\"organizer\":\"%@\",\"allDayEvent\":%@,\"startDate\":%@,\"endDate\":%@}", tittel, location, eier, @"false", starttid, sluttid];
+    
+    //7 jan 13, vil det fungere?
+    const char *str1 = [temp UTF8String];
+    
+    NSString *jsonRequest = [NSString stringWithUTF8String:str1];
+    
+    
+    NSData *requestData = [NSData dataWithBytes:[jsonRequest UTF8String] length:[jsonRequest length]];
+    
+    [request setHTTPMethod:@"POST"];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [request setValue:[NSString stringWithFormat:@"%d", [requestData length]] forHTTPHeaderField:@"Content-Length"];
+    [request setHTTPBody: requestData];
+    
+    
+    NSLog(@"Request: %@", jsonRequest);
+    
+    
+    
+    NSURLConnection *connection = [[NSURLConnection alloc]initWithRequest:request delegate:self];
+    
+    if (connection) {
+        NSLog(@"connected!");
+        //       receivedData = [[NSMutableData data] retain];
+        
+        NSMutableData *d = [NSMutableData data];
+        NSLog(@"d %@", d);
+    }
+}
 
-
+-(NSString*)finneriktigserverromnavn:(NSString*)romnavn{
+    
+    NSDictionary *romnavner = [NSDictionary dictionaryWithObjectsAndKeys:  @"mrokathmandu", @"Kathmandu", @"mromonjo", @"Monjo",  @"mro.lukla", @"Lukla", @"mronamcheBazaar",@"Namche Bazaar",  @"mro.chule", @"Chule", @"mro.haibung",@"Haibung",  @"mro.kantina",@"Kantina",  @"MRTNordlys",@"Nordlys",  @"MRTHimalaya",@"Himalaya",  @"MRTPlay",@"Play",  @"MRTAlexandria",@"Alexandria",  @"MRTBuen",@"Buen", nil];
+    
+    NSString *servernavn = [romnavner valueForKey:romnavn];
+    NSLog(@"romnavn %@", romnavn);
+    NSLog(@"servernavn %@", servernavn);
+    
+    return servernavn;
+}
 
 @end
+    

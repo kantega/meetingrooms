@@ -13,6 +13,7 @@
 + (NSDate *) roundHourDown:(NSDate *) date;
 + (NSDate *) roundHourUp:(NSDate *) date;
 + (NSDate *) roundToClosestQuarter:(NSDate *) date;
++ (NSInteger) minutesBetweenStart:(NSDate *)startTime andEnd:(NSDate *)endTime;
 + (NSString *) hourAndMinutes:(NSDate *) date;
 + (NSDate *)startOfToday;
 + (NSDate *)endOfToday;
