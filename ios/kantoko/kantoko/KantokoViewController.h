@@ -52,5 +52,6 @@
 -(void)stopTimer;
 -(void)restartTimer;
 -(void)configureView;
+-(void)showNotificationMessage:(NSString*)message;
 
 @end

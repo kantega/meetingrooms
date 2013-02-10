@@ -27,14 +27,15 @@
 @synthesize darkBackgroundView;
 @synthesize bookingView;
 
+OnBookingRequestCompleted _bookingViewRequestCompletedCallback;
 
 #define kDontDisableUserInteraction 321
 
-
+/*
 - (id)initWithFrame:(CGRect)frame
 {
     return [super initWithFrame:frame];
-}
+}*/
 
 - (id)initWithCoder:(NSCoder *)coder {
     self = [super initWithCoder:coder];
@@ -46,7 +47,26 @@
         self.opaque = NO;
         
         UIColor *background = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"background-table.png"]];
-        self.backgroundColor = background; 
+        self.backgroundColor = background;
+        
+        __weak MeetingView *weakSelf = self; //NB! dette for å unngå retain av self (blocken må ikke øke reference count til self)
+        _bookingViewRequestCompletedCallback = ^(NSString *responseMessage, NSString *errorMessage) {
+            
+            if (errorMessage != NULL) {
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:errorMessage delegate:weakSelf
+                                                      cancelButtonTitle: @"Ok" otherButtonTitles:nil];
+                [alert show];
+                return;
+            }
+            
+            [self.darkBackgroundView removeFromSuperview];
+            [self.bookingView removeFromSuperview];
+            KantokoViewController *kantokoViewController = [KantokoViewController getInstance];
+            [kantokoViewController restartTimer]; // TODO her er det timing problems: det tar litt tid før det nye møte vises
+
+            [kantokoViewController showNotificationMessage:responseMessage];
+            kantokoViewController.scrollView.userInteractionEnabled = YES;
+        };
     }
     return self;
 }
@@ -122,7 +142,7 @@
     
     CGSize mainViewSize = [KantokoViewController getInstance].view.bounds.size;
     self.bookingView.center = CGPointMake(mainViewSize.width / 2, mainViewSize.height / 2 - 50);
-    
+    self.bookingView.onBookingRequestCompleted = _bookingViewRequestCompletedCallback;
     
     [self addSubview:self.bookingView];
 }

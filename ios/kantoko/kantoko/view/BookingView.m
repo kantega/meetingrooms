@@ -17,9 +17,10 @@
 
 @synthesize meeting = _meeting;
 
-@synthesize barButtonOk, barButtonAvbryt, item, starttidspunktet;
+@synthesize barButtonAvbryt, item, starttidspunktet, onBookingRequestCompleted;
 
 NSString* _statusString;
+NSInteger _statusCode;
 
 Configuration* _configuration;
 NSString* _roomnavn;
@@ -49,25 +50,25 @@ UIButton* btnBook60Minutes;
         [self.superview bringSubviewToFront:self];
         
         UINavigationBar *bar = [[UINavigationBar alloc]initWithFrame:CGRectMake(0,0,500,50)];
+        bar.tintColor = [UIColor colorWithRed:0.541 green:0.768 blue:0.831 alpha:1];
         [self addSubview:bar];
+
         
-        barButtonOk = [[UIBarButtonItem alloc]
-                initWithBarButtonSystemItem: UIBarButtonSystemItemDone
-                target: self
-                action: @selector(backButtonPressed)];
+        barButtonAvbryt = [[UIBarButtonItem alloc] initWithTitle:@"Tilbake"
+                                                   style:UIBarButtonItemStyleBordered target:self
+                                                   action:@selector(standardknappavbryt)];
         
-        barButtonAvbryt = [[UIBarButtonItem alloc]
-                initWithBarButtonSystemItem: UIBarButtonSystemItemCancel
-                target: self
-                action: @selector(backButtonPressed)];
+        UILabel *titlelabel = [[UILabel alloc] initWithFrame:CGRectZero];
+        titlelabel.backgroundColor = [UIColor clearColor];
+        titlelabel.font = [UIFont boldSystemFontOfSize:20.0];
+        titlelabel.shadowColor = [UIColor colorWithWhite:0.0 alpha:0.5];
+        titlelabel.textAlignment = NSTextAlignmentCenter;
+        titlelabel.text = [@"Smidig booking: " stringByAppendingString:_roomnavn];
+        titlelabel.textColor = [UIColor blackColor];
         
-        [barButtonOk setAction:@selector(standardknappavbryt:)]; // TODO FJERNE DENNE?
-        [barButtonOk setTarget:self];
-        [barButtonAvbryt setAction:@selector(standardknappavbryt:)];
-        [barButtonAvbryt setTarget:self];
-        
-        item = [[UINavigationItem alloc] initWithTitle:_roomnavn];
-        item.rightBarButtonItem = barButtonOk;
+        item = [[UINavigationItem alloc] init];
+        item.titleView = titlelabel;
+        [titlelabel sizeToFit];
         item.leftBarButtonItem = barButtonAvbryt;
         [bar pushNavigationItem:item animated:NO];
 
@@ -149,44 +150,38 @@ UIButton* btnBook60Minutes;
     
     NSLog(@"response %i", responseStatusCode);
     
-    
-    if (responseStatusCode == 201){
-
-        _statusString = @"Godkjent";
-        
-    }else if (responseStatusCode == 400){
-        
-        _statusString = @"Feil input";
-        
-    }else if (responseStatusCode == 500){
-        
-        _statusString = @"Feil på serveren";
-        
-    }else if (responseStatusCode == 503){
-        
-        _statusString = @"Tjenesten er utilgjengelig";
-        
-    }
-    
-    NSLog(@"self.statusString %@", _statusString);    
+    _statusCode = responseStatusCode;
+    _statusString = [self messageForStatusCode:_statusCode];
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection{
     
     NSLog(@"didFinishLoading %@", _statusString);
     
-    UILabel *statusLabel = [[UILabel alloc]initWithFrame:CGRectMake((500-100)/2,400,100,50)];
-    statusLabel.textColor = [UIColor blueColor];
-    statusLabel.font = [UIFont systemFontOfSize:20.0f];
-    statusLabel.text = _statusString;
-    [self addSubview:statusLabel];
-    // TODO MÅ GJØRES VIA NOTIFY TIL PARENT
-    //[self performSelector:@selector(fjerneObjekter) withObject:nil afterDelay:3];
-    
-    
-    // TODO fjerne alert, ligger her bare foreløpig
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Response" message:_statusString delegate:self cancelButtonTitle: @"Ok" otherButtonTitles:nil];
-    [alert show];
+    if (_statusCode == 201)
+        onBookingRequestCompleted(_statusString, NULL);
+    else
+        onBookingRequestCompleted(NULL, _statusString);
+}
+
+
+- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error{
+    NSLog(@"didFailWithError");
+    _statusCode = 999; //TODO : error?
+    _statusString = error.localizedDescription;
+    onBookingRequestCompleted(NULL, _statusString);
+}
+
+- (NSString*)messageForStatusCode:(NSInteger)statusCode {
+    NSString* message;
+    switch (statusCode) {
+        case 201: message = @"Godkjent"; break;
+        case 400: message = @"Feil input"; break;
+        case 500: message = @"Feil på serveren"; break;
+        case 503: message = @"Tjenesten er utilgjengelig"; break;
+        default: message = @"Ukjent feil"; break;
+    }
+    return message;
 }
 
 -(void)sendBookingRequestForMinutes:(NSInteger)meetingDuration {

@@ -39,6 +39,8 @@
 
 static KantokoViewController *_viewControllerInstance = nil;
 
+UILabel* _statusLabel = nil;
+
 +(KantokoViewController*) getInstance{
     if (_viewControllerInstance == nil) {
         _viewControllerInstance = [[KantokoViewController alloc] init];
@@ -218,6 +220,23 @@ static KantokoViewController *_viewControllerInstance = nil;
 
 -(void)didReceiveMemoryWarning{
     NSLog(@"Memory Warning in MVC3");    
+}
+
+-(void)showNotificationMessage:(NSString*)message{
+    if (_statusLabel == nil) {
+        CGSize mainViewSize = self.view.bounds.size;
+        _statusLabel = [[UILabel alloc]initWithFrame:CGRectMake(mainViewSize.width / 4, mainViewSize.height * 2 / 3, mainViewSize.width / 2, 100)];
+        //_statusLabel.center = CGPointMake(mainViewSize.width / 2, mainViewSize.height / 2 - 50);
+        _statusLabel.textColor = [UIColor whiteColor];
+        _statusLabel.backgroundColor = [UIColor blackColor];
+        _statusLabel.font = [UIFont systemFontOfSize:24.0f];
+        _statusLabel.textAlignment = UITextAlignmentCenter;
+        [self.view addSubview:_statusLabel];
+    }
+    
+    _statusLabel.text = message;
+    _statusLabel.alpha = 1.0f;
+    [UIView animateWithDuration:3.0f animations:^ { [_statusLabel setAlpha:0.00f]; }];
 }
 
 - (void)configureView
