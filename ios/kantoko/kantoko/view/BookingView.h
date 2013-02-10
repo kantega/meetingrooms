@@ -27,7 +27,7 @@
 
 -(id)initWithFrame:(CGRect)frame;
 -(id)init;
--(void)sendBookingRequestForMinutes:(NSInteger)meetingDuration;
+//-(void)sendBookingRequestForMinutes:(NSInteger)meetingDuration;
 
 
 @end

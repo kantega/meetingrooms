@@ -87,43 +87,40 @@ UIButton* btnBook60Minutes;
         starttidspunktet.backgroundColor = [UIColor lightGrayColor];
         [self addSubview:starttidspunktet];
         
-        btnBook15Minutes = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-        btnBook15Minutes.frame = CGRectMake((500-200)/2, 160, 200, 60);
-        btnBook15Minutes.opaque = YES;
-        btnBook15Minutes.tintColor = [UIColor orangeColor]; // TODO
-        [btnBook15Minutes setTitle:@"15 minutter" forState:UIControlStateNormal];
-        //[btnBook15Minutes setTitle:@"15 MINUTTER" forState:UIControlStateHighlighted];
+        btnBook15Minutes = [self makeBookingButtonWithTitle:@"     15 minutter" andOffsetY: 160];
         [btnBook15Minutes addTarget:self action:@selector(book15Minutes:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:btnBook15Minutes];
         
-        btnBook30Minutes = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-        btnBook30Minutes.frame = CGRectMake((500-200)/2, 250, 200, 60);
-        btnBook30Minutes.opaque = YES;
-        btnBook30Minutes.tintColor = [UIColor orangeColor]; // TODO
-        [btnBook30Minutes setTitle:@"30 minutter" forState:UIControlStateNormal];
+        btnBook30Minutes = [self makeBookingButtonWithTitle:@"     30 minutter" andOffsetY: 250];
         [btnBook30Minutes addTarget:self action:@selector(book30Minutes:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:btnBook30Minutes];
         
-        btnBook45Minutes = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-        btnBook45Minutes.frame = CGRectMake((500-200)/2, 340, 200, 60);
-        btnBook45Minutes.opaque = YES;
-        btnBook45Minutes.tintColor = [UIColor orangeColor]; // TODO
-        [btnBook45Minutes setTitle:@"45 minutter" forState:UIControlStateNormal];
+        btnBook45Minutes = [self makeBookingButtonWithTitle:@"     45 minutter" andOffsetY: 340];
         [btnBook45Minutes addTarget:self action:@selector(book45Minutes:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:btnBook45Minutes];
         
-        btnBook60Minutes = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-        btnBook60Minutes.frame = CGRectMake((500-200)/2, 430, 200, 60);
-        btnBook60Minutes.opaque = YES;
-        btnBook60Minutes.tintColor = [UIColor orangeColor]; // TODO
-        [btnBook60Minutes setTitle:@"60 minutter" forState:UIControlStateNormal];
+        btnBook60Minutes = [self makeBookingButtonWithTitle:@"     60 minutter" andOffsetY: 430];
         [btnBook60Minutes addTarget:self action:@selector(book60Minutes:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:btnBook60Minutes];
 
     }
     return self;
 }
- 
+
+-(UIButton*)makeBookingButtonWithTitle:(NSString*) title andOffsetY: (NSInteger) offsetY {
+    UIButton* btnBooking = [UIButton buttonWithType:UIButtonTypeCustom];
+    btnBooking.frame = CGRectMake((500-200)/2, offsetY, 200, 60);
+    btnBooking.opaque = YES;
+    UIImage* image = [UIImage imageNamed:@"clock60.png"];
+    UIEdgeInsets insets = UIEdgeInsetsMake(29, 55, 29, 4);
+    image = [image resizableImageWithCapInsets:insets];
+    [btnBooking setBackgroundImage:image forState:UIControlStateNormal];
+    [btnBooking setTitle:title forState:UIControlStateNormal];
+    btnBooking.layer.cornerRadius = 10.f;
+    btnBooking.layer.masksToBounds = YES;
+    return btnBooking;
+}
+
 
 -(void)setMeeting:(Meeting*) meeting {
     _meeting = meeting;
@@ -201,12 +198,10 @@ UIButton* btnBook60Minutes;
 }
 
 - (void)book15Minutes:(id)sender{
-    BookingView *senderObject = (BookingView*) sender;
     [self sendBookingRequestForMinutes: 15];
 }
 
 - (void)book30Minutes:(id)sender{
-    BookingView *senderObject = (BookingView*) sender;
     [self sendBookingRequestForMinutes: 30];
 }
 

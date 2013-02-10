@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		14B16E5C16C7C8930064CA1E /* clock60.png in Resources */ = {isa = PBXBuildFile; fileRef = 14B16E5B16C7C8930064CA1E /* clock60.png */; };
 		4C27BBD316BFDEEE000D0DD5 /* BookingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C27BBCC16BFDEEE000D0DD5 /* BookingView.m */; };
 		4C27BBD416BFDEEE000D0DD5 /* CustomScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C27BBCE16BFDEEE000D0DD5 /* CustomScrollView.m */; };
 		4C27BBD516BFDEEE000D0DD5 /* MeetingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C27BBD016BFDEEE000D0DD5 /* MeetingView.m */; };
@@ -66,6 +67,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		14B16E5B16C7C8930064CA1E /* clock60.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = clock60.png; path = resources/clock60.png; sourceTree = "<group>"; };
 		4C27BBCB16BFDEEE000D0DD5 /* BookingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookingView.h; sourceTree = "<group>"; };
 		4C27BBCC16BFDEEE000D0DD5 /* BookingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookingView.m; sourceTree = "<group>"; };
 		4C27BBCD16BFDEEE000D0DD5 /* CustomScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomScrollView.h; sourceTree = "<group>"; };
@@ -161,6 +163,7 @@
 		4C9DB60516BFF34900ED6836 /* resources */ = {
 			isa = PBXGroup;
 			children = (
+				14B16E5B16C7C8930064CA1E /* clock60.png */,
 				4C401E3116C0002D008B2082 /* 1024x768_gronn.jpg */,
 				4C9DB60716BFF38D00ED6836 /* background-table.png */,
 				4C9DB60816BFF38D00ED6836 /* background.png */,
@@ -402,6 +405,7 @@
 				4C9DB62F16BFF59900ED6836 /* MeetingView3.xib in Resources */,
 				4C401E3216C0002D008B2082 /* 1024x768_gronn.jpg in Resources */,
 				4C8784C916C00D1D0096ECF5 /* MeetingView.xib in Resources */,
+				14B16E5C16C7C8930064CA1E /* clock60.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

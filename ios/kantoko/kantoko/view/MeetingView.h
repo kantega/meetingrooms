@@ -27,7 +27,8 @@
 @property (unsafe_unretained, nonatomic) IBOutlet UIButton *editButton;
 
 @property (strong,nonatomic) BookingView *bookingView;
-@property (strong,nonatomic) UIButton *tempbutton;
+//@property (strong,nonatomic) UIButton *tempbutton;
+@property (strong,nonatomic) UIView *darkBackgroundView;
 
 
 @end

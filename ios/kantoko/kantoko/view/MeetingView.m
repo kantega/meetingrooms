@@ -24,7 +24,7 @@
 @synthesize meetingOccupiedIndicator = _meetingOccupiedIndicator;
 @synthesize editButton = _editButton;
 
-@synthesize tempbutton;
+@synthesize darkBackgroundView;
 @synthesize bookingView;
 
 
@@ -112,13 +112,16 @@
 }
 
 
--(void)callBookingLapp{
+-(void)showBookingView{
     
     self.bookingView = [[BookingView alloc] init];
     self.bookingView.meeting = _meeting;
     
     [self.bookingView.barButtonAvbryt setAction:@selector(standardknappavbryt:)];
     [self.bookingView.barButtonAvbryt setTarget:self];
+    
+    CGSize mainViewSize = [KantokoViewController getInstance].view.bounds.size;
+    self.bookingView.center = CGPointMake(mainViewSize.width / 2, mainViewSize.height / 2 - 50);
     
     
     [self addSubview:self.bookingView];
@@ -129,7 +132,7 @@
 // TODO skulle egentlig bli notification fra bookingview, men skal bli her foreløpig
 -(void)standardknappavbryt:(id)sender{
     
-    [self.tempbutton removeFromSuperview];
+    [self.darkBackgroundView removeFromSuperview];
     [self.bookingView removeFromSuperview];
     KantokoViewController *kantokoViewController = [KantokoViewController getInstance];
     kantokoViewController.scrollView.userInteractionEnabled = YES;
@@ -142,34 +145,21 @@
     
     NSLog(@"Her er booking");
     
-    //if (self ...)?
-    //17 des 12, det er nok med å fylle ut møteromslappen slik at ny lapp kan ikke skapes før den første lappen lukkes.
-    //[self performSelector:@selector(callBookingLapp)];
-    [self callBookingLapp];
-    
     KantokoViewController * kantokoViewController = [KantokoViewController getInstance];
     [kantokoViewController stopTimer];
     
-
-    //10 jan 13: For å ha valgfri bakgrunnsfarge, må man gå for UIButtonTypeCustom, ikke UIButtonTypeRoundedRect
-    //tempbutton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    tempbutton = [UIButton buttonWithType:UIButtonTypeCustom];
-    // Foreløpig ingen action hvis brukeren tar på skjermen utenfor MeetingView, vi kunne lukke viewet i så fall
-    // [tempbutton addTarget:self action:@selector(aMethod:) forControlEvents:UIControlEventTouchDown];
-    [tempbutton setTitle:@"" forState:UIControlStateNormal];
-    tempbutton.frame = kantokoViewController.view.frame;
-    tempbutton.backgroundColor = [UIColor darkGrayColor];
-    tempbutton.alpha = 0.5;
-    [kantokoViewController.view addSubview:tempbutton];
-
+    darkBackgroundView = [[UIView alloc] initWithFrame:kantokoViewController.view.bounds];
+    darkBackgroundView.backgroundColor = [UIColor blackColor];
+    darkBackgroundView.alpha = 0.70;
+    darkBackgroundView.userInteractionEnabled = NO;
+    [kantokoViewController.view addSubview:darkBackgroundView];
+    
+    [self showBookingView];
     
     kantokoViewController.scrollView.userInteractionEnabled = NO;
     [kantokoViewController.view addSubview:self.bookingView];
 
-    self.userInteractionEnabled = YES;
-    self.bookingView.userInteractionEnabled = YES;
-    
- 
+    self.bookingView.userInteractionEnabled = YES;    
 }
 
 
@@ -178,7 +168,7 @@
     NSLog(@"fjerneObjekter triggered");
     
     [self.bookingView removeFromSuperview];
-    [self.tempbutton removeFromSuperview];
+    [self.darkBackgroundView removeFromSuperview];
     KantokoViewController *kantokoViewController = [KantokoViewController getInstance];
     kantokoViewController.scrollView.userInteractionEnabled = YES;
     [kantokoViewController restartTimer];
