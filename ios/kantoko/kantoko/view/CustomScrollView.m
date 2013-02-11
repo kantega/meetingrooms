@@ -118,6 +118,10 @@ const int _boxSpacing = 10;
         frame.origin.x = currentBoxOffset;
         [currentView setFrame:frame];
         
+        if (i >= leavingElementIndex - 1 && i <= enteringElementIndex + 1) {
+            [((SlidingView*) currentView) updateShadow];
+        }
+        
         previousBoxWidth = frame.size.width;
     }
 }

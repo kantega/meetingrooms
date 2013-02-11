@@ -57,8 +57,7 @@ OnBookingRequestCompleted _bookingViewRequestCompletedCallback;
             [self.darkBackgroundView removeFromSuperview];
             [self.bookingView removeFromSuperview];
             KantokoViewController *kantokoViewController = [KantokoViewController getInstance];
-            [kantokoViewController restartTimer]; // TODO her er det timing problems: det tar litt tid før det nye møte vises
-
+            [kantokoViewController updateViewAfterChanges];
             [kantokoViewController showNotificationMessage:responseMessage];
             kantokoViewController.scrollView.userInteractionEnabled = YES;
         };

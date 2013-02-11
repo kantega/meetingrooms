@@ -21,5 +21,6 @@
 @property (strong, retain) NSString * owner;
 
 - (id)initWithFrame:(CGRect)frame andMeeting:(Meeting *)meeting;
+- (void)updateShadow;
 
 @end

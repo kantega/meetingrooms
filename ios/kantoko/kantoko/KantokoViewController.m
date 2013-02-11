@@ -187,6 +187,7 @@ UILabel* _statusLabel = nil;
 
 -(void)restartTimer{
     //NSLog(@"restartTimer without parameter");
+    [self.timerForMeeRooVC invalidate];
     self.timerForMeeRooVC = [NSTimer scheduledTimerWithTimeInterval:10.0 target:self selector:@selector(onTimer:) userInfo:nil repeats:YES];
     [self configureView];
 }
@@ -235,6 +236,11 @@ UILabel* _statusLabel = nil;
     _statusLabel.text = message;
     _statusLabel.alpha = 1.0f;
     [UIView animateWithDuration:3.0f animations:^ { [_statusLabel setAlpha:0.00f]; }];
+}
+
+-(void)updateViewAfterChanges {  
+    NSTimer *delayedRefreshTimer = [NSTimer scheduledTimerWithTimeInterval:3.0 target:self selector:@selector(onTimer:) userInfo:nil repeats:NO];
+    [self restartTimer];
 }
 
 - (void)configureView

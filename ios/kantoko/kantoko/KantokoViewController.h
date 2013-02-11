@@ -52,6 +52,7 @@
 -(void)stopTimer;
 -(void)restartTimer;
 -(void)configureView;
+-(void)updateViewAfterChanges;
 -(void)showNotificationMessage:(NSString*)message;
 
 @end
