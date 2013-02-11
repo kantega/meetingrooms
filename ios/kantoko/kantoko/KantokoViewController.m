@@ -342,94 +342,45 @@ UILabel* _statusLabel = nil;
 - (NSArray *) fillInMeetingsWithVacantSpots:(NSArray *) meetings {
     
     NSMutableArray *meetingsWithVacantSpots = [[NSMutableArray alloc] init];
+    NSDate *startOfDay = [DateUtil startOfToday];
+    NSDate *endOfDay = [DateUtil endOfToday];
+    NSString* ownerStr = @"Ledig møtetidspunkt";
+    NSString* subjectStr = @"Ledig";
     
     if ([meetings count] == 0) {
-        //Hvis ingen møter, legg til ledig møtetidspunkt fra 8 til 17
-        NSDate *meetingStart = [DateUtil startOfToday];
-        NSDate *meetingEnd = [DateUtil endOfToday];
-        
-        Meeting *vacantMeeting = [[Meeting alloc] init:meetingStart end:meetingEnd owner:@"Ledig møtetidspunkt" subject:@"Ledig"];
+        Meeting *vacantMeeting = [[Meeting alloc] init:startOfDay end:endOfDay owner:ownerStr subject:subjectStr];
         [meetingsWithVacantSpots addObject:vacantMeeting];
-    } else if ([meetings count] > 0) {
-        //Hvis første møte starter etter 08:15, legg til et ledig møte tidlig på dagen
-        //9.nov: Dette blir jo feil, fordi jeg har sett et ledig møtelapp som har kl8 som start- og sluttidspunkt og neste møte er kl8 til 12. Dette må fikses!!
-        Meeting *firstMeeting = [meetings objectAtIndex:0];
-        
-        NSDate *startOfToday = [DateUtil startOfToday];
-        NSTimeInterval interval = [[firstMeeting start] timeIntervalSinceDate:startOfToday];
-        
-        //11 jan 13: Endret fra (15 * 60) til (2 * 60) == Mer enn ett minutts mellomrom mellom møtelappene, da vises ledige møtelapper, selv om det er ikke mulig å booke en tidsperiode på under 15 minutter da.
-        if (interval > (15 * 60)) {
-            Meeting *vacantMeeting = [[Meeting alloc] init:startOfToday end:[firstMeeting start] owner:@"Ledig møtetidspunkt" subject:@"Ledig"];
-            
-            [meetingsWithVacantSpots addObject:vacantMeeting];
-        }
+        return meetingsWithVacantSpots;
     }
     
-
-    int index = 0;
-    for (Meeting *meeting in meetings) {
-        [meetingsWithVacantSpots addObject:meeting];
-        if ([meetings count] > (index + 1)) {
-            //Det finnes flere møter i dag
-            Meeting *nextMeeting = [meetings objectAtIndex:(index + 1)];
-            NSDate *thisMeetingEnd = [meeting end];
-            NSDate *nextMeetingStart = [nextMeeting start];
-            
-            
-            NSTimeInterval interval = [nextMeetingStart timeIntervalSinceDate:thisMeetingEnd];
-            
-            //11 jan 13: Kan endres fra (15 * 60) til (2 * 60) == Mer enn ett minutts mellomrom mellom møtelappene, da vises ledige møtelapper, selv om det er ikke mulig å booke en tidsperiode på under 15 minutter da.
-            if (interval > (15 * 60)) {
-                //Mørerommet må være ledig i minst 15 minutter/600 sekunder
-                Meeting *vacantMeeting = [[Meeting alloc] init:thisMeetingEnd end:nextMeetingStart owner:@"Ledig møtetidspunkt" subject:@"Ledig"];
-                [meetingsWithVacantSpots addObject:vacantMeeting];
-            }
-            
-        } else {
-            //Dagens siste møterom
-            NSDate *thisMeetingEnd = [meeting end];
-            NSDate *nextMeetingEnd = [DateUtil endOfToday];
-            
-            Meeting *vacantMeeting = [[Meeting alloc] init:thisMeetingEnd end:nextMeetingEnd owner:@"Ledig møtetidspunkt" subject:@"Ledig"];
+    Meeting *firstMeeting = [meetings objectAtIndex:0];
+    NSDate *firstMeetingStart = [DateUtil roundToClosestQuarter:firstMeeting.start];
+    if ([DateUtil date:firstMeetingStart isAfterDate:startOfDay]) {
+        Meeting *vacantMeeting = [[Meeting alloc] init:startOfDay end:firstMeeting.start owner:ownerStr subject:subjectStr];
+        [meetingsWithVacantSpots addObject:vacantMeeting];
+    }
+    [meetingsWithVacantSpots addObject:firstMeeting];
+    
+    for(NSInteger i = 1; i < [meetings count]; i++) {
+        Meeting *previousMeeting = [meetings objectAtIndex:i - 1];
+        NSDate *endOfPreviousMeeting = [DateUtil roundToClosestQuarter:previousMeeting.end];
+        Meeting *currentMeeting = [meetings objectAtIndex:i];
+        NSDate *startOfCurrentMeeting = [DateUtil roundToClosestQuarter:currentMeeting.start];
+        if ([DateUtil date:startOfCurrentMeeting isAfterDate:endOfPreviousMeeting]) {
+            Meeting *vacantMeeting = [[Meeting alloc] init:previousMeeting.end end:currentMeeting.start owner:ownerStr subject:subjectStr];
             [meetingsWithVacantSpots addObject:vacantMeeting];
         }
-        
-        index++;
+        [meetingsWithVacantSpots addObject:currentMeeting];
+    }
+             
+    Meeting *lastMeeting = [meetings objectAtIndex:[meetings count] - 1];
+    NSDate *lastMeetingEnd = [DateUtil roundToClosestQuarter:lastMeeting.end];
+    if ([DateUtil date:endOfDay isAfterDate:lastMeetingEnd]) {
+         Meeting *vacantMeeting = [[Meeting alloc] init:lastMeetingEnd end:endOfDay owner:ownerStr subject:subjectStr];
+         [meetingsWithVacantSpots addObject:vacantMeeting];
     }
     
     return meetingsWithVacantSpots;
-}
-
-- (void) displayRoomAvailable: (Meeting *) nextMeeting {
-    self.colorLabel.backgroundColor = UIColor.greenColor;
-    self.meetingStartLabel.text = @"";
-    self.meetingEndLabel.text = @"";
-    self.meetingOwnerLabel.text = @"";
-    if (nextMeeting == nil) {
-        self.meetingSubjectLabel.text = @"Møterommet et ledig resten av dagen";
-        self.nextMeetingLabel.text = @"";
-    } else {
-        self.meetingSubjectLabel.text = [NSString stringWithFormat:@"%@%@",
-                                         @"Møterommet et ledig frem til kl. ",
-                                         [DateUtil hourAndMinutes:nextMeeting.start]];
-        self.nextMeetingLabel.text = [NSString stringWithFormat:@"%@ %@ - %@ %@",
-                                      @"Neste møte: ",
-                                      [DateUtil hourAndMinutes:nextMeeting.start],
-                                      [DateUtil hourAndMinutes:nextMeeting.end],
-                                      nextMeeting.subject];
-        
-    }
-}
-
-
-
-- (void)displayRoomOccupied: (Meeting *) meeting {
-    self.colorLabel.backgroundColor = UIColor.redColor;
-    self.meetingStartLabel.text = [DateUtil hourAndMinutes:meeting.start];
-    self.meetingEndLabel.text = [DateUtil hourAndMinutes:meeting.end];
-    self.meetingOwnerLabel.text = meeting.owner;
-    self.meetingSubjectLabel.text = meeting.subject;
 }
 
 

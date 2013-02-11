@@ -13,6 +13,12 @@
 // Set up flags.
 unsigned unitFlags = NSYearCalendarUnit| NSMonthCalendarUnit | NSDayCalendarUnit | NSWeekCalendarUnit |  NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit | NSWeekdayCalendarUnit | NSWeekdayOrdinalCalendarUnit;
 
++(BOOL) date:(NSDate *)date1 isAfterDate:(NSDate *)date2 {
+    return ([date1 compare:date2] == NSOrderedDescending);
+}
+
+
+
 + (NSDate *)roundHourDown:(NSDate *) date {
     NSDateComponents *comps = [[NSCalendar currentCalendar] components:unitFlags fromDate:date];
     [comps setHour:[comps hour]];

@@ -10,6 +10,7 @@
 
 @interface DateUtil : NSObject
 
++ (BOOL) date:(NSDate *) date1 isAfterDate:(NSDate *) date2;
 + (NSDate *) roundHourDown:(NSDate *) date;
 + (NSDate *) roundHourUp:(NSDate *) date;
 + (NSDate *) roundToClosestQuarter:(NSDate *) date;
