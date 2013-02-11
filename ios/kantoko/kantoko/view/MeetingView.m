@@ -31,11 +31,6 @@ OnBookingRequestCompleted _bookingViewRequestCompletedCallback;
 
 #define kDontDisableUserInteraction 321
 
-/*
-- (id)initWithFrame:(CGRect)frame
-{
-    return [super initWithFrame:frame];
-}*/
 
 - (id)initWithCoder:(NSCoder *)coder {
     self = [super initWithCoder:coder];
@@ -105,7 +100,7 @@ OnBookingRequestCompleted _bookingViewRequestCompletedCallback;
     [_eierLabel setFont:[UIFont fontWithName:@"Helvetica" size:25]];
     _eierLabel.adjustsFontSizeToFitWidth = YES;
     _eierLabel.numberOfLines = 1;
-    _eierLabel.lineBreakMode = UILineBreakModeWordWrap;
+    _eierLabel.lineBreakMode = NSTextAlignmentCenter;
     [_eierLabel setText:eier];
 }
 
@@ -113,7 +108,7 @@ OnBookingRequestCompleted _bookingViewRequestCompletedCallback;
     [_headlineLabel setFont:[UIFont fontWithName:@"Helvetica" size:38]];
     _headlineLabel.adjustsFontSizeToFitWidth = YES;
     _headlineLabel.numberOfLines = 3;
-    _headlineLabel.lineBreakMode = UILineBreakModeCharacterWrap;
+    _headlineLabel.lineBreakMode = NSTextAlignmentCenter;
     [_headlineLabel setText:headline];
 }
 

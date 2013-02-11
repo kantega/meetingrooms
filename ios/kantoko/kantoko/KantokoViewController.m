@@ -14,7 +14,6 @@
 #import "MeetingRoom.h"
 #import "DateUtil.h"
 #import "CustomScrollView.h"
-#import "SlidingView.h"
 #import "Configuration.h"
 
 
@@ -27,7 +26,7 @@
 @synthesize roomLabel = _roomLabel;
 @synthesize clockLabel = _clockLabel;
 @synthesize colorLabel = _colorLabel;
-@synthesize meetingStartLabel, meetingEndLabel, meetingOwnerLabel, meetingSubjectLabel, nextMeetingLabel;
+@synthesize meetingStartLabel, meetingEndLabel, meetingOwnerLabel, meetingSubjectLabel, nextMeetingLabel, tabbar;
 
 @synthesize toolbar, dataController;
 
@@ -81,7 +80,7 @@ UILabel* _statusLabel = nil;
     [self.view addSubview:self.moteromLabel];
     
     self.scrollView = [[CustomScrollView alloc]initWithFrame:CGRectMake(0,90,1032,581)];
-    self.scrollView.delegate = self;
+    self.scrollView.delegate = self.scrollView;
     [self.view addSubview:self.scrollView];
       
     // tabBar med knapper
@@ -226,11 +225,10 @@ UILabel* _statusLabel = nil;
     if (_statusLabel == nil) {
         CGSize mainViewSize = self.view.bounds.size;
         _statusLabel = [[UILabel alloc]initWithFrame:CGRectMake(mainViewSize.width / 4, mainViewSize.height * 2 / 3, mainViewSize.width / 2, 100)];
-        //_statusLabel.center = CGPointMake(mainViewSize.width / 2, mainViewSize.height / 2 - 50);
         _statusLabel.textColor = [UIColor whiteColor];
         _statusLabel.backgroundColor = [UIColor blackColor];
         _statusLabel.font = [UIFont systemFontOfSize:24.0f];
-        _statusLabel.textAlignment = UITextAlignmentCenter;
+        _statusLabel.textAlignment = NSTextAlignmentCenter;
         [self.view addSubview:_statusLabel];
     }
     
@@ -265,39 +263,26 @@ UILabel* _statusLabel = nil;
         index++;
     }
     
-    //16 jan 13: Dette for å unngå currentMeetingIndex forblir -1 hvis den variablen er ikke blitt oppdatert til andre verdi enn -1
-    // TODO i tillegg til dette kan vi vise første møtet hvis det er kl før 08:00
-    if (index == ([todaysMeetings count] - 1)  && currentMeetingIndex == -1){
-        currentMeetingIndex = [todaysMeetings count] - 1;
+    if (currentMeetingIndex == -1){
+        Meeting *firstMeeting = [todaysMeetings objectAtIndex:0];
+        currentMeetingIndex = ([DateUtil date:firstMeeting.start isAfterDate:now]) ? 0 : [todaysMeetings count] - 1;
     }
-    
-
-    NSLog(@"currentMeetingIndex %i", currentMeetingIndex);
-    
-    // TODO har vi ikke konstanter for dette noe sted?
-    self.scrollView.smallBoxWidth = 250;
-    self.scrollView.smallBoxHeight = 280;
-    self.scrollView.largeBoxWidth = 500;
-    self.scrollView.largeBoxHeight = 560;
-    self.scrollView.boxSpacing = 10;
-    
     
     int currentBoxOffset = 0;
     int previousBoxWidth = 0;
-    
     index = 0;
     
-    
+    NSLog(@"currentMeetingIndex %i", currentMeetingIndex);
     NSLog(@"======================");
     NSLog(@"  REFRESH MEETINGS");
     NSLog(@"======================");
     
     for (Meeting *meeting in todaysMeetings) {
 
-        CGFloat boxWidth = index == currentMeetingIndex ? self.scrollView.largeBoxWidth : self.scrollView.smallBoxWidth;
-        CGFloat boxHeight = index == currentMeetingIndex ? self.scrollView.largeBoxHeight : self.scrollView.smallBoxHeight;
+        CGFloat boxWidth = index == currentMeetingIndex ? CustomScrollView.largeBoxWidth : CustomScrollView.smallBoxWidth;
+        CGFloat boxHeight = index == currentMeetingIndex ? CustomScrollView.largeBoxHeight : CustomScrollView.smallBoxHeight;
         
-        currentBoxOffset += (previousBoxWidth + self.scrollView.boxSpacing);
+        currentBoxOffset += (previousBoxWidth + CustomScrollView.boxSpacing);
         CGRect frame = CGRectMake(currentBoxOffset, 0, boxWidth, boxHeight);
         
         // Default text, om det er tom subject i serveren.
@@ -324,7 +309,7 @@ UILabel* _statusLabel = nil;
     if (index == 0){
         scrollWidth = 1074;
     }else if (index > 0){
-        scrollWidth = self.scrollView.largeBoxWidth + (self.scrollView.smallBoxWidth * (index + 1)) + 80 ;
+        scrollWidth = CustomScrollView.largeBoxWidth + (CustomScrollView.smallBoxWidth * (index + 1)) + 80 ;
     }
 
     
@@ -404,121 +389,5 @@ UILabel* _statusLabel = nil;
     
     return NO;
 }
-
-#pragma mark scrollview delegate
-
-
-//Metoden er ansvarlig for å animere størrelsen på møteromsboksene. Vurdere å evt. flytte denne
-//til CustomScrollView istedet...
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView2 {
-    
-    if ([[scrollView2 subviews] count] > 2) {
-        float contentOffset = scrollView2.contentOffset.x;
-        int leavingElementIndex = [self.scrollView indexOfElementLeavingScene:scrollView2.contentOffset.x];
-        
-        if (leavingElementIndex > ([[self.scrollView subviews] count] -2)) {
-            leavingElementIndex = [[self.scrollView subviews] count] -2;
-        }
-        
-        int entereingElementIndex = leavingElementIndex + 1;
-        
-        if (leavingElementIndex >= 0 && contentOffset > 0) {
-            CGRect leavingFrame = [[[scrollView2 subviews] objectAtIndex:leavingElementIndex] frame];
-            CGRect enteringFrame = [[[scrollView2 subviews] objectAtIndex:entereingElementIndex] frame];
-            
-            float scalePerentage = (contentOffset - (self.scrollView.smallBoxWidth * leavingElementIndex))/(self.scrollView.smallBoxWidth);
-            
-            if (scalePerentage > 1) {
-                scalePerentage = 1;
-            }
-            
-            enteringFrame.size.width = self.scrollView.smallBoxWidth + (self.scrollView.smallBoxWidth * scalePerentage);
-            enteringFrame.size.height = self.scrollView.smallBoxHeight + (self.scrollView.smallBoxHeight * scalePerentage);
-            enteringFrame.origin.x = [self.scrollView leftMostPointAt:entereingElementIndex forContentOffset:contentOffset] - (self.scrollView.smallBoxWidth * scalePerentage);
-            
-            [[[scrollView2 subviews] objectAtIndex:entereingElementIndex] setFrame:enteringFrame];
-            
-            
-            leavingFrame.size.width = self.scrollView.largeBoxWidth - (self.scrollView.smallBoxWidth * scalePerentage); 
-            leavingFrame.size.height = self.scrollView.largeBoxHeight - (self.scrollView.smallBoxHeight * scalePerentage);
-            leavingFrame.origin.x = [self.scrollView leftMostPointAt:leavingElementIndex forContentOffset:contentOffset];
-            
-            [[[scrollView2 subviews] objectAtIndex:leavingElementIndex] setFrame:leavingFrame];
-            
-            //Reset the other visible frames sizes
-            int index = 0;
-            for (UIView *view in [scrollView2 subviews]) {
-                if([view isKindOfClass:[SlidingView class]] && (index > entereingElementIndex || index < leavingElementIndex)) {
-                    CGRect frame = view.frame;
-                    frame.size.width = self.scrollView.smallBoxWidth;
-                    frame.size.height = self.scrollView.smallBoxHeight;
-                    frame.origin.x = [self.scrollView leftMostPointAt:index forContentOffset:contentOffset];
-                    [view setFrame:frame];
-                }
-                
-                index++;
-            } 
-        }
-    }
-}
-
-
-
-//9.nov : Denne metode er ansvarlig for å fatsette den lille møtelappen til høyre for hovedlappen (stor)
-- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView2{
-    
-    if ([[scrollView2 subviews] count] > 2) {
-        
-        int leavingElementIndex = [self.scrollView indexOfElementLeavingScene:scrollView2.contentOffset.x];
-        
-        if (leavingElementIndex > ([[self.scrollView subviews] count] -2)) {
-            leavingElementIndex = [[self.scrollView subviews] count] -2;
-        }
-        
-        int entereingElementIndex = leavingElementIndex + 1;
-        
-        CGRect enteringFrame = [[[scrollView2 subviews] objectAtIndex:entereingElementIndex] frame];
-        CGRect leavingFrame = [[[scrollView2 subviews] objectAtIndex:leavingElementIndex] frame];
-        
-        if(250 != enteringFrame.size.height && 280 != enteringFrame.size.height){
-  
-            if (leavingFrame.size.width > enteringFrame.size.width) {
-                NSLog(@"scroll to %i in didDecelerating", leavingElementIndex + 1);
-                [self.scrollView scrollToBoxAt:leavingElementIndex + 1];
-            } else if (leavingFrame.size.width < enteringFrame.size.width){
-                NSLog(@"scroll to %i in didDecelerating", entereingElementIndex + 1);
-                [self.scrollView scrollToBoxAt:entereingElementIndex + 1];
-                
-                //10 jan 13: La til denne else-setning
-            }else{
-                NSLog(@"scroll to %i in didDecelerating", entereingElementIndex);
-                [self.scrollView scrollToBoxAt:entereingElementIndex + 1];
-                
-            }
-            
-        }
-        
-        
-        //Reset the other visible frames sizes
-        int index = 0;
-        for (UIView *view in [scrollView2 subviews]) {
-            if([view isKindOfClass:[SlidingView class]] && (index > entereingElementIndex || index < leavingElementIndex)) {
-                
-                CGRect frame = view.frame;
-                frame.size.width = self.scrollView.smallBoxWidth;
-                frame.size.height = self.scrollView.smallBoxHeight;
-                frame.origin.x = [self.scrollView leftMostPointAt:index forContentOffset:scrollView2.contentOffset.x];
-                [view setFrame:frame];
-            }
-            index++;
-        }
-        
-    }
-
-    
-}
-
-
-
 
 @end

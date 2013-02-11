@@ -51,7 +51,7 @@
     
     self.velgmoteLabel = [[UILabel alloc]initWithFrame:CGRectMake((1024-250)/2, 20, 250, 36)];
     self.velgmoteLabel.text = @"Velg møterom";
-    self.velgmoteLabel.textAlignment = UITextAlignmentCenter;
+    self.velgmoteLabel.textAlignment = NSTextAlignmentCenter;
     [self.velgmoteLabel setFont:[UIFont fontWithName:@"Verdana-Bold" size:25]];
     [self.velgmoteLabel setTextColor:[UIColor whiteColor]];
     self.velgmoteLabel.backgroundColor = [UIColor clearColor];

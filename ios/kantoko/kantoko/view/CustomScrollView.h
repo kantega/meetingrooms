@@ -8,19 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CustomScrollView : UIScrollView{
 
 
-    
+@interface CustomScrollView : UIScrollView <UIScrollViewDelegate>{
+
 }
 
-@property (readwrite)int smallBoxWidth;
-@property (readwrite)int smallBoxHeight;
-@property (readwrite)int largeBoxWidth;
-@property (readwrite)int largeBoxHeight;
-@property (readwrite)int boxSpacing;
- 
-
++ (int) smallBoxWidth;
++ (int) smallBoxHeight;
++ (int) largeBoxWidth;
++ (int) largeBoxHeight;
++ (int) boxSpacing;
 - (int) leftMostPointAt:(int)index forContentOffset:(float) contentOffset;
 - (int)indexOfElementLeavingScene:(float)contentOffset;
 - (int) scrollToBoxAt:(int)index;

@@ -84,7 +84,7 @@ UIButton* btnBook60Minutes;
 
         starttidspunktet = [[UILabel alloc]initWithFrame:CGRectMake((500-200)/2, 80, 200, 40)];
         starttidspunktet.text = @"Time";
-        starttidspunktet.textAlignment = UITextAlignmentCenter;
+        starttidspunktet.textAlignment = NSTextAlignmentCenter;
         starttidspunktet.backgroundColor = [UIColor lightGrayColor];
         [self addSubview:starttidspunktet];
         

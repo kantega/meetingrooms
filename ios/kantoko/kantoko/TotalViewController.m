@@ -59,7 +59,7 @@ TimeplanlappView *focusedMeetingView = nil;
 
     self.locationLabel = [[UILabel alloc]initWithFrame:CGRectMake( x, 45, 250, 40)];
     self.locationLabel.text = @"location";
-    self.locationLabel.textAlignment = UITextAlignmentCenter;
+    self.locationLabel.textAlignment = NSTextAlignmentCenter;
     [self.locationLabel setFont:[UIFont fontWithName:@"Verdana-Bold" size:35.0]];
     self.locationLabel.textColor = [UIColor whiteColor];
     self.locationLabel.backgroundColor = [UIColor clearColor];

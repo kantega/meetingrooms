@@ -57,7 +57,6 @@ unsigned unitFlags = NSYearCalendarUnit| NSMonthCalendarUnit | NSDayCalendarUnit
 
 + (NSInteger) minutesBetweenStart:(NSDate *)startTime andEnd:(NSDate *)endTime {
     NSInteger secondsBetweenDates = [endTime timeIntervalSinceDate:startTime];
-    NSInteger secondsBetweenN = [endTime timeIntervalSinceDate:startTime];
     return (secondsBetweenDates / 60);
 }
 

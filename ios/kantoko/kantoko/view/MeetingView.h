@@ -12,12 +12,12 @@
 #import "Meeting.h"
 #import <QuartzCore/QuartzCore.h>
 
-@interface MeetingView : UIView  <UIPickerViewDelegate, UIPickerViewDataSource>{
+@interface MeetingView : UIView {
     
     
 }
 
-@property (strong) Meeting *meeting;
+@property (strong, nonatomic) Meeting *meeting;
 
 @property (unsafe_unretained, nonatomic) IBOutlet UILabel *headlineLabel;
 @property (unsafe_unretained, nonatomic) IBOutlet UILabel *startTidspunktLabel;
@@ -27,7 +27,6 @@
 @property (unsafe_unretained, nonatomic) IBOutlet UIButton *editButton;
 
 @property (strong,nonatomic) BookingView *bookingView;
-//@property (strong,nonatomic) UIButton *tempbutton;
 @property (strong,nonatomic) UIView *darkBackgroundView;
 
 

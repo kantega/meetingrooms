@@ -51,7 +51,7 @@ double scale, max, now, hours, startX, height, padding, startY;
     roomName.backgroundColor = [UIColor clearColor];
     roomName.textColor = [UIColor lightTextColor];
     roomName.font = [UIFont fontWithName:@"Verdana" size:20];
-    roomName.lineBreakMode = UILineBreakModeWordWrap;
+    roomName.lineBreakMode = NSLineBreakByWordWrapping;
     roomName.numberOfLines = 0;
     [roomName sizeToFit];
     NSLog(@"roomname numberOfLine %i", roomName.numberOfLines);
@@ -170,7 +170,7 @@ double scale, max, now, hours, startX, height, padding, startY;
     //23.okt 12 for å gi luft mellom horisontale oransje linjene
     appointmentButton.frame = CGRectMake(x + 33, padding , width - 5, height - (2 * padding));
     appointmentButton.backgroundColor = kantegaOrange;
-    appointmentButton.titleLabel.lineBreakMode = UILineBreakModeTailTruncation;
+    appointmentButton.titleLabel.lineBreakMode = NSLineBreakByTruncatingTail;
     
     [self.buttonMap setObject:meeting forKey:[self button2string:appointmentButton]];
     [self addSubview:appointmentButton];

@@ -22,11 +22,12 @@
 
         NSArray* nibViews = [[NSBundle mainBundle] loadNibNamed:@"MeetingView" owner:self options:nil];
         
+        /* TODO det går ikke helt smooth med skygge...
         self.layer.masksToBounds = NO;
         self.layer.cornerRadius = 8;
         self.layer.shadowOffset = CGSizeMake(15, 20);
         self.layer.shadowRadius = 5;
-        self.layer.shadowOpacity = 0.5;
+        self.layer.shadowOpacity = 0.5;*/
         
         for (id currentObject in nibViews) {
             if([currentObject isKindOfClass:[MeetingView class]]) {

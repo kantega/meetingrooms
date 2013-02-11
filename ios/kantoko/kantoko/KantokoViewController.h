@@ -14,7 +14,7 @@
 
 @class KantokoViewController;
 
-@interface KantokoViewController : UIViewController <UIScrollViewDelegate, UITabBarDelegate>{
+@interface KantokoViewController : UIViewController <UITabBarDelegate>{
     
     UILabel *klokkeLabel;
     UILabel *moteromLabel;
