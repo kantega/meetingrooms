@@ -6,6 +6,8 @@
 //  Copyright (c) 2012 Kantega. All rights reserved.
 //
 
+#import <UIKit/UIKit.h>
+#import <QuartzCore/QuartzCore.h>
 #import "AppointmentsRowView.h"
 #import "Meeting.h"
 #import "DateUtil.h"
@@ -106,7 +108,14 @@ const double padding = 1.5;
 
     // Gir luft mellom horisontale oransje linjene
     appointmentButton.frame = CGRectMake(x + 33, padding , width - 5, height - (2 * padding));
-    appointmentButton.backgroundColor = kantegaOrange;    
+    appointmentButton.backgroundColor = kantegaOrange;  
+    appointmentButton.layer.cornerRadius = 3;
+    
+    appointmentButton.layer.masksToBounds = NO;
+    appointmentButton.layer.shadowPath = [[UIBezierPath bezierPathWithRoundedRect:appointmentButton.bounds cornerRadius:3] CGPath];
+    appointmentButton.layer.shadowOffset = CGSizeMake(5, 5);
+    appointmentButton.layer.shadowOpacity = 0.8;
+   
     [appointmentButton setTag:[self.room.meetings indexOfObject:meeting]];
     [self addSubview:appointmentButton];
 }

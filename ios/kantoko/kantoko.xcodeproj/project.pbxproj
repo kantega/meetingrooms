@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		14AC99E016CBD3420045AFEE /* BookingButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 14AC99DF16CBD3420045AFEE /* BookingButton.m */; };
 		14B16E5C16C7C8930064CA1E /* clock60.png in Resources */ = {isa = PBXBuildFile; fileRef = 14B16E5B16C7C8930064CA1E /* clock60.png */; };
 		4C27BBD316BFDEEE000D0DD5 /* BookingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C27BBCC16BFDEEE000D0DD5 /* BookingView.m */; };
 		4C27BBD416BFDEEE000D0DD5 /* CustomScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C27BBCE16BFDEEE000D0DD5 /* CustomScrollView.m */; };
@@ -67,6 +68,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		14AC99DE16CBD3420045AFEE /* BookingButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookingButton.h; sourceTree = "<group>"; };
+		14AC99DF16CBD3420045AFEE /* BookingButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookingButton.m; sourceTree = "<group>"; };
 		14B16E5B16C7C8930064CA1E /* clock60.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = clock60.png; path = resources/clock60.png; sourceTree = "<group>"; };
 		4C27BBCB16BFDEEE000D0DD5 /* BookingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookingView.h; sourceTree = "<group>"; };
 		4C27BBCC16BFDEEE000D0DD5 /* BookingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookingView.m; sourceTree = "<group>"; };
@@ -212,6 +215,8 @@
 				4C27BBD216BFDEEE000D0DD5 /* SlidingView.m */,
 				4CEC558016BFDCCF00CCE999 /* AppointmentsRowView.h */,
 				4CEC558116BFDCCF00CCE999 /* AppointmentsRowView.m */,
+				14AC99DE16CBD3420045AFEE /* BookingButton.h */,
+				14AC99DF16CBD3420045AFEE /* BookingButton.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -457,6 +462,7 @@
 				4C27BBD616BFDEEE000D0DD5 /* SlidingView.m in Sources */,
 				4C27BBDA16BFDFF4000D0DD5 /* TimeplanlappTimerView.m in Sources */,
 				4C27BBDD16BFE06F000D0DD5 /* TimeplanlappView.m in Sources */,
+				14AC99E016CBD3420045AFEE /* BookingButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

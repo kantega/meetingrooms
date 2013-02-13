@@ -7,11 +7,11 @@
 //
 
 #import "BookingView.h"
-#import <UIKit/UIKit.h>
 #import "Meeting.h"
 #import "DateUtil.h"
 #import "Configuration.h"
 #import "KantokoViewController.h"
+#import "BookingButton.h"
 
 @implementation BookingView
 
@@ -28,10 +28,7 @@ NSDate* _bookMoteFra;
 NSDate* _bookMoteTil;
 NSDate* _naermesteKvarterTilNaa;  // møtet kan ikke starte kl.1600 hvis det er allerede 16:28 -> da blir dette 16:30
 
-UIButton* btnBook15Minutes;
-UIButton* btnBook30Minutes;
-UIButton* btnBook45Minutes;
-UIButton* btnBook60Minutes;
+NSMutableArray *bookingButtonsArray;
 
 
 -(id)init { 
@@ -88,39 +85,22 @@ UIButton* btnBook60Minutes;
         starttidspunktet.backgroundColor = [UIColor lightGrayColor];
         [self addSubview:starttidspunktet];
         
-        btnBook15Minutes = [self makeBookingButtonWithTitle:@"     15 minutter" andOffsetY: 160];
-        [btnBook15Minutes addTarget:self action:@selector(book15Minutes:) forControlEvents:UIControlEventTouchUpInside];
-        [self addSubview:btnBook15Minutes];
+        bookingButtonsArray = [[NSMutableArray alloc] init];
         
-        btnBook30Minutes = [self makeBookingButtonWithTitle:@"     30 minutter" andOffsetY: 250];
-        [btnBook30Minutes addTarget:self action:@selector(book30Minutes:) forControlEvents:UIControlEventTouchUpInside];
-        [self addSubview:btnBook30Minutes];
+        [bookingButtonsArray addObject:[[BookingButton alloc] initWithMinutes:15 andOffsetY: 160]];
+        [bookingButtonsArray addObject:[[BookingButton alloc] initWithMinutes:30 andOffsetY: 250]];
+        [bookingButtonsArray addObject:[[BookingButton alloc] initWithMinutes:45 andOffsetY: 340]];
+        [bookingButtonsArray addObject:[[BookingButton alloc] initWithMinutes:60 andOffsetY: 430]];
         
-        btnBook45Minutes = [self makeBookingButtonWithTitle:@"     45 minutter" andOffsetY: 340];
-        [btnBook45Minutes addTarget:self action:@selector(book45Minutes:) forControlEvents:UIControlEventTouchUpInside];
-        [self addSubview:btnBook45Minutes];
-        
-        btnBook60Minutes = [self makeBookingButtonWithTitle:@"     60 minutter" andOffsetY: 430];
-        [btnBook60Minutes addTarget:self action:@selector(book60Minutes:) forControlEvents:UIControlEventTouchUpInside];
-        [self addSubview:btnBook60Minutes];
-
+        for (BookingButton *btn in bookingButtonsArray) {
+            [btn addTarget:self action:@selector(bookingButtonTouched:) forControlEvents:UIControlEventTouchUpInside];
+            [self addSubview:btn];
+        }
     }
     return self;
 }
 
--(UIButton*)makeBookingButtonWithTitle:(NSString*) title andOffsetY: (NSInteger) offsetY {
-    UIButton* btnBooking = [UIButton buttonWithType:UIButtonTypeCustom];
-    btnBooking.frame = CGRectMake((500-200)/2, offsetY, 200, 60);
-    btnBooking.opaque = YES;
-    UIImage* image = [UIImage imageNamed:@"clock60.png"];
-    UIEdgeInsets insets = UIEdgeInsetsMake(29, 55, 29, 4);
-    image = [image resizableImageWithCapInsets:insets];
-    [btnBooking setBackgroundImage:image forState:UIControlStateNormal];
-    [btnBooking setTitle:title forState:UIControlStateNormal];
-    btnBooking.layer.cornerRadius = 10.f;
-    btnBooking.layer.masksToBounds = YES;
-    return btnBooking;
-}
+
 
 
 -(void)setMeeting:(Meeting*) meeting {
@@ -136,12 +116,12 @@ UIButton* btnBook60Minutes;
         starttidspunktet.text = [DateUtil hourAndMinutes:_meeting.start];
         tilgjengeligeMinutter = _meeting.durationInMinutes;
     }
- 
-    btnBook15Minutes.hidden = (tilgjengeligeMinutter < 15);
-    btnBook30Minutes.hidden = (tilgjengeligeMinutter < 30);
-    btnBook45Minutes.hidden = (tilgjengeligeMinutter < 45);
-    btnBook60Minutes.hidden = (tilgjengeligeMinutter < 60);
+    
+    for (BookingButton *btn in bookingButtonsArray) {
+        btn.hidden = (tilgjengeligeMinutter < btn.minutes);
+    }
 }
+
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
 
@@ -184,28 +164,17 @@ UIButton* btnBook60Minutes;
     return message;
 }
 
+- (void)bookingButtonTouched:(id)sender{
+    BookingButton *senderButton = (BookingButton*) sender;
+    [self sendBookingRequestForMinutes: senderButton.minutes];
+}
+
 -(void)sendBookingRequestForMinutes:(NSInteger)meetingDuration {
     NSUInteger intervalMinutes = meetingDuration * 60;
     _bookMoteTil = [_bookMoteFra dateByAddingTimeInterval:intervalMinutes];
     NSString *bookerFra = [NSString stringWithFormat:@"%lld",(long long)([_bookMoteFra timeIntervalSince1970] * 1000)];
     NSString *bookerTil = [NSString stringWithFormat:@"%lld",(long long)([_bookMoteTil timeIntervalSince1970] * 1000)];
     [self sendJSON:_roomnavn heledag:false start:bookerFra slutt:bookerTil eier:@"" tittel:@"Opptatt"];
-}
-
-- (void)book15Minutes:(id)sender{
-    [self sendBookingRequestForMinutes: 15];
-}
-
-- (void)book30Minutes:(id)sender{
-    [self sendBookingRequestForMinutes: 30];
-}
-
-- (void)book45Minutes:(id)sender{
-    [self sendBookingRequestForMinutes: 45];
-}
-
-- (void)book60Minutes:(id)sender{
-    [self sendBookingRequestForMinutes: 60];
 }
 
 

@@ -7,14 +7,25 @@
 //
 
 #import "BookingButton.h"
+#import <QuartzCore/CoreAnimation.h>
 
 @implementation BookingButton
 
-- (id)initWithFrame:(CGRect)frame
+@synthesize minutes;
+
+- (id)initWithMinutes:(int)min andOffsetY:(int)offsetY
 {
-    self = [super initWithFrame:frame];
+    self = [super init];
     if (self) {
-        // Initialization code
+        self.frame = CGRectMake((500-200)/2, offsetY, 200, 60);
+        UIImage* image = [UIImage imageNamed:@"clock60.png"];
+        UIEdgeInsets insets = UIEdgeInsetsMake(29, 55, 29, 4);
+        image = [image resizableImageWithCapInsets:insets];
+        [self setBackgroundImage:image forState:UIControlStateNormal];
+        [self.layer setCornerRadius:10];
+        [self.layer setMasksToBounds:YES];
+        [self setMinutes:min];
+        [self setTitle:[NSString stringWithFormat:@"     %i minutter", min] forState:UIControlStateNormal];
     }
     return self;
 }

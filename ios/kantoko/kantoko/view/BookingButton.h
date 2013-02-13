@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface BookingButton : UIButton
+@interface BookingButton : UIButton{}
+
+@property (nonatomic) NSInteger minutes;
+
+- (id)initWithMinutes:(int)minutes andOffsetY:(int)offsetY;
 
 @end
