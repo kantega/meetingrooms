@@ -133,42 +133,18 @@
     self.trondheim = nil;
     self.trondheimrooms = nil;
     self.oslorooms = nil;
-     
-    
-    //[super dealloc];
     
 }
-
-
-
-//Apples standardkoder
-/*
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
- */
-
 
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    //return UIInterfaceOrientationLandscapeLeft;
-    //return (interfaceOrientation == UIInterfaceOrientationLandscapeLeft);
-    
     if (interfaceOrientation==UIInterfaceOrientationLandscapeLeft || interfaceOrientation==UIInterfaceOrientationLandscapeRight)
         return YES;
     
     return NO;
     
 }
-
-
-
 
 
 - (void)saveConfiguration:(id)sender {

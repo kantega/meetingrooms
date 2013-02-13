@@ -12,40 +12,34 @@
 
 @implementation AppointmentsRowView
 
-@synthesize room, buttonMap, focusedMeeting;
+@synthesize room;
 
 UIColor *kantegaOrange;
 
-double scale, max, now, hours, startX, height, padding, startY;
+double height, now;
 
+const int scale = 39;
+const int startX = 156;
+const int startY = 106;
+const int hours = 8;
+const int max = (3600 * hours);
+const double padding = 1.5;
 
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
-        // Initialization code
-        
-        scale = 39;
-        startX = 156;
-        //height = 50; //frame.size.height;
         height = frame.size.height;
-        hours = 8;
-        padding = 1.5;
-        max = (3600 * hours);
         now =  [[NSDate date] timeIntervalSince1970];
         kantegaOrange = [UIColor colorWithRed:200/255.0 green:115/255.0 blue:40/255.0 alpha:1.0];
-        
-        //9 sep 12
-        startY = 106;
-        
     }
     return self;
 }
 
-//Dette viser romnavn
+
 - (void)refresh {
     
-    
+    // TODO remove subviews? How often do we refresh?
     UILabel *roomName = [[UILabel alloc] initWithFrame:CGRectMake(2.0,2.0,160.0, height )];
     roomName.text = self.room.displayname;
     roomName.backgroundColor = [UIColor clearColor];
@@ -54,13 +48,10 @@ double scale, max, now, hours, startX, height, padding, startY;
     roomName.lineBreakMode = NSLineBreakByWordWrapping;
     roomName.numberOfLines = 0;
     [roomName sizeToFit];
-    NSLog(@"roomname numberOfLine %i", roomName.numberOfLines);
     [self addSubview:roomName];
     
-    //dette tegner oransje linjer i respektive rom (vertikale linjene)
-    
     for (Meeting *meeting in self.room.meetings) {
-        [self drawMeeting:meeting];
+        [self drawOrangeBarForMeeting:meeting];
     }
      
 }
@@ -95,134 +86,39 @@ double scale, max, now, hours, startX, height, padding, startY;
 }
 
 
-
-
-//dette tegner de oransje linjene i timeplanen
-- (void) drawMeeting:(Meeting *)meeting{
+- (void) drawOrangeBarForMeeting:(Meeting *)meeting{
     
-    
-    NSLog (@"meeting.subject %@", meeting.subject);
-    
-    NSMutableArray *addSubjects = [[NSMutableArray alloc]init];
-    [addSubjects addObject:meeting.subject];
-    
-    NSUInteger countOfMeetings = [addSubjects count];
-    NSLog (@"self.room.displayname %@", self.room.displayname);
-
-    
-    NSMutableArray *addRooms = [[NSMutableArray alloc]init];
-    [addRooms addObject:self.room.displayname];
-    
-    NSLog (@"self.room.meetings %@", self.room.meetings);
-    
-    NSLog (@"addRooms count %i", [addRooms count]);
-    NSLog (@"countOfMeetings %i", countOfMeetings);
-    
-    
-    
+    // NB! tid i sekunder fra 1970
     int startTime = ([meeting.start timeIntervalSince1970] - now);
     int endTime = ([meeting.end timeIntervalSince1970] - now);
+    int oneHourAgo = -3600;
     
-    if (endTime < -3600) {
-        return;
-    }
-    
-    if (startTime > max) {
-        return;
-    }
-    
-    if (startTime < -3600) {
-        startTime = -3600;
-    }
-    if (endTime > max) {
-        endTime = max;
-    }
-    
-    //x forteller når en oransje linje sin x skal begynne og width forteller hvor lang en oransje linje skal være avhengig av tidslengde på booking
-    int x = startX + (3600 / scale) + (startTime / scale) + padding;
-    
-    //int x = startX + (3600 / scale) + (startTime / scale) + 20;
-    //int y = startY + (height * 2);
+    if (endTime < oneHourAgo || startTime > max) { return; }
 
+    startTime = MAX(startTime, oneHourAgo);
+    endTime = MIN(endTime, max);
+
+    int x = startX + (3600 / scale) + (startTime / scale) + padding;
     int width = ((endTime - startTime) / scale) - (2 * padding) ;
     
-    
     UIButton *appointmentButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    
-    [appointmentButton addTarget:self
-                          action:@selector(meetingTouched:)
-                forControlEvents:UIControlEventTouchUpInside];
-    
+    [appointmentButton addTarget:self action:@selector(appointmentButtonTouched:) forControlEvents:UIControlEventTouchUpInside];
 
-    
-    
-    //Dette gir tekst til oransje linjer, men jeg skjuler dem ved å gi samme tekstfarge som linjefarge,
-    //dette er en foreløpig fiks på visning av riktig infolapp
-    //23.okt subject
-    //[appointmentButton setTitle:meeting.subject forState:UIControlStateNormal];
-    //23.okt owner
-    [appointmentButton setTitle:meeting.owner forState:UIControlStateNormal];
-
-    //23.okt sette farge på tittel
-    //[appointmentButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal ];
-    [appointmentButton setTitleColor:kantegaOrange forState:UIControlStateNormal ];
-    
-    //23.okt 12 for å gi luft mellom horisontale oransje linjene
+    // Gir luft mellom horisontale oransje linjene
     appointmentButton.frame = CGRectMake(x + 33, padding , width - 5, height - (2 * padding));
-    appointmentButton.backgroundColor = kantegaOrange;
-    appointmentButton.titleLabel.lineBreakMode = NSLineBreakByTruncatingTail;
-    
-    [self.buttonMap setObject:meeting forKey:[self button2string:appointmentButton]];
+    appointmentButton.backgroundColor = kantegaOrange;    
+    [appointmentButton setTag:[self.room.meetings indexOfObject:meeting]];
     [self addSubview:appointmentButton];
 }
 
 
-//Dette fremkaller møtelappen!
-- (void) meetingTouched:(id)sender {
-    
-    NSString *key = [self button2string:sender];
-    Meeting *meeting = [self.buttonMap objectForKey:key];
-     
-    
-    self.focusedMeeting.subject = meeting.subject;
-    self.focusedMeeting.start = meeting.start;
-    self.focusedMeeting.end = meeting.end;
-    self.focusedMeeting.owner = meeting.owner;
-    
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"meetingFocused" object:nil];
+- (void) appointmentButtonTouched:(id)sender {
+
+    UIButton *senderButton = (UIButton*)sender;
+    NSInteger indexOfMeeting = [senderButton tag];
+    Meeting *meeting = [self.room.meetings objectAtIndex:indexOfMeeting];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"meetingBarTouched" object:meeting];
 }
 
-
-
-
-//Denne metode gir x- og y-verdier til oransje linjene
-- (NSString *) button2string:(UIButton *)button {
-       
-    
-    NSString *buttonString = [NSString stringWithFormat:@"%f:%f:%@",
-                              button.frame.origin.x,
-                              button.frame.origin.y,
-                              [button titleForState:UIControlStateNormal]];
-    
-    return buttonString;
-     
-}
-
-
--(void)dealloc{
-    
-    self.buttonMap = nil;
-    
-}
-
-
-/*
- // Only override drawRect: if you perform custom drawing.
- // An empty implementation adversely affects performance during animation.
- - (void)drawRect:(CGRect)rect
- {
- // Drawing code
- }
- */
 
 @end

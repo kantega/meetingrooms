@@ -7,12 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Meeting.h"
 
-@interface TimeplanlappTimerView : UIView
-{
-    NSTimer *timertoclose;
-
-}
+@interface TimeplanlappTimerView : UIView{ }
 
 
 @property (unsafe_unretained, nonatomic) IBOutlet UILabel *headlineLabel;
@@ -22,13 +19,6 @@
 @property (unsafe_unretained, nonatomic) IBOutlet UIView *meetingOccupiedIndicator;
 @property (unsafe_unretained, nonatomic) IBOutlet UIButton *exitButton;
 
-
-- (void) updateHeadline:(NSString *)headline;
-- (void) updateStart:(NSString *)startTidspunkt;
-- (void) updateStop:(NSString *)stoppTidspunkt;
-- (void) updateEier:(NSString *)eier;
-- (void) updateExitButton:(NSString *)exittext;
-
-@property (nonatomic,retain) NSTimer *timertoclose;
+- (void)showMeetingDetails:(Meeting *)meeting;
 
 @end

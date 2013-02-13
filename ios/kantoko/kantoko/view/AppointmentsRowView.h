@@ -8,27 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "MeetingRoom.h"
-#import "Meeting.h"
 
 
-@interface AppointmentsRowView : UIView {
-    
-    //NSMutableDictionary *buttonMap;
-    
-}
+@interface AppointmentsRowView : UIView {}
 
 @property (strong, nonatomic) MeetingRoom *room;
 
-@property (assign, nonatomic) NSMutableDictionary *buttonMap;
-
-@property (strong,nonatomic) Meeting *focusedMeeting;
-
-
 - (void)refresh;
-
 - (void) drawTimeline;
-
-- (void) drawMeeting:(Meeting *)meeting;
 
 @end
 

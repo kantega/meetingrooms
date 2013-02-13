@@ -23,16 +23,14 @@
 @implementation TotalViewController
 
 
-//7 sep 12
 @synthesize toolbar;
 @synthesize dataController, locationLabel, location;
 
 
-//18 sep 12
 int rowHeight = 0;
 
-Meeting *focusedMeeting =  nil;
-TimeplanlappView *focusedMeetingView = nil;
+TimeplanlappView *detailsView = nil;
+NSTimer *timerToClose = nil;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -114,26 +112,15 @@ TimeplanlappView *focusedMeetingView = nil;
     UIColor *background = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"1024x768_gronn.jpg"]];
     self.view.backgroundColor = background;
     
-    // Do any additional setup after loading the view.
     self.locationLabel.text = self.location;
     
-    NSLog(@"view did load inside TotalVC");
-    
-    focusedMeeting = [[Meeting alloc] init:nil end:nil owner:@"" subject:@"" ];
-    
-    // Add an observer that will respond to user tapping on a meeting
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(meetingFocused:)
-                                                 name:@"meetingFocused" object:nil];
+    // Add an observer that will respond to user tapping on a meeting orange bar or the close button on details
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(meetingBarTouched:) name:@"meetingBarTouched" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(closeButtonTouchedOnDetails:) name:@"closeButtonTouchedOnDetails" object:nil];
     
     NSArray *meetingRooms = [self.dataController getMeetingRoomsWithMeetings:self.location];
     NSLog (@"meetingRooms %@", meetingRooms);
-    
-    //18 sep 12: Finne ut antall i arrayen meetingRooms:
     NSUInteger mrCount = [meetingRooms count];
-    //NSLog (@"mrCount = %i", mrCount);
-    
-    //18 sep 12: Finne ut lokasjon til kontor:
-    //NSLog(@"self.location = %@", self.location);
     
 
     //18 sep 12: Få tilpasset rowHeight til begge kontorene:
@@ -191,16 +178,8 @@ TimeplanlappView *focusedMeetingView = nil;
         
         NSLog(@"MeetingRoom");
         
-        //AppointmentsRow2 *row = [[AppointmentsRow2 alloc] initWithFrame:CGRectMake(60,offsetY,900.0,rowHeight)];
-        
-        //18 sep 12; oransje lingjene har nå en fastsatt høyde
-        //AppointmentsRow2 *row = [[AppointmentsRow2 alloc] initWithFrame:CGRectMake(30,offsetY,930.0, (rowHeight - 20))];
         AppointmentsRowView *row = [[AppointmentsRowView alloc] initWithFrame:CGRectMake(30,offsetY,930.0, oransjeHeight)];
-
-        //11 jan 13: Sjekk buttonMap!!
         row.room = room;
-        row.buttonMap = buttonMap;
-        row.focusedMeeting = focusedMeeting;
         [self.view addSubview:row];
         [row refresh];
         offsetY += rowHeight;
@@ -208,38 +187,36 @@ TimeplanlappView *focusedMeetingView = nil;
 }
 
 
-// Event listener called when meeting is tapped on by user
-- (void)meetingFocused:(NSNotification *)note {
-    
-    
-    //17 sep 12:
-    CGRect frame = CGRectMake(215, 500, 480,180);
-    
-    
-    NSLog (@"subject : %@ owner: %@", focusedMeeting.subject, focusedMeeting.owner);
-    
-    NSLog(@"focused");
-    
-    focusedMeetingView = [[TimeplanlappView alloc] initWithFrame:frame
-                                                    headline:focusedMeeting.subject
-                                                       start:[DateUtil hourAndMinutes:focusedMeeting.start]
-                                                        stop:[DateUtil hourAndMinutes:focusedMeeting.end]
-                                                       owner:focusedMeeting.owner
-                                                    exitlabel:@"X"];
-    focusedMeetingView.tag = 5;
-    
-    
-    [self.view addSubview:focusedMeetingView];
-    
+- (void)meetingBarTouched:(NSNotification *)notification {
      
-}
+    Meeting *meeting = [notification object];
+    if (!meeting) { NSLog(@"Ingen møte sendt i notification"); return; }
+
+    [self closeDetailViewIfVisible];
+    detailsView = [[TimeplanlappView alloc] initWithFrame:CGRectMake(215, 500, 480,180) andMeeting:meeting]; 
+    timerToClose = [NSTimer scheduledTimerWithTimeInterval:5.0
+                            target:self selector:@selector(timerMethod:) userInfo:nil repeats:NO];
     
+    [self.view addSubview:detailsView];
+}
+
+- (void)closeButtonTouchedOnDetails:(NSNotification *)notification {
+    [self closeDetailViewIfVisible];
+}
+
+-(void)timerMethod:(NSTimer*)timer{
+    [self closeDetailViewIfVisible];
+}
+
+-(void)closeDetailViewIfVisible {
+    if (timerToClose) { [timerToClose invalidate]; }
+    if (detailsView) { [detailsView removeFromSuperview]; };    
+}
 
 
 - (void)viewDidUnload
 {
     [super viewDidUnload];
-    // Release any retained subviews of the main view.
 }
 
 

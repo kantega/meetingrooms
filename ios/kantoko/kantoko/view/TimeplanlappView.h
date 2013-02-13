@@ -7,21 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Meeting.h"
 
-@interface TimeplanlappView : UIView
+@interface TimeplanlappView : UIView {}
 
-{
-
-    
-}
-
-@property (strong, retain) NSString * headline;
-@property (strong, retain) NSString * startTimestamp;
-@property (strong, retain) NSString * stopTimestamp;
-@property (strong, retain) NSString * owner;
-@property (strong, retain) NSString * exitlabel;
-
-
-- (id)initWithFrame:(CGRect)frame headline:(NSString *)headline start:(NSString *)start stop:(NSString *)stop owner:(NSString *)owner exitlabel:(NSString *)exitlabel;
+- (id)initWithFrame:(CGRect)frame andMeeting:(Meeting *)meeting;
+- (void)updateShadow;
 
 @end
