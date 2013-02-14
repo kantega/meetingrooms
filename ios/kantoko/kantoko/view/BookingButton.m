@@ -19,24 +19,21 @@
     if (self) {
         self.frame = CGRectMake((500-200)/2, offsetY, 200, 60);
         UIImage* image = [UIImage imageNamed:@"clock60.png"];
-        UIEdgeInsets insets = UIEdgeInsetsMake(29, 55, 29, 4);
+        UIEdgeInsets insets = UIEdgeInsetsMake(29, 53, 29, 6);
         image = [image resizableImageWithCapInsets:insets];
         [self setBackgroundImage:image forState:UIControlStateNormal];
-        [self.layer setCornerRadius:10];
-        [self.layer setMasksToBounds:YES];
         [self setMinutes:min];
         [self setTitle:[NSString stringWithFormat:@"     %i minutter", min] forState:UIControlStateNormal];
+        
+        // shadow
+        self.layer.cornerRadius = 10;
+        self.layer.masksToBounds = NO;
+        self.layer.shadowPath = [[UIBezierPath bezierPathWithRoundedRect:self.bounds cornerRadius:8] CGPath];
+        self.layer.shadowOffset = CGSizeMake(8, 8);
+        self.layer.shadowRadius = 2;
+        self.layer.shadowOpacity = 0.5;
     }
     return self;
 }
-
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
-}
-*/
 
 @end

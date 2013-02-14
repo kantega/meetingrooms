@@ -216,24 +216,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "kantoko/view/BookingButton.m"
-         timestampString = "382461730.767908"
+         timestampString = "382547212.668288"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "31"
-         endingLineNumber = "31"
-         landmarkName = "-initWithMinutes:andOffsetY:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "kantoko/view/BookingButton.m"
-         timestampString = "382461730.767908"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "25"
-         endingLineNumber = "25"
+         startingLineNumber = "37"
+         endingLineNumber = "37"
          landmarkName = "-initWithMinutes:andOffsetY:"
          landmarkType = "5">
       </FileBreakpoint>
