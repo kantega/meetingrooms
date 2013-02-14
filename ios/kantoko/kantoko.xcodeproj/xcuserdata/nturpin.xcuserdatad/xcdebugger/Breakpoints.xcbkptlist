@@ -99,11 +99,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "kantoko/KantokoViewController.m"
-         timestampString = "382290152.678599"
+         timestampString = "382548499.61139"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "356"
-         endingLineNumber = "356"
+         startingLineNumber = "358"
+         endingLineNumber = "358"
          landmarkName = "-fillInMeetingsWithVacantSpots:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -203,13 +203,13 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "kantoko/model/Meeting.h"
-         timestampString = "382453910.248762"
+         timestampString = "382548499.61139"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "23"
-         endingLineNumber = "23"
-         landmarkName = "meetingroomAvailable"
-         landmarkType = "19">
+         startingLineNumber = "24"
+         endingLineNumber = "24"
+         landmarkName = "@interface Meeting"
+         landmarkType = "2">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"

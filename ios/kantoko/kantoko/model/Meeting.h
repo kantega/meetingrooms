@@ -20,6 +20,7 @@
 @property (nonatomic, strong) NSDate *end;
 @property (nonatomic, copy) NSString *owner;
 @property (nonatomic, copy) NSString *subject;
+@property (nonatomic) BOOL available;
 
 -(id)init:(NSDate *)newStart end:(NSDate *)newEnd owner:(NSString *)newOwner subject:(NSString *)newSubject;
 

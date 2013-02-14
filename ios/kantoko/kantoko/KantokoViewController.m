@@ -340,6 +340,7 @@ UILabel* _statusLabel = nil;
     
     if ([meetings count] == 0) {
         Meeting *vacantMeeting = [[Meeting alloc] init:startOfDay end:endOfDay owner:ownerStr subject:subjectStr];
+        vacantMeeting.available = YES;
         [meetingsWithVacantSpots addObject:vacantMeeting];
         return meetingsWithVacantSpots;
     }
@@ -348,6 +349,7 @@ UILabel* _statusLabel = nil;
     NSDate *firstMeetingStart = [DateUtil roundToClosestQuarter:firstMeeting.start];
     if ([DateUtil date:firstMeetingStart isAfterDate:startOfDay]) {
         Meeting *vacantMeeting = [[Meeting alloc] init:startOfDay end:firstMeeting.start owner:ownerStr subject:subjectStr];
+        vacantMeeting.available = YES;
         [meetingsWithVacantSpots addObject:vacantMeeting];
     }
     [meetingsWithVacantSpots addObject:firstMeeting];
@@ -359,6 +361,7 @@ UILabel* _statusLabel = nil;
         NSDate *startOfCurrentMeeting = [DateUtil roundToClosestQuarter:currentMeeting.start];
         if ([DateUtil date:startOfCurrentMeeting isAfterDate:endOfPreviousMeeting]) {
             Meeting *vacantMeeting = [[Meeting alloc] init:previousMeeting.end end:currentMeeting.start owner:ownerStr subject:subjectStr];
+            vacantMeeting.available = YES;
             [meetingsWithVacantSpots addObject:vacantMeeting];
         }
         [meetingsWithVacantSpots addObject:currentMeeting];
@@ -368,6 +371,7 @@ UILabel* _statusLabel = nil;
     NSDate *lastMeetingEnd = [DateUtil roundToClosestQuarter:lastMeeting.end];
     if ([DateUtil date:endOfDay isAfterDate:lastMeetingEnd]) {
          Meeting *vacantMeeting = [[Meeting alloc] init:lastMeetingEnd end:endOfDay owner:ownerStr subject:subjectStr];
+         vacantMeeting.available = YES;
          [meetingsWithVacantSpots addObject:vacantMeeting];
     }
     

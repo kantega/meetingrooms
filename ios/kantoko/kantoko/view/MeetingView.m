@@ -71,8 +71,7 @@ OnBookingRequestCompleted _bookingViewRequestCompletedCallback;
     [self updateStart:[DateUtil hourAndMinutes:[_meeting start]]];
     [self updateStop:[DateUtil hourAndMinutes:[_meeting end]]];
     [self updateEier:[_meeting owner]];
-    // TODO bruke flagg i stedet
-    if ([[_meeting subject] isEqualToString:@"Ledig"]) {
+    if ([_meeting available]) {
         [self setLedig];
     } else {
         [self setOpptatt];

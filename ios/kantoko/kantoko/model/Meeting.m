@@ -21,6 +21,7 @@
         self.end = newEnd;
         self.owner = newOwner;
         self.subject = newSubject;
+        self.available = NO; // default
          
     }
     return self;
