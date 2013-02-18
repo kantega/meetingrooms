@@ -193,7 +193,8 @@ NSTimer *timerToClose = nil;
     if (!meeting) { NSLog(@"Ingen møte sendt i notification"); return; }
 
     [self closeDetailViewIfVisible];
-    detailsView = [[TimeplanlappView alloc] initWithFrame:CGRectMake(215, 500, 480,180) andMeeting:meeting]; 
+    detailsView = [[TimeplanlappView alloc] initWithFrame:CGRectMake(215, 500, 480,180) andMeeting:meeting];
+    detailsView.alpha = 1.f;
     timerToClose = [NSTimer scheduledTimerWithTimeInterval:5.0
                             target:self selector:@selector(timerMethod:) userInfo:nil repeats:NO];
     
@@ -201,16 +202,25 @@ NSTimer *timerToClose = nil;
 }
 
 - (void)closeButtonTouchedOnDetails:(NSNotification *)notification {
-    [self closeDetailViewIfVisible];
+    [self fadeOutDetailViewIfVisibleWithDuration:0.4f];
 }
 
 -(void)timerMethod:(NSTimer*)timer{
-    [self closeDetailViewIfVisible];
+    [self fadeOutDetailViewIfVisibleWithDuration:1.5f];
 }
 
 -(void)closeDetailViewIfVisible {
     if (timerToClose) { [timerToClose invalidate]; }
-    if (detailsView) { [detailsView removeFromSuperview]; };    
+    if (detailsView) { [detailsView removeFromSuperview]; };
+}
+
+-(void)fadeOutDetailViewIfVisibleWithDuration: (float)duration {
+    if (timerToClose) { [timerToClose invalidate]; }
+    if (detailsView) {
+        [UIView animateWithDuration:duration
+                         animations:^ { [detailsView setAlpha:0.00f];}
+                         completion:^(BOOL dummy) { [detailsView removeFromSuperview];}];
+    };
 }
 
 
