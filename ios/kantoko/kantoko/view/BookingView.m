@@ -81,8 +81,9 @@ NSMutableArray *bookingButtonsArray;
 
         starttidspunktet = [[UILabel alloc]initWithFrame:CGRectMake((500-200)/2, 80, 200, 40)];
         starttidspunktet.text = @"Time";
+        starttidspunktet.font = [UIFont systemFontOfSize:18.0];
         starttidspunktet.textAlignment = NSTextAlignmentCenter;
-        starttidspunktet.backgroundColor = [UIColor lightGrayColor];
+        starttidspunktet.backgroundColor = [UIColor colorWithRed:0.541 green:0.768 blue:0.831 alpha:0.75];
         [self addSubview:starttidspunktet];
         
         bookingButtonsArray = [[NSMutableArray alloc] init];
@@ -109,14 +110,13 @@ NSMutableArray *bookingButtonsArray;
     NSInteger tilgjengeligeMinutter = 0;
     if (_meeting.isNow) {
         _bookMoteFra = _naermesteKvarterTilNaa;
-        starttidspunktet.text = [DateUtil hourAndMinutes:_naermesteKvarterTilNaa];
         tilgjengeligeMinutter = [DateUtil minutesBetweenStart:_naermesteKvarterTilNaa andEnd:_meeting.end];
     } else {
         _bookMoteFra = _meeting.start;
-        starttidspunktet.text = [DateUtil hourAndMinutes:_meeting.start];
         tilgjengeligeMinutter = _meeting.durationInMinutes;
     }
     
+    starttidspunktet.text = [@"Fra kl. " stringByAppendingString:[DateUtil hourAndMinutes:_bookMoteFra]];
     for (BookingButton *btn in bookingButtonsArray) {
         btn.hidden = (tilgjengeligeMinutter < btn.minutes);
     }

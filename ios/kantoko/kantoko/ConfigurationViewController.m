@@ -18,7 +18,7 @@
 
 @synthesize dataController;
 
-@synthesize roomPickerView;
+@synthesize osloPickerView;
 
 //10 des 12
 @synthesize trondheimPickerView;
@@ -44,82 +44,88 @@
 -(void)loadView
 {
     
-    UIView *customView = [[UIView alloc]initWithFrame:[[UIScreen mainScreen]applicationFrame]] ;
-    customView.backgroundColor = [UIColor darkGrayColor];
+    UIView *customView = [[UIView alloc]initWithFrame:[[[KantokoViewController getInstance] view] frame]];
+    UIColor *background = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"graa_bakgrunn1.jpg"]];
+    customView.backgroundColor = background;
     customView.autoresizesSubviews = NO;
     customView.clipsToBounds = NO;
+
+    UIColor *kantegaMorkGronn = [UIColor colorWithRed:30/255.0 green:106/255.0 blue:139/255.0 alpha:1.0];
+    UIColor *kantegaOrange = [UIColor colorWithRed:200/255.0 green:115/255.0 blue:40/255.0 alpha:1.0];
     
     self.velgmoteLabel = [[UILabel alloc]initWithFrame:CGRectMake((1024-250)/2, 20, 250, 36)];
     self.velgmoteLabel.text = @"Velg møterom";
     self.velgmoteLabel.textAlignment = NSTextAlignmentCenter;
-    [self.velgmoteLabel setFont:[UIFont fontWithName:@"Verdana-Bold" size:25]];
-    [self.velgmoteLabel setTextColor:[UIColor whiteColor]];
+    [self.velgmoteLabel setFont:[UIFont fontWithName:@"Verdana-Bold" size:28]];
+    [self.velgmoteLabel setTextColor:[UIColor blackColor]];
     self.velgmoteLabel.backgroundColor = [UIColor clearColor];
+    self.velgmoteLabel.textColor = kantegaMorkGronn;
     [customView addSubview:self.velgmoteLabel];
+
     
-    
-    UILabel *oslolabel = [[UILabel alloc]initWithFrame:CGRectMake(74, 80, 169, 36)];
+    UILabel *oslolabel = [[UILabel alloc]initWithFrame:CGRectMake(111, 110, 169, 36)];
     oslolabel.text = @"Oslo";
-    [oslolabel setFont:[UIFont fontWithName:@"Verdana-Bold" size:20]];
+    [oslolabel setFont:[UIFont fontWithName:@"Verdana-Bold" size:24]];
     oslolabel.backgroundColor = [UIColor clearColor];
+    oslolabel.textColor = kantegaMorkGronn;
     [customView addSubview:oslolabel];
     
     
-    UILabel *trondheimlabel = [[UILabel alloc]initWithFrame:CGRectMake(594, 80, 169, 36)];
+    UILabel *trondheimlabel = [[UILabel alloc]initWithFrame:CGRectMake(594, 110, 169, 36)];
     trondheimlabel.text = @"Trondheim";
-    [trondheimlabel setFont:[UIFont fontWithName:@"Verdana-Bold" size:20]];
+    [trondheimlabel setFont:[UIFont fontWithName:@"Verdana-Bold" size:24]];
     trondheimlabel.backgroundColor = [UIColor clearColor];
+    trondheimlabel.textColor = kantegaMorkGronn;
     [customView addSubview:trondheimlabel];
 
-    
-    self.okButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    self.okButton.frame = CGRectMake((1024-153)/2, 451, 153, 62);
+    self.okButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    self.okButton.frame = CGRectMake((1024-153)/2, 460, 153, 62);
+    self.okButton.backgroundColor = kantegaOrange;
+    self.okButton.layer.opaque = YES;
+    self.okButton.layer.cornerRadius = 10;
     [self.okButton setTitle:@"OK" forState:UIControlStateNormal];
-    //Hvis man vil ha highlight på knappen etter trykk, unkommenter denne linje
-    //[self.okButton setTitle:@"OK" forState:UIControlStateHighlighted];
-
     [self.okButton addTarget:self action:@selector(saveConfiguration:) forControlEvents:UIControlEventTouchUpInside];
+    
+    self.okButton.layer.shadowPath = [[UIBezierPath bezierPathWithRoundedRect:self.okButton.bounds cornerRadius:8] CGPath];
+    self.okButton.layer.shadowOffset = CGSizeMake(8, 8);
+    self.okButton.layer.shadowRadius = 2;
+    self.okButton.layer.shadowOpacity = 0.5;
+    
     [customView addSubview:self.okButton];
     
+    int width = customView.frame.size.width;
+    int pickerWidth = 350;
+    int osloStartX = 95;
+    int trondheimStartX = width - pickerWidth - 95;
     
+    self.osloPickerView = [self createPickerViewWithStartX:osloStartX andWidth:pickerWidth];
+    self.osloPickerView.tag = 1;
+    [customView addSubview:self.osloPickerView];
     
-    //10 des 12 (endret CGRect-størrelser for å gi rom til to PickerView
-    self.roomPickerView = [[UIPickerView alloc]initWithFrame:CGRectMake(50, 150, 450, 216)];
-    self.roomPickerView.delegate = self;
-    self.roomPickerView.showsSelectionIndicator = YES;
-    self.roomPickerView.userInteractionEnabled = YES;
-    self.roomPickerView.opaque = YES;
-    self.roomPickerView.clearsContextBeforeDrawing = YES;
-    self.roomPickerView.autoresizesSubviews = YES;
-    self.roomPickerView.tag = 1;
-    [customView addSubview:self.roomPickerView];
-    
-    self.trondheimPickerView = [[UIPickerView alloc]initWithFrame:CGRectMake(550, 150, 400, 216)];    
-    self.trondheimPickerView.delegate = self;
-    self.trondheimPickerView.showsSelectionIndicator = YES;
-    self.trondheimPickerView.userInteractionEnabled = YES;
-    self.trondheimPickerView.opaque = YES;
-    self.trondheimPickerView.clearsContextBeforeDrawing = YES;
-    self.trondheimPickerView.autoresizesSubviews = YES;
+    self.trondheimPickerView = [self createPickerViewWithStartX:trondheimStartX andWidth:pickerWidth];
     self.trondheimPickerView.tag = 2;
     [customView addSubview:self.trondheimPickerView];
     
-
-    //create toolbar using new
-    toolbar = [UIToolbar new];
-    toolbar.barStyle = UIBarStyleBlackTranslucent;
-    [toolbar sizeToFit];
-    //31 aug 12: Denne frame brukes når navController.navigationBarHidden er nei
-    //toolbar.frame = CGRectMake(0, 748 - (44 *2), 1024, 44);
-    toolbar.frame = CGRectMake(0, 748 - 44, 1024, 44);
-   
     
-    [customView addSubview:toolbar];
-    
-    
-    self.view = customView;    
+    self.view = customView;
 }
 
+-(UIPickerView*) createPickerViewWithStartX:(int)startX andWidth:(int)width {
+    UIPickerView *roomPickerView = [[UIPickerView alloc]initWithFrame:CGRectMake(startX, 165, width, 216)];
+    roomPickerView.delegate = self;
+    roomPickerView.showsSelectionIndicator = YES;
+    roomPickerView.userInteractionEnabled = YES;
+    roomPickerView.opaque = YES;
+    roomPickerView.clearsContextBeforeDrawing = YES;
+    roomPickerView.autoresizesSubviews = YES;
+    
+    roomPickerView.layer.shadowPath = [[UIBezierPath bezierPathWithRoundedRect:roomPickerView.bounds cornerRadius:8] CGPath];
+    roomPickerView.layer.shadowOffset = CGSizeMake(6, 6);
+    roomPickerView.layer.shadowRadius = 4;
+    roomPickerView.layer.shadowOpacity = 0.8;
+    
+    return roomPickerView;
+}
 
 
 -(void)dealloc{
@@ -127,7 +133,7 @@
     
     self.velgmoteLabel = nil;
     self.trondheimPickerView = nil;
-    self.roomPickerView = nil;
+    self.osloPickerView = nil;
     self.okButton = nil;
     self.oslo = nil;
     self.trondheim = nil;
@@ -148,35 +154,18 @@
 
 
 - (void)saveConfiguration:(id)sender {
-    
-
-   
-    
-    //11 des 12; La til to test-setninger for Oslo og Trondheim
-    //Feil type objekter!
-    //senere i desember 12: Fikset!
 
     if(pickedOsloIndex && [self.oslorooms count] > 0) {
-        //NSLog(@"pickedOsloIndex %i", pickedOsloIndex);
         self.dataController.configuration.room = [self.oslorooms objectAtIndex:self.pickedOsloIndex];
     }
     
-    
     if (pickedTrondheimIndex && [self.trondheimrooms count] > 0) {
-        //NSLog(@"pickedTrondheimIndex %i", pickedTrondheimIndex);
         self.dataController.configuration.room = [self.trondheimrooms objectAtIndex:self.pickedTrondheimIndex];
-    }
-    
+    }    
 
-     
-    // Post a notification to configChanged
     [[NSNotificationCenter defaultCenter] postNotificationName:@"configChanged" object:nil];
-    
-    //Save configuration on the physical device
     [self.dataController updateUserDefaults];
-     
 
-    
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -240,7 +229,7 @@
     
     //12.des 12: Ettersom vi jobber med to forskjellige arrayer, er det nødvendig å finne ut om et rom fins i en array før vi plukker det ut av arrayen, ellers blir det out of bounds-feilmelding dersom objektet fins ikke i arrayen
     if([self.oslorooms containsObject:self.dataController.configuration.room] && [self.oslorooms count] > 0){
-        [self.roomPickerView selectRow:[self.oslorooms indexOfObject:self.dataController.configuration.room]  inComponent:0 animated:YES];
+        [self.osloPickerView selectRow:[self.oslorooms indexOfObject:self.dataController.configuration.room]  inComponent:0 animated:YES];
     }else if ([self.trondheimrooms containsObject:self.dataController.configuration.room] && [self.trondheimrooms count] > 0){
         [self.trondheimPickerView selectRow:[self.trondheimrooms indexOfObject:self.dataController.configuration.room] inComponent:0 animated:YES];
     }else{
@@ -257,7 +246,7 @@
     
     self.velgmoteLabel = nil;
     self.trondheimPickerView = nil;
-    self.roomPickerView = nil;
+    self.osloPickerView = nil;
     self.okButton = nil;
     self.oslo = nil;
     self.trondheim = nil;
@@ -331,11 +320,9 @@
     if (pickerView.tag == 1){
         //Oslo
         self.pickedOsloIndex = row;
-        //NSLog(@"row in oslo %i", row);
     }else if (pickerView.tag == 2){
         //Trondheim
         self.pickedTrondheimIndex = row;
-        //NSLog(@"row in trondheim %i", row);
     }
     
     NSLog(@"pickedOsloIndex in method %i", pickedOsloIndex);

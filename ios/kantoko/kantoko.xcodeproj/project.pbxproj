@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1495C77016D23ADC0033F45B /* icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 1495C76F16D23ADC0033F45B /* icon-72.png */; };
+		1495C77316D23AE40033F45B /* graa_bakgrunn1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1495C77216D23AE40033F45B /* graa_bakgrunn1.jpg */; };
 		14AC99E016CBD3420045AFEE /* BookingButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 14AC99DF16CBD3420045AFEE /* BookingButton.m */; };
 		14B16E5C16C7C8930064CA1E /* clock60.png in Resources */ = {isa = PBXBuildFile; fileRef = 14B16E5B16C7C8930064CA1E /* clock60.png */; };
 		4C27BBD316BFDEEE000D0DD5 /* BookingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C27BBCC16BFDEEE000D0DD5 /* BookingView.m */; };
@@ -68,6 +70,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1495C76F16D23ADC0033F45B /* icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-72.png"; path = "resources/icon-72.png"; sourceTree = "<group>"; };
+		1495C77216D23AE40033F45B /* graa_bakgrunn1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = graa_bakgrunn1.jpg; path = resources/graa_bakgrunn1.jpg; sourceTree = "<group>"; };
 		14AC99DE16CBD3420045AFEE /* BookingButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookingButton.h; sourceTree = "<group>"; };
 		14AC99DF16CBD3420045AFEE /* BookingButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookingButton.m; sourceTree = "<group>"; };
 		14B16E5B16C7C8930064CA1E /* clock60.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = clock60.png; path = resources/clock60.png; sourceTree = "<group>"; };
@@ -166,6 +170,8 @@
 		4C9DB60516BFF34900ED6836 /* resources */ = {
 			isa = PBXGroup;
 			children = (
+				1495C77216D23AE40033F45B /* graa_bakgrunn1.jpg */,
+				1495C76F16D23ADC0033F45B /* icon-72.png */,
 				14B16E5B16C7C8930064CA1E /* clock60.png */,
 				4C401E3116C0002D008B2082 /* 1024x768_gronn.jpg */,
 				4C9DB60716BFF38D00ED6836 /* background-table.png */,
@@ -411,6 +417,8 @@
 				4C401E3216C0002D008B2082 /* 1024x768_gronn.jpg in Resources */,
 				4C8784C916C00D1D0096ECF5 /* MeetingView.xib in Resources */,
 				14B16E5C16C7C8930064CA1E /* clock60.png in Resources */,
+				1495C77016D23ADC0033F45B /* icon-72.png in Resources */,
+				1495C77316D23AE40033F45B /* graa_bakgrunn1.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

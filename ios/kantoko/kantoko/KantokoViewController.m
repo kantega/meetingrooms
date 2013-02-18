@@ -227,7 +227,7 @@ UILabel* _statusLabel = nil;
         CGSize mainViewSize = self.view.bounds.size;
         _statusLabel = [[UILabel alloc]initWithFrame:CGRectMake(mainViewSize.width / 4, mainViewSize.height * 2 / 3, mainViewSize.width / 2, 100)];
         _statusLabel.textColor = [UIColor whiteColor];
-        _statusLabel.backgroundColor = [UIColor blackColor];
+        _statusLabel.backgroundColor = [UIColor colorWithRed:0.782 green:0.449 blue:0.156 alpha:1];
         _statusLabel.font = [UIFont systemFontOfSize:24.0f];
         _statusLabel.textAlignment = NSTextAlignmentCenter;
         [self.view addSubview:_statusLabel];

@@ -40,7 +40,7 @@
 
 @property (strong, nonatomic) KantokoDataController *dataController;
 
-@property (strong, nonatomic) UIPickerView *roomPickerView;
+@property (strong, nonatomic) UIPickerView *osloPickerView;
 
 //10 des 12: La til en ny PickerView og en array for Trondheims rom og en array for Oslos rom
 @property (strong, nonatomic) UIPickerView *trondheimPickerView;
