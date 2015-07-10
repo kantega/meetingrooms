@@ -60,7 +60,10 @@ NSMutableArray *bookingButtonsArray;
         titlelabel.font = [UIFont boldSystemFontOfSize:20.0];
         titlelabel.shadowColor = [UIColor colorWithWhite:0.0 alpha:0.5];
         titlelabel.textAlignment = NSTextAlignmentCenter;
-        titlelabel.text = [@"Smidig booking: " stringByAppendingString:_roomnavn];
+        if ([_roomnavn length] > 0) {
+            titlelabel.text = [@"Smidig booking: " stringByAppendingString:_roomnavn];
+        }
+        
         titlelabel.textColor = [UIColor blackColor];
         
         item = [[UINavigationItem alloc] init];
