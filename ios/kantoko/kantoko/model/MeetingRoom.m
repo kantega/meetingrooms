@@ -39,12 +39,14 @@
 
 - (BOOL)isEqual: (id)other
 {
-    return ([other isKindOfClass: [MeetingRoom class]] &&
-            
-            [[other mailbox] isEqual:self.mailbox] &&
-            [[other displayname] isEqual:self.displayname] &&
-            [[other location] isEqual:self.location]);
-    
+    if ([other isKindOfClass:[MeetingRoom class]]) {
+        MeetingRoom *theOther = (MeetingRoom *)other;
+        return ([theOther.location isEqualToString:self.location] &&
+                [theOther.displayname isEqualToString:self.displayname] &&
+                [theOther.mailbox isEqualToString:self.mailbox]);
+    } else {
+        return false;
+    }    
 }
 
 
