@@ -296,6 +296,22 @@
     
     return 0;
 }
+
+- (NSAttributedString *)pickerView:(UIPickerView *)pickerView attributedTitleForRow:(NSInteger)row forComponent:(NSInteger)component
+{
+    NSString *title;
+    if (pickerView.tag == 1) {
+        title = [self.oslo objectAtIndex:row];
+    } else if (pickerView.tag == 2) {
+        title = [self.trondheim objectAtIndex:row];
+    }
+    
+    NSAttributedString *attString = [[NSAttributedString alloc] initWithString:title attributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
+    
+    return attString;
+}
+
+/*
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
 
     
@@ -312,7 +328,7 @@
     
     return 0;
     
-}
+}*/
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
     

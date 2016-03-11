@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>DAEC3DF4-F94F-4D03-A456-6AC6A095CC2F</string>
+	<key>IDESourceControlProjectName</key>
+	<string>kantoko</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>519A851261D3AC2FA044323F666EF2028E5D0DEA</key>
+		<string>https://github.com/johanhar/meetingrooms.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>ios/kantoko/kantoko.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>519A851261D3AC2FA044323F666EF2028E5D0DEA</key>
+		<string>../../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/johanhar/meetingrooms.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>519A851261D3AC2FA044323F666EF2028E5D0DEA</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>519A851261D3AC2FA044323F666EF2028E5D0DEA</string>
+			<key>IDESourceControlWCCName</key>
+			<string>kantoko1</string>
+		</dict>
+	</array>
+</dict>
+</plist>
