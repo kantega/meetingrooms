@@ -6,8 +6,8 @@
 //  Copyright (c) 2013 Kantega. All rights reserved.
 //
 
-#import <SenTestingKit/SenTestingKit.h>
+#import <XCTest/XCTest.h>
 
-@interface kantokoTests : SenTestCase
+@interface kantokoTests : XCTestCase
 
 @end
