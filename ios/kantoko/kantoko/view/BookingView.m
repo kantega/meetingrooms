@@ -104,9 +104,6 @@ NSMutableArray *bookingButtonsArray;
     return self;
 }
 
-
-
-
 -(void)setMeeting:(Meeting*) meeting {
     _meeting = meeting;
 
@@ -228,7 +225,7 @@ NSMutableArray *bookingButtonsArray;
 
 -(NSString*)finneriktigserverromnavn:(NSString*)romnavn{
     
-    NSDictionary *romnavner = [NSDictionary dictionaryWithObjectsAndKeys:  @"mrokathmandu", @"Kathmandu", @"mromonjo", @"Monjo",  @"mro.lukla", @"Lukla", @"mronamcheBazaar",@"Namche Bazaar",  @"mro.chule", @"Chule", @"mro.haibung",@"Haibung",  @"mro.kantina",@"Kantina",  @"MRTNordlys",@"Nordlys",  @"MRTHimalaya",@"Himalaya",  @"MRTGlassburet",@"Glassburet",  @"MRTAlexandria",@"Alexandria",  @"MRTBuen",@"Buen", nil];
+    NSDictionary *romnavner = [NSDictionary dictionaryWithObjectsAndKeys: @"mrtturing", @"Turing", @"mrttesla", @"Tesla", @"mrthopper", @"Hopper", @"mrtcurie", @"Curie", @"mrtbernerslee", @"Berners-Lee", @"mrtbabbage", @"Babbage", @"mrtada", @"Ada", @"mrtengelbart", @"Engelbart",  @"mrokathmandu", @"Kathmandu", @"mromonjo", @"Monjo",  @"mro.lukla", @"Lukla", @"mronamcheBazaar",@"Namche Bazaar",  @"mro.chule", @"Chule", @"mro.haibung",@"Haibung",  @"mro.kantina",@"Kantina",  @"MRTNordlys",@"Nordlys",  @"MRTHimalaya",@"Himalaya",  @"MRTGlassburet",@"Glassburet",  @"MRTAlexandria",@"Alexandria",  @"MRTBuen",@"Buen", nil];
     
     NSString *servernavn = [romnavner valueForKey:romnavn];
     NSLog(@"romnavn %@", romnavn);
